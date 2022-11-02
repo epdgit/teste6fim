@@ -1,0 +1,88 @@
+<div>
+  <%# <%= link_to "Início", root_path %>
+  <button id="botao-root" class="btn btn-primary">Tela Inicial</button> <%# <a href="/">VOLTAR AO INÍCIO</a>  %>
+</div>
+<%# <h1><%= @aposta </h1> %>
+
+<div class="icone-pdf">
+  <%# <p class="obter-pdf">Obter PDF</p> %>
+  <button type="button" class="botao-mais-menos" id="meu-pdf"><i class="fas fa-file-pdf"  style="color: #ff4d4d"></i></button>
+</div>
+
+<div>
+  <div id="printar_pdf">
+    <div class="classe-apostas-geradas" id=<%=@id_div_apostas %> style=""> 
+      <h1 class="resultado-apostas-geradas"><%= @nome %></h1>
+      <h3 id="data_bolao"><%= @data %></h2>
+      <ol >
+        <% @conferir.each do |jogo| %>
+          <li>
+            <ul id="ul_jogos-gerados-ruby">
+              <% jogo.each do |numero| %>
+              <li id="jogos-gerados-ruby">
+                <%= numero %>
+                <% end %>
+              </li>
+            </ul>
+          </li>
+        <% end %>
+      </ol>
+
+      <h2 class="divisor"></h2>
+      <h1 class="resultado-apostas-geradas-estatisticas"><%= @valor %></h1>
+      <h1 class="resultado-apostas-geradas-estatisticas"><%= @total_quotas %></h1>
+      <h1 class="resultado-apostas-geradas-estatisticas"><%= @valor_por_quota %></h1>
+      <h1 class="resultado-apostas-geradas-estatisticas"><%= @chance_printada %></h1>
+
+
+
+      <h2 id="relatorio_apostadores">Apostadores:</h2>
+
+      <ol id="ol_apostadores_bolao_gerado_ruby">
+        <% contando = 0 %>
+        <% @array_apostadores.each do |apostador| %>
+          <li>
+            <ul id="apostadores_bolao_gerado_ruby">
+              <li id="">
+                <div class="test_drive">
+                  <div>
+                    <%= "#{apostador} - #{@array_quotas[contando]} quota(s) #{ @array_pagamento[contando] == 'on' ? '- PG' : '' }"  %>
+                  </div>
+                  <%# <div>
+                    <%= "#{ @array_pagamento[contando] == 'on' ? ' - PG' : '' }"
+                  </div> %>
+                </div>
+                <% contando += 1 %>
+              </li>
+            </ul>
+          </li>
+        <% end %>
+      </ol>
+
+
+
+    </div>
+  </div>
+  <%# <button type="button" class="botao-mais-menos" id="meu-pdf"><i class="fas fa-file-pdf"  style="color: #ff4d4d"></i></button> %>
+</div>
+
+<table class="table_content">
+  <tbody>
+    <tr>
+      <td></td>
+      <td>Apostador</td>
+      <td>Quotas</td>
+      <td>Pagamento</td>
+    </tr>
+    <% contando = 0 %>
+    <% @array_apostadores.each do |apostador| %>
+    <tr>
+      <td><%= contando + 1 %></td>
+      <td><%= apostador %></td>
+      <td><%= @array_quotas[contando] %></td>
+      <td><%= @array_pagamento[contando] == 'on' ? 'PG' : '' %></td>
+      <% contando += 1 %>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

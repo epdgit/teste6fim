@@ -1,0 +1,9 @@
+<%= form_with model: @sorteio do |f| %>
+  <%= f.label :concurso %>
+  <%= f.number_field :concurso %>
+  <%= f.label :data %>
+  <%= f.date_field :data %>
+  <%= f.label :numeros %>
+  <%= f.text_field :numeros %>
+  <%= f.submit %>
+<% end %>

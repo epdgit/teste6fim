@@ -1,0 +1,18 @@
+<%= link_to "Todos os sorteios", sorteios_path %>
+<h2><%= @sorteio.concurso %></h2>
+<p><%= @sorteio.data %></p>
+<p><%= @sorteio.numeros %></p>
+
+<p>
+  <%= link_to "Editar", edit_sorteio_path(@sorteio) %>
+</p>
+
+<p>
+  <%= link_to "Apagar",
+    sorteio_path,
+    method: :delete, data: {confirm: "Apagar sorteio?"}
+  %>
+</p>
+<p>
+<%= @para %>
+</p>

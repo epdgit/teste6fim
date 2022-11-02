@@ -1,0 +1,41 @@
+<div class="br-footer">
+  <div class="container-lg">
+    <div class="d-none d-sm-block">
+      <div class="row align-items-end justify-content-between container-footer">
+        <div class="col social-network">
+          <p class="text-up-01 text-extra-bold text-uppercase">Redes Sociais</p>
+
+          <%= link_to "https://www.twitter.com/JusticaGovBR", target: "blank" do %>
+            <i class="mr-3 fab fa-twitter" ></i>
+          <% end %>
+
+          <%= link_to "https://www.youtube.com/justicagovbr", alt: "linkedin", target: "blank" do %>
+            <i class="mr-3 fab fa-youtube" ></i>
+          <% end %>
+
+          <%= link_to "https://www.facebook.com/JusticaGovBR", target: "blank" do %>
+            <i class="mr-3 fab fa-facebook" ></i>
+          <% end %>
+
+          <%= link_to "https://www.flickr.com/JusticaGovBR", target: "blank" do %>
+            <i class="mr-3 fab fa-flickr" ></i>
+          <% end %>
+
+          <%= link_to "https://www.instagram.com/mjsp_gov", target: "blank" do %>
+            <i class="mr-3 fab fa-instagram" ></i>
+          <% end %>
+
+
+        </div>
+        <div class="col assigns text-right">
+          <a class="logo-acesso-footer ml-4" href="http://www.acessoainformacao.gov.br/" target="blank">
+            <img src="<%= image_path("favicon-tarta.icon.png") %>" alt="Acesso Informação">
+          </a>
+          <a class="logo-acesso-footer ml-4" href="http://www.brasil.gov.br/" target="blank">
+            <img class="patria_amada ml-4" src="<%= image_path("favicon-tarta.icon.png") %>" alt="Governo Federal">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
