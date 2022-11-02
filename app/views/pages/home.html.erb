@@ -1,2 +1,211 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+
+<div id="div_img_background">
+  <div class="tudo">
+
+    <div>
+      <div class="inicio">
+        <h1>
+        CRIE E ORGANIZE SUAS APOSTAS
+        </h1>
+        <P>Construa palpites vencedores em diferentes configurações, gerando seus jogos de forma ágil e estruturada, permitindo que você controle os custos por apostador</P>
+      </div>
+
+      <form action="/"  class="form-inline" id="teste"> <!-- método GET ou POST: method="POST"-->
+        <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>"> <%# essa linha serve para o método POST, onde é exigido que haja um token de autenticidade %>
+        <%# <input type="hidden" name="authenticity_token" value="6mcCvU7ZazpIBcJTptw/8y4EucmzccFWli7tFUzX6IJEx8wq6PFC7m4rA1Jy+W4YW1hlhYhSOyhZefWtOM5ofQ=="> %>
+        <div class="form-group">
+          <div class="agrupando-campos">
+            <div class="modalidade">
+              <label  for="tipoSorteio">Modalidade: </label>
+              <select form="teste" name="sorteio" class="form-control" id="sorteio"  required >
+                <option value="">Escolha a sua modalidade</option>
+                <option value="mega" >Megasena</option>
+                <option value="dupla">Duplasena</option>
+                <option value="quina">Quina</option>
+                <option value="lotof">Lotofácil</option>
+              </select>  
+            </div>
+
+            <div class="quantidade-numeros">
+              <label for="numeros_na_aposta">Números por aposta: </label>
+              <select form="teste" name="quantidadeNumeros" class="form-control" id="opcoesDaAposta"  required >
+                  <%# <option value=""></option>    %>
+              </select>
+            </div>
+          </div>
+
+          <div class="agrupando-campos">
+            <div class="quantidade-apostas">
+              <label for="quantidade">Quantidade de apostas: </label>
+              <select form="teste" name="quantidadeJogos" class="form-control" id="quantidade"  required >
+                <%# <option value=""></option> %>
+              </select>  
+            </div>
+
+
+
+            <div class="organizar-bolao">
+              <fieldset>
+
+                  <legend>Organizar bolão? (opcional) </legend>
+                    <div class="radio-inline">
+                      <input type='radio' id="bolaoNao" name='bolao' value='nao'  checked>
+                      <label class="label-sim-nao" for="bolao">Não</label><br>
+                    </div>
+                    <div class="radio-inline" >
+                      <input  type='radio' id="bolaoSim" name='bolao' value='sim' >
+                      <label  class="label-sim-nao" for="bolao">Sim</label><br>
+                    </div>
+              </fieldset>
+            </div>
+
+          </div>
+
+
+          <div id="totalizador_de_apostas_sem_bolao" style="">
+            <p id="teste_valor_total">Valor total da(s) aposta(s):</p>
+            <p id="teste_total_apostas"> </p>
+          </div>
+
+
+          
+          <div id="divDoBolao" style="display: none">
+              <div class="apostadores">
+                <div class="apostadores-quantidade">
+                  <label for="quantidadeApostadores2">Quantidade de apostadores (2 a 100): </label>
+                  <%# <input id="quantidadeApostadores" name="quatidadeApostadores" type="number" min="2" max="100" ><br> %>
+
+          <%# TESTANDO NOVO SELETOR %>
+                  <select form="teste" name="quantidadeApostadores2" class="form-control" id="quantidadeApostadores2"  > <%# fazer o required ativar aqui!!; onchange="trocarQuantidadeCampos()"  %>
+                      <%# <option value=></option>    %>
+                  </select>
+
+                </div>
+
+                <div class="data">
+                  <label for="arrival">Data do sorteio (opcional): </label> <!-- é o rótulo que vem sobre o campo de input -->
+                  <input type="date" min="<%= Time.now.strftime("%Y-%m-%d") %>" name="data" class="form-control testando-shadow optional" > <!-- tipo 'date' vai criar calendário no form; mas esse calendário só funciona no chrome; 'for' do label e 'name' do input devem casar -->
+                </div>
+              </div>
+
+
+
+
+
+            <div id="todos_apostadores">
+              <div class="opcoes">
+                <div>
+                  <fieldset>
+
+                      <legend id="legenda-quotas">Quotas distintas por apostador? (opcional) </legend>
+                        <div class="radio-inline">
+                          <input type='radio' id="bolaoQuotasNao" name='bolaoQuotas' value='nao'  checked>
+                          <label class="label-sim-nao" for="bolaoQuotas">Não</label><br>
+                        </div>
+                        <div class="radio-inline">
+                          <input type='radio' id="bolaoQuotasSim" name='bolaoQuotas' value='sim' >
+                          <label class="label-sim-nao" for="bolaoQuotas">Sim</label><br>
+                        </div>
+                  </fieldset>
+                </div>
+
+                <div id="div_todos_pagos">
+                  <input type='checkbox' id='todos_pagos' > Todas as quotas pagas
+                </div>
+              </div>
+
+
+
+        <%# APOSTADOR NOVO - CRIANDO CAMPOS AUTOMATIZADOS %>
+              <div id="campos_bolao">
+              </div>
+
+              <div id="totais">
+                <div id="totalizador_de_apostas">
+                  <p class="texto-total">Valor total da(s) aposta(s):</p>
+                  <p id="total_apostas"> </p>
+                </div>
+                <div id="totalizador_de_quotas">
+                  <p class="texto-total">Total de quotas:</p>
+                  <p id="total_quotas"></p>
+                </div>
+              </div>
+
+
+
+              <div id="divDasQuotas" style="display: none">
+                <label for="quantidadeQuotas">Quotas : </label>
+                <input id="quantidadeQuotas" name="quantidadeQuotas" type="number"  value="1" min="0.5" max="20" step="0.5"> <%# tirei o   placeholder="1 quota" %>
+              </div>
+            </div>
+
+
+
+
+            <div id="testesoma">
+              <%# ARRUMAR ISSO PARA TOTALIZAR AS COTAS %>
+              <input class="my-input"  type="number" name="cota1" value="0" min="0" />
+              <input class="my-input"  type="number" name="cota2" value="0" min="0" />
+              <input class="my-input"  type="number" name="cota3" value="0" min="0" />
+              <!-- <input type="text" id="total" value="" /> -->
+              <p id="total"></p>
+            </div>
+          </div>
+
+        <div class="button-gerador-aposta">
+          <input type="submit" class="btn btn-primary" id="botao-apostas" value="Gerar Apostas" > <%# onClick="vazio()"%>
+        </div>
+
+        <div>
+          <div id=<%=@id_div_apostas %> style=""> 
+            <h1 class="resultado-apostas-geradas"><%= @nome %></h1>
+            <ol >
+              <% @conferir.each do |jogo| %>
+                <li>
+                  <ul >
+                    <% jogo.each do |numero| %>
+                    <li id="jogos-gerados-ruby">
+                      <%= numero %>
+                      <% end %>
+                    </li>
+                  </ul>
+                </li>
+              <% end %>
+            </ol>
+            <h1 class="resultado-apostas-geradas-estatisticas"><%= @valor %></h1>
+            <h1 class="resultado-apostas-geradas-estatisticas"><%= @chance_printada %></h1>
+          </div>
+        </div>
+
+
+          <div>
+            <div  >
+              <h4 class="botao-adicao-subtracao">
+                <button type="button" class="subtrair"> - </button> Retirar  
+              </h4>
+            </div>
+            <div>
+              <h4 class="botao-adicao-subtracao">
+                <button type="button" class="adicionar " style=""> + </button> Adicionar  
+              </h4>
+            </div>
+          </div>
+
+          <i class="fas fa-cocktail ml-5 mt-3" style="color: #4DB6AC">Adicionar 2</i>
+          <button type="button" class="botao-mais-menos"><i class="fas fa-plus-circle" style="color: #0069D9"></i></button>
+          <button type="button" class="botao-mais-menos"><i class="fas fa-minus-circle" style="color: #ff4d4d"></i></button>
+        </div>
+
+
+
+
+      </form>
+    </div>
+    <div>
+      <div class="divulgacao">
+      </div>
+      <div class="divulgacao">
+      </div>
+    </div>
+  </div>
+</div>

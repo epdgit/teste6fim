@@ -1,0 +1,2 @@
+class Sorteio < ApplicationRecord
+end

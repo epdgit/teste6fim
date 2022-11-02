@@ -1,0 +1,536 @@
+<form action="/conjuntos"  class="form-inline" id="numeroSorte2" name="nsorte2" > <!-- método GET ou POST: method="POST"-->
+  <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>"><%# essa linha serve para o método POST, onde é exigido que haja um token de autenticidade %>
+  <%# <input type="hidden" name="authenticity_token" value="6mcCvU7ZazpIBcJTptw/8y4EucmzccFWli7tFUzX6IJEx8wq6PFC7m4rA1Jy+W4YW1hlhYhSOyhZefWtOM5ofQ=="> %>
+  <div class="form-group">
+
+
+    <ul>
+      <% jogo = (1..60).to_a %>
+      <% jogo.each do |numero| %>
+      <li id="n<%= numero %>" class="numero-sorte jogos-gerados-ruby-numeros-sorte" value=<%= "#{numero}" %>> 
+        <%= numero %>
+        <% end %>
+      </li>
+    </ul>
+
+
+
+  <input form="numeroSorte2" id="numeros-da-sorte-fim2" name="meusNumeros2" type="text" class="form-control" oninput="trocarSeletorNumerosConjuntos()" value=""  style="display: none" > <%# style="display: none"  %>
+
+  <div> <%# FUNÇÃO E ID NÃO PODEM TER O MESMO NOME!!! CASO CONTRÁRIO, O JS DIZ QUE A FUNÇÃO NÃO EXISTE!!! %>
+    <div>
+      <button type="button" id="mais-saem" onclick="maisSaem()" class="btn btn-primary">Mais saem</button>
+      <button type="button" id="menos-saem" onclick="menosSaem()" class="btn btn-primary">Menos saem</button>
+      <button type="button" id="media_todos" onclick="media()" class="btn btn-primary">Média</button>
+      <button type="button" id="media_mil" onclick="mediaMil()" class="btn btn-primary">Média 1000</button>
+      <button type="button" id="ramalho-dantas" onclick="ramalhoDantas()" class="btn btn-primary">Conjunto RD</button>
+      <button type="button" id="ult17" onclick="ultD()" class="btn btn-primary">Estou com sorte</button>
+      <button type="button" id="ult13" onclick="ultT()" class="btn btn-primary">Arrojado</button>
+      <button type="button" id="ult10" onclick="ultDez()" class="btn btn-primary">Mais Arrojado</button>
+    </div>
+    <div>
+      <button type="button" id="limpa" onclick="limpar()" class="btn btn-warning">Limpar Marcações</button>
+    </div>
+  </div>
+
+
+  <div class="quantidade-numeros">
+    <label for="numeros_na_aposta2">Números por aposta: </label>
+    <select form="numeroSorte2" name="quantidadeNumeros2" class="form-control" id="opcoesDaAposta21"  required >
+        <%# <option value=""></option>    %>
+    </select>
+  </div>
+
+
+  
+  <div class="quantidade-apostas">
+    <label for="quantidade2">Quantidade de apostas: </label>
+    <select form="numeroSorte2" name="quantidadeJogos2" class="form-control" id="quantidade2"  required >
+      <%# <option value=""></option> %>
+    </select>  
+  </div>
+
+
+    <div id="div-do-botao-numeros-da-sorte">
+      <button type="submit" id="meus-numeros-da-sorte" class=" btn btn-primary btn-lg" disabled="true" ><span class="fas fa-sack-dollar"> <%# onclick="testeQuantidade()"  %>
+      </span> Gerar Apostas</button>
+      <div id="alerta">
+        <h6 id="mensagem-alerta">Crie seu conjunto com 7 ou mais números! Só então você poderá gerar suas apostas. ☘️</h6>
+      </div>
+    </div>
+  </div>
+</form>
+
+
+
+
+
+
+<%#  %>
+<%# <button type="button" id="limpar" onclick="limpar()" class="btn btn-warning">Limpar Marcações</button> %>
+
+<%# <a href="/">Home</a>  obs.: não recarrega as funções do Javascript  
+<%= link_to 'Home', root_path  obs.: não recarrega as funções do Javascript %>
+<button id="botao-root" class="btn btn-primary">INÍCIO</button> 
+
+
+
+
+
+<p id="array-ult17" style="display: none">
+ <%= @array17 %>
+</p>
+<p id="array-ult13" style="display: none">
+ <%= @array13 %>
+</p>
+
+<p id="array-ult10" style="display: none">
+  <%= @array10  %>
+</p>
+<p id="array-mais-saem" style="display: none">
+  <%= @mais_saem  %>
+</p>
+<p id="array-menos-saem" style="display: none">
+  <%= @menos_saem %>
+</p>
+
+<p id="array-media" style="display: none">
+  <%= @media %>
+</p>
+
+<p id="array-media-mil" style="display: none">
+  <%= @media_mil %>
+</p>
+
+
+<%# GERANDO JOGOS:  %>
+<div>
+  <div id=<%=@id_div_apostas %> style=""> 
+    <h1 class="resultado-apostas-geradas"><%= @nome %></h1>
+    <p class="resultado-apostas-geradas-estatisticas">
+      <% if @conjunto %>
+        <%= "Conjunto da sorte (#{@conjunto.size} números): " %>
+        <%= @conjunto.join(", ") %>
+      <% end %>
+    </p>
+
+    <h2 class="divisor" style="display: none"></h2>
+
+    <h1 class="resultado-apostas-geradas-estatisticas">
+    <% if @conjunto %>
+    <%= "Apostas geradas: " %>
+    <% end %>
+    </h1>
+    <ol >
+      <% @conferir.each do |jogo| %>
+        <li>
+          <ul >
+            <% jogo.each do |numero| %>
+            <li id="jogos-gerados-ruby">
+              <%= numero %>
+              <% end %>
+            </li>
+          </ul>
+        </li>
+      <% end %>
+    </ol>
+
+    <h2 class="divisor" style="display: none"></h2>
+
+    <h1 class="resultado-apostas-geradas-estatisticas"><%= @valor %></h1>
+    <h1 class="resultado-apostas-geradas-estatisticas"><%= @chance_printada %></h1>
+    <h1 class="resultado-apostas-geradas-estatisticas"><%= @chance_escopo_printada %></h1>
+  </div>
+</div>
+
+
+
+
+<script>
+
+var arrayDaSorte = []
+window.onclick = e => {
+    var tag_sorte = e.target.tagName
+    if ((tag_sorte == "LI") && (e.target.classList.contains("selected") == false)) {
+      // var idSelecionado = e.target.id
+      var numeroSorte2 = e.target.value
+      arrayDaSorte.push(numeroSorte2)
+      e.target.classList.add("selected");
+    } else if (tag_sorte == "LI" && e.target.classList.contains("selected") == true) {
+      var retirarNumeroSorte2 = e.target.value
+      for( var i = 0; i < arrayDaSorte.length; i++){                              
+        if ( arrayDaSorte[i] === retirarNumeroSorte2) { 
+            arrayDaSorte.splice(i, 1); 
+            i--; 
+        }
+      e.target.classList.remove("selected");
+      }
+    }
+    arrayDaSorte.sort()
+    document.getElementById("numeros-da-sorte-fim2").setAttribute("value", `${arrayDaSorte}`)  
+    var botao = document.getElementById("meus-numeros-da-sorte")
+    var mensagemAlerta = document.getElementById("alerta")
+    if (arrayDaSorte.length > 6) {
+
+ 
+      
+
+      /////
+      //HABILITANDO BOTÃO
+      botao.removeAttribute("disabled");
+
+      //REMOVENDO ALERTA
+      while (mensagemAlerta.hasChildNodes()) {
+        mensagemAlerta.removeChild(mensagemAlerta.firstChild)
+      };
+    } else {
+      var seletorNumeros = document.getElementById("opcoesDaAposta21");
+      while (seletorNumeros.hasChildNodes()) {
+        seletorNumeros.removeChild(seletorNumeros.firstChild)
+      };
+
+      var seletorQuantidade = document.getElementById("quantidade2")
+      while (seletorQuantidade.hasChildNodes()) {
+        seletorQuantidade.removeChild(seletorQuantidade.firstChild)
+      };
+      botao.setAttribute("disabled", "true")
+      if (document.getElementById("mensagem-alerta") == null) {
+        document.getElementById("alerta").innerHTML =  '<h6 id="mensagem-alerta">Crie seu conjunto com 7 ou mais números! Só então você poderá gerar suas apostas. ☘️</h6>'
+      }
+    }
+
+    if ((arrayDaSorte.length > 6) && (tag_sorte == "LI")) { // SE VC NÃO USAR ESSA RESTRIÇÃO, O EVENTO CHANGE FICA EM TUDO O TEMPO TODO, CRIANDO SELETORES (options do select)  QUE NUNCA PODEM SER CLICADOS!!!
+      document.getElementById("numeros-da-sorte-fim2").dispatchEvent(new Event('change')) // a troca dinâmica do Value não faz por padrão um evento 'change', o que impede um addEventListener, então, tem que fazer isso na marra!
+      var seletorQuantidade = document.getElementById("quantidade2")
+      while (seletorQuantidade.hasChildNodes()) {
+        seletorQuantidade.removeChild(seletorQuantidade.firstChild)
+      };
+    }
+}
+
+
+
+
+     
+
+function limpar() {
+  var numerosTodos = document.getElementsByClassName("numero-sorte");
+  var intLength = numerosTodos.length;
+  var total = 0;
+  for(var i = 0; i < intLength; i++) {
+        var check_numero = numerosTodos[i];
+        if (check_numero.classList.contains("selected") == true) {
+          check_numero.classList.remove("selected");
+        };
+  };
+  if (arrayDaSorte) {
+    arrayDaSorte = []
+  }
+  document.getElementById("numeros-da-sorte-fim2").setAttribute("value", "");
+}
+
+function limpaQuantidade() {
+  var seletorQuantidade = document.getElementById("quantidade2")
+  while (seletorQuantidade.hasChildNodes()) {
+    seletorQuantidade.removeChild(seletorQuantidade.firstChild)
+  };
+}
+
+
+function maisSaem() {
+  // mais_saem_todos = [53, 10, 5, 42, 37, 4, 33, 30, 27, 23, 41, 54, 34, 28, 29, 35, 44, 43, 11, 17, 51, 16, 24, 38, 32, 49, 36, 2, 13, 56]
+  // var mais_saem_length = mais_saem_todos.length
+
+  var arrayMaisSaem = document.getElementById("array-mais-saem").textContent
+  var numeroCaracteres = arrayMaisSaem.length
+  var arrayMaisSaemstring = arrayMaisSaem.substring(4, numeroCaracteres - 2).split(",")
+  var arrayMaisSaemlength = arrayMaisSaemstring.length
+  var arrayMaisSaemFim = []
+  var contador = 0
+  for(var i = 0; i < arrayMaisSaemlength; i++) {
+    arrayMaisSaemFim.push(parseInt(arrayMaisSaemstring[i])) // convetendo o array de strings para array de integers
+  }
+
+  var numerosTodos = document.getElementsByClassName("numero-sorte");
+  var intLength = numerosTodos.length;
+  var total = 0;
+  
+  for(var i = 0; i < intLength; i++) {
+        var check_numero = numerosTodos[i];
+        if (arrayMaisSaemFim.includes(check_numero.value) == true) {
+          check_numero.classList.add("selected");
+        } else {
+          check_numero.classList.remove("selected");
+        };
+  };
+  if (arrayDaSorte) {
+    arrayDaSorte = arrayMaisSaemFim
+  }
+  document.getElementById("numeros-da-sorte-fim2").setAttribute("value", `${arrayDaSorte}`);
+  // document.getElementById("numeros-da-sorte-fim2").trigger('change')
+  document.getElementById("numeros-da-sorte-fim2").dispatchEvent(new Event('change')) // a troca dinâmica do Value não faz por padrão um evento 'change', o que impede um addEventListener, então, tem que fazer isso na marra!
+  limpaQuantidade()
+}
+
+
+function menosSaem() {
+  // menos_saem_todos = [6, 52, 8, 46, 18, 50, 58, 12, 1, 20, 25, 40, 45, 47, 7, 39, 19, 60, 57, 9, 59, 31, 14, 48, 3, 22, 15, 21, 55, 26]
+
+  var arrayMenosSaem = document.getElementById("array-menos-saem").textContent
+  var numeroCaracteres = arrayMenosSaem.length
+  var arrayMenosSaemstring = arrayMenosSaem.substring(4, numeroCaracteres - 2).split(",")
+  var arrayMenosSaemlength = arrayMenosSaemstring.length
+  var arrayMenosSaemFim = []
+  var contador = 0
+  for(var i = 0; i < arrayMenosSaemlength; i++) {
+    arrayMenosSaemFim.push(parseInt(arrayMenosSaemstring[i])) // convetendo o array de strings para array de integers
+  }
+
+  var numerosTodos = document.getElementsByClassName("numero-sorte");
+  var intLength = numerosTodos.length;
+  var total = 0;
+  
+  for(var i = 0; i < intLength; i++) {
+        var check_numero = numerosTodos[i];
+        if (arrayMenosSaemFim.includes(check_numero.value) == true) {
+          check_numero.classList.add("selected");
+        } else {
+          check_numero.classList.remove("selected");
+        };
+  };
+  if (arrayDaSorte) {
+    arrayDaSorte = arrayMenosSaemFim
+  }
+  document.getElementById("numeros-da-sorte-fim2").setAttribute("value", `${arrayDaSorte}`);
+  document.getElementById("numeros-da-sorte-fim2").dispatchEvent(new Event('change')) // a troca dinâmica do Value não faz por padrão um evento 'change', o que impede um addEventListener, então, tem que fazer isso na marra!
+  limpaQuantidade()
+}
+
+
+function media() {
+
+  var arrayMedia = document.getElementById("array-media").textContent
+  var numeroCaracteres = arrayMedia.length
+  var arrayMediastring = arrayMedia.substring(4, numeroCaracteres - 2).split(",")
+  var arrayMedialength = arrayMediastring.length
+  var arrayMediaFim = []
+  var contador = 0
+  for(var i = 0; i < arrayMedialength; i++) {
+    arrayMediaFim.push(parseInt(arrayMediastring[i])) // convetendo o array de strings para array de integers
+  }
+
+  var numerosTodos = document.getElementsByClassName("numero-sorte");
+  var intLength = numerosTodos.length;
+  var total = 0;
+  
+  for(var i = 0; i < intLength; i++) {
+        var check_numero = numerosTodos[i];
+        if (arrayMediaFim.includes(check_numero.value) == true) {
+          check_numero.classList.add("selected");
+        } else {
+          check_numero.classList.remove("selected");
+        };
+  };
+  if (arrayDaSorte) {
+    arrayDaSorte = arrayMediaFim
+  }
+  document.getElementById("numeros-da-sorte-fim2").setAttribute("value", `${arrayDaSorte}`);
+  document.getElementById("numeros-da-sorte-fim2").dispatchEvent(new Event('change')) // a troca dinâmica do Value não faz por padrão um evento 'change', o que impede um addEventListener, então, tem que fazer isso na marra!
+  limpaQuantidade()
+}
+
+
+function mediaMil() {
+
+  var arrayMediaMil = document.getElementById("array-media-mil").textContent
+  var numeroCaracteres = arrayMediaMil.length
+  var arrayMediaMilstring = arrayMediaMil.substring(4, numeroCaracteres - 2).split(",")
+  var arrayMediaMillength = arrayMediaMilstring.length
+  var arrayMediaMilFim = []
+  var contador = 0
+  for(var i = 0; i < arrayMediaMillength; i++) {
+    arrayMediaMilFim.push(parseInt(arrayMediaMilstring[i])) // convetendo o array de strings para array de integers
+  }
+
+  var numerosTodos = document.getElementsByClassName("numero-sorte");
+  var intLength = numerosTodos.length;
+  var total = 0;
+  
+  for(var i = 0; i < intLength; i++) {
+        var check_numero = numerosTodos[i];
+        if (arrayMediaMilFim.includes(check_numero.value) == true) {
+          check_numero.classList.add("selected");
+        } else {
+          check_numero.classList.remove("selected");
+        };
+  };
+  if (arrayDaSorte) {
+    arrayDaSorte = arrayMediaMilFim
+  }
+  document.getElementById("numeros-da-sorte-fim2").setAttribute("value", `${arrayDaSorte}`);
+  document.getElementById("numeros-da-sorte-fim2").dispatchEvent(new Event('change')) // a troca dinâmica do Value não faz por padrão um evento 'change', o que impede um addEventListener, então, tem que fazer isso na marra!
+  limpaQuantidade()
+}
+
+
+
+
+
+
+
+function ramalhoDantas() {
+  rd = [2, 3, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 21, 22, 34, 35, 36, 37, 41, 42, 43, 48, 49, 53, 56]
+  var numerosTodos = document.getElementsByClassName("numero-sorte");
+  var intLength = numerosTodos.length;
+  var total = 0;
+  
+  for(var i = 0; i < intLength; i++) {
+        var check_numero = numerosTodos[i];
+        if (rd.includes(check_numero.value) == true) {
+          check_numero.classList.add("selected");
+        } else {
+          check_numero.classList.remove("selected");
+        };
+  };
+  if (arrayDaSorte) {
+    arrayDaSorte = rd
+  }
+  document.getElementById("numeros-da-sorte-fim2").setAttribute("value", `${arrayDaSorte}`);
+  document.getElementById("numeros-da-sorte-fim2").dispatchEvent(new Event('change')) // a troca dinâmica do Value não faz por padrão um evento 'change', o que impede um addEventListener, então, tem que fazer isso na marra!
+  limpaQuantidade()
+}
+
+
+function ultD() {
+  var array17 = document.getElementById("array-ult17").textContent
+  var numeroCaracteres = array17.length
+  var array17string = array17.substring(3, numeroCaracteres - 2).split(",")
+  var array17length = array17string.length
+  var array17Fim = []
+  var contador = 0
+  for(var i = 0; i < array17length; i++) {
+    array17Fim.push(parseInt(array17string[i])) // convetendo o array de strings para array de integers
+  }
+
+  var numerosTodos = document.getElementsByClassName("numero-sorte");
+  var intLength = numerosTodos.length;
+  var total = 0;
+  
+  for(var i = 0; i < intLength; i++) {
+        var check_numero = numerosTodos[i];
+        if (array17Fim.includes(check_numero.value) == true) {
+          check_numero.classList.add("selected");
+        } else {
+          check_numero.classList.remove("selected");
+        };
+  };
+  if (arrayDaSorte) {
+    arrayDaSorte = array17Fim
+  }
+  document.getElementById("numeros-da-sorte-fim2").setAttribute("value", `${arrayDaSorte}`);
+  document.getElementById("numeros-da-sorte-fim2").dispatchEvent(new Event('change')) // a troca dinâmica do Value não faz por padrão um evento 'change', o que impede um addEventListener, então, tem que fazer isso na marra!
+  limpaQuantidade()
+}
+
+
+
+function ultT() {
+  var array13 = document.getElementById("array-ult13").textContent
+  var numeroCaracteres = array13.length
+  var array13string = array13.substring(3, numeroCaracteres - 2).split(",")
+  var array13length = array13string.length
+  var array13Fim = []
+  var contador = 0
+  for(var i = 0; i < array13length; i++) {
+    array13Fim.push(parseInt(array13string[i]))
+  }
+
+  var numerosTodos = document.getElementsByClassName("numero-sorte");
+  var intLength = numerosTodos.length;
+  var total = 0;
+  
+  for(var i = 0; i < intLength; i++) {
+        var check_numero = numerosTodos[i];
+        if (array13Fim.includes(check_numero.value) == true) {
+          check_numero.classList.add("selected");
+        } else {
+          check_numero.classList.remove("selected");
+        };
+  };
+  if (arrayDaSorte) {
+    arrayDaSorte = array13Fim
+  }
+  document.getElementById("numeros-da-sorte-fim2").setAttribute("value", `${arrayDaSorte}`);
+  document.getElementById("numeros-da-sorte-fim2").dispatchEvent(new Event('change')) // a troca dinâmica do Value não faz por padrão um evento 'change', o que impede um addEventListener, então, tem que fazer isso na marra!
+  limpaQuantidade()
+}
+
+
+
+
+
+function ultDez() {
+  var array10 = document.getElementById("array-ult10").textContent
+  var numeroCaracteres = array10.length
+  var array10string = array10.substring(4, numeroCaracteres - 2).split(",")
+  var array10length = array10string.length
+  var array10Fim = []
+  var contador = 0
+  for(var i = 0; i < array10length; i++) {
+    array10Fim.push(parseInt(array10string[i]))
+  }
+
+  var numerosTodos = document.getElementsByClassName("numero-sorte");
+  var intLength = numerosTodos.length;
+  var total = 0;
+  
+  for(var i = 0; i < intLength; i++) {
+        var check_numero = numerosTodos[i];
+        if (array10Fim.includes(check_numero.value) == true) {
+          check_numero.classList.add("selected");
+        } else {
+          check_numero.classList.remove("selected");
+        };
+  };
+  if (arrayDaSorte) {
+    arrayDaSorte = array10Fim
+  }
+  document.getElementById("numeros-da-sorte-fim2").setAttribute("value", `${arrayDaSorte}`);
+  document.getElementById("numeros-da-sorte-fim2").dispatchEvent(new Event('change')) // a troca dinâmica do Value não faz por padrão um evento 'change', o que impede um addEventListener, então, tem que fazer isso na marra!
+  limpaQuantidade()
+}
+
+
+function h2Vermelho() {
+    var todos_h2 = document.getElementsByClassName("divisor");
+    var intLengthH2 = todos_h2.length;
+
+    for(var i = 0; i < intLengthH2; i++) {
+        var cadaH2 = todos_h2[i];
+        cadaH2.removeAttribute("style")
+    }
+    
+}
+
+if ( document.getElementById("jogos-gerados-ruby") ) {
+window.onload =  h2Vermelho()
+}
+
+
+
+
+
+// // RECUPERANDO ARRAY DA SORTE DIRETO DO FORM (NÃO SEI SE TEM UTILIDADE)
+// var conjuntoArraydaSorteDiretoDoForm = document.getElementById("numeros-da-sorte-fim2").value.split(",")
+// var conjuntoFim = []
+// for(var i = 0; i < conjuntoArraydaSorteDiretoDoForm.length; i++) {
+//   conjuntoFim.push(parseInt(conjuntoArraydaSorteDiretoDoForm[i])) // convetendo o array de strings para array de integers
+// }
+
+
+
+
+
+
+
+</script>

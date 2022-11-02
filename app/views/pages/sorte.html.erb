@@ -1,0 +1,224 @@
+<h1 class="resultado-apostas-geradas-estatisticas" >Você é daquele tipo de pessoa que possui números da sorte? Chegou a hora de testar seus números! Escolha 6 números da sorte e compare-os com <%= @quantidade_sorteios %> sorteios da Mega-sena.</h1>
+
+
+<%# <ul id="ul_jogos-gerados-ruby"> %>
+<form action="/sorte"  class="form-inline" id="numeroSorte" name="nsorte"> <!-- método GET ou POST: method="POST"-->
+ <%#  <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %> <%# essa linha serve para o método POST, onde é exigido que haja um token de autenticidade %>
+  <%# <input type="hidden" name="authenticity_token" value="6mcCvU7ZazpIBcJTptw/8y4EucmzccFWli7tFUzX6IJEx8wq6PFC7m4rA1Jy+W4YW1hlhYhSOyhZefWtOM5ofQ=="> %>
+  <div class="form-group">
+  
+
+    <ul>
+      <% jogo = (1..60).to_a %>
+      <% jogo.each do |numero| %>
+      <li id="n<%= numero %>" class="numero-sorte jogos-gerados-ruby-numeros-sorte" value=<%= "#{numero}" %>> 
+        <%= numero %>
+        <% end %>
+      </li>
+    </ul>
+
+
+
+  <input form="numeroSorte" id="numeros-da-sorte-fim" name="meusNumeros" type="text" class="form-control" value="" style="display: none">
+
+
+    <div id="div-do-botao-numeros-da-sorte">
+      <button type="submit" id="meus-numeros-da-sorte" class=" btn btn-primary btn-lg" onclick="testeQuantidade()"disabled="true"><span class="fas fa-sack-dollar">
+      </span> Checar Meus Números</button>
+      <div id="alerta">
+        <h6 id="mensagem-alerta">Escolha 6 números! Só então você poderá testar sua sorte. ☘️</h6>
+      </div>
+    </div>
+  </div>
+</form>
+
+<button type="button" id="limpar" onclick="limpar()" class="btn btn-primary">Limpar Marcações</button>
+
+<%# <a href="/">Home</a>  obs.: não recarrega as funções do Javascript  
+<%= link_to 'Home', root_path  obs.: não recarrega as funções do Javascript %>
+<button id="botao-root" class="btn btn-primary">INÍCIO</button> 
+<%#  %>
+
+
+<%# GERANDO JOGOS:  %>
+<div>
+  <div id=<%=@id_div_apostas %> style=""> 
+    <p class="resultado-apostas-geradas-estatisticas">
+      <% if @numeros_da_sorte %>
+        <%= "Seus números da sorte: #{@numeros_da_sorte[0]}, #{@numeros_da_sorte[1]}, #{@numeros_da_sorte[2]}, #{@numeros_da_sorte[3]}, #{@numeros_da_sorte[4]}, #{@numeros_da_sorte[5]}" %>
+      <% end %>
+    </p>
+
+
+    <p >
+      <% contador_terno = 0 %>
+      <% contador_quadra = 0 %>
+      <% contador_quina = 0 %>
+      <% contador_sena = 0 %>
+      <% quadras = [] %>
+      <% quinas = [] %>
+      <% senas = [] %>
+      <% if @sorteios %>
+        <h4 class="resultado-apostas-geradas-estatisticas"><%= "Checados #{@sorteios.size} sorteios realizados pela Caixa Econômica Federal (Mega-sena), seus números da 
+            sorte obtiveram os seguintes resultados:" %></h4>
+        <% @sorteios.each do |sorteio|  %>
+        <% numeros_sorteados =  sorteio.numeros.split(/,/).map {|x| x.to_i} %>
+          <% if (numeros_sorteados & @numeros_da_sorte).size == 3 %>
+            <% contador_terno += 1 %>
+          <% elsif (numeros_sorteados & @numeros_da_sorte).size == 4 %>
+            <% contador_quadra += 1 %>
+            <% quadras << sorteio %>
+          <% elsif (numeros_sorteados & @numeros_da_sorte).size == 5 %>
+            <% contador_quina += 1 %>
+            <% quinas << sorteio %>
+          <% elsif (numeros_sorteados & @numeros_da_sorte).size == 6 %>
+            <% contador_sena += 1 %>
+            <% senas << sorteio %>  
+          <% end %>
+        <% end %>
+        <%# <p class="resultado-apostas-geradas-estatisticas"><%= "Ternos: #{contador_terno} (sem premiação)." %>
+        <p class="resultado-apostas-geradas-estatisticas">
+          <% if (contador_terno > 0) %>
+            <i class="fas fa-search-dollar"  style="margin-right: 10px"></i><%= "Ternos: #{contador_terno} (sem premiação)." %>
+          <% else %>
+            <i class="fas fa-search-dollar"  style="margin-right: 10px"></i><%= "Ternos: Nenhum terno para esses números!" %>
+          <% end %>
+        </p>
+
+
+
+        <%# <p class="resultado-apostas-geradas-estatisticas"><%= "#{contador_quadra} quadras: #{quadras}" %>
+
+        <p class="resultado-apostas-geradas-estatisticas">
+          <% if (contador_quadra > 0) %>
+            <i class="fas fa-search-dollar"  style="margin-right: 10px"></i><%= "#{contador_quadra} quadra(s):" %>  <%# {quadras} %>
+            <% if contador_quadra == 1 %>
+              <p class="resultado-apostas-geradas-estatisticas-sorte"><%= "Concurso #{quadras[0].concurso}, realizado em #{quadras[0].data}, números: #{quadras[0].numeros}." %></p>
+            <% elsif contador_quadra > 1 %>
+              <% contando = 1 %>
+              <% for x in quadras %>
+                <p class="resultado-apostas-geradas-estatisticas-sorte"><%= "#{contando}. Concurso #{x.concurso}, realizado em #{x.data}, números: #{x.numeros}." %></p>
+                <% contando += 1 %>
+              <% end %>
+            <% end %>
+          <% else %>
+            <i class="fas fa-search-dollar"  style="margin-right: 10px"></i><%= "Quadras: Nenhuma quadra para esses números!" %>
+          <% end %>
+        </p>
+
+<%# <Sorteio id: 1228, concurso: 1223, data: "16/10/2010", numeros: "15, 17, 35, 42, 47, 48", created_at: "2022-09-17 22:52:46", updated_at: "2022-09-17 22:52:46">  %>
+
+        <p class="resultado-apostas-geradas-estatisticas">
+          <% if (contador_quina > 0) %>
+            <i class="fas fa-search-dollar"  style="margin-right: 10px"></i><%= "#{contador_quina} quina(s):" %>  <%# {quinas} %>
+            <% if contador_quina == 1 %>
+              <p class="resultado-apostas-geradas-estatisticas-sorte"><%= "Concurso #{quinas[0].concurso}, realizado em #{quinas[0].data}, números: #{quinas[0].numeros}." %></p>
+            <% elsif contador_quina > 1 %>
+              <% contando = 1 %>
+              <% for x in quinas %>
+                <p class="resultado-apostas-geradas-estatisticas-sorte"><%= "#{contando}. Concurso #{x.concurso}, realizado em #{x.data}, números: #{x.numeros}." %></p>
+                <% contando += 1 %>
+              <% end %>
+            <% end %>
+          <% else %>
+            <i class="fas fa-search-dollar"  style="margin-right: 10px"></i><%= "Quinas: Nenhuma quina para esses números!" %>
+          <% end %>
+        </p>
+
+
+        <p class="resultado-apostas-geradas-estatisticas" >
+          <% if (contador_sena > 0) %>
+            <i class="fas fa-search-dollar" style="margin-right: 10px"></i><%= "#{contador_sena} sena(s):" %>  <%# {senas} %>
+            <% if contador_sena == 1 %>
+              <p class="resultado-apostas-geradas-estatisticas-sorte"><%= "Concurso #{senas[0].concurso}, realizado em #{senas[0].data}, números: #{senas[0].numeros}." %></p>
+            <% elsif contador_sena > 1 %>
+              <% contando = 1 %>
+              <% for x in senas %>
+                <p class="resultado-apostas-geradas-estatisticas-sorte"><%= "#{contando}. Concurso #{x.concurso}, realizado em #{x.data}, números: #{x.numeros}." %></p>
+                <% contando += 1 %>
+              <% end %>
+            <% end %>            
+          <% else %>
+            <i class="fas fa-search-dollar"  style="margin-right: 10px"></i><%= "Senas: Nenhuma sena para esses números!" %>
+          <% end %>
+        </p>
+      <% end %>
+    </p>
+
+
+
+
+    <%# <h2 class="divisor" style="display: none"></h2> %>
+
+
+  </div>
+</div>
+
+
+
+<script>
+
+var arrayDaSorte = []
+window.onclick = e => {
+    var tag_sorte = e.target.tagName
+    if ((tag_sorte == "LI") && (e.target.classList.contains("selected") == false) && (arrayDaSorte.length < 6)) {
+      // var idSelecionado = e.target.id
+      var numeroSorte = e.target.value
+      arrayDaSorte.push(numeroSorte)
+      e.target.classList.add("selected");
+    } else if (tag_sorte == "LI" && e.target.classList.contains("selected") == true) {
+      var retirarNumeroSorte = e.target.value
+      for( var i = 0; i < arrayDaSorte.length; i++){                              
+        if ( arrayDaSorte[i] === retirarNumeroSorte) { 
+            arrayDaSorte.splice(i, 1); 
+            i--; 
+        }
+      e.target.classList.remove("selected");
+      }
+    }
+    arrayDaSorte.sort()
+    document.getElementById("numeros-da-sorte-fim").setAttribute("value", `${arrayDaSorte}`)
+    var botao = document.getElementById("meus-numeros-da-sorte")
+    var mensagemAlerta = document.getElementById("alerta")
+    if (arrayDaSorte.length == 6) {
+      botao.removeAttribute("disabled");
+      while (mensagemAlerta.hasChildNodes()) {
+        mensagemAlerta.removeChild(mensagemAlerta.firstChild)
+      };
+    } else {
+      botao.setAttribute("disabled", "true")
+      if (document.getElementById("mensagem-alerta") == null) {
+        document.getElementById("alerta").innerHTML =  '<h6 id="mensagem-alerta">Escolha 6 números! Só então você poderá testar sua sorte. ☘️</h6>'
+      }
+    }
+}
+
+
+
+
+     
+
+function limpar() {
+  var numerosTodos = document.getElementsByClassName("numero-sorte");
+  var intLength = numerosTodos.length;
+  var total = 0;
+  for(var i = 0; i < intLength; i++) {
+        var check_numero = numerosTodos[i];
+        if (check_numero.classList.contains("selected") == true) {
+          check_numero.classList.remove("selected");
+        };
+  };
+  if (arrayDaSorte) {
+    arrayDaSorte = []
+  }
+  document.getElementById("numeros-da-sorte-fim").setAttribute("value", "");
+}
+
+
+
+
+
+
+
+
+</script>

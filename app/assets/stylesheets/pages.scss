@@ -1,0 +1,76 @@
+// Place all the styles related to the pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.adicionar {
+  font-size: 18px;
+  border-radius: 50%;
+  padding: 3px 8px;
+  font-weight: 900;
+  color: white;
+  background-color: #0069D9;
+  box-shadow: 1px 1px 5px grey;
+  border: none;
+  
+}
+
+.subtrair {
+  font-size: 22px;
+  border-radius: 50%;
+  padding: 0px 10px;
+  padding-bottom: 3px;
+  font-weight: 900;
+  color: white;
+  background-color: #ff4d4d;
+  box-shadow: 1px 1px 5px grey;
+  border: none;
+}
+
+
+.botao-mais-menos{
+  border-radius: 50%;
+  background-color: #c7f9cc;
+  border: none;
+  color: white;
+  padding: 1px 1px;
+  font-size: 16px;
+  /* cursor: pointer; */
+}
+
+
+.fas {
+  text-shadow: 1px 1px 3px #d0cdc0; /* #EFEAD8 */
+  font-size: 20px;
+}
+
+label, option, legend, input, button {
+  color: #22577A;
+}
+
+legend {
+  color: #204A65 !important;
+  font-weight: 700 !important;
+  font-size: 15px !important;
+  font-family: 'Rokkitt', serif !important;
+  margin-bottom: 9px !important;
+}
+
+#legenda-quotas {
+  width: 403px;
+}
+
+label {
+  font-weight: 400;
+  font-size: 19px;
+  font-family: 'Rokkitt', serif;
+}
+
+.label-sim-nao {
+  font-size: 16px;
+}
+
+.testando-shadow { /*utilizado na data */
+  box-shadow: 5px 5px 8px rgba(165, 170, 181, 0.25) inset; // CHECAR SE ESTÁ FUNCIONANDO!!!
+ }
+
+

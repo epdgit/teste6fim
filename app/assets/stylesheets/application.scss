@@ -11,3 +11,676 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+
+@import "pages";
+
+select.form-control { 
+  -webkit-appearance: menulist; 
+}
+
+.logo {
+  display: flex;
+}
+
+.etarta h1 {
+  color: #204A65;
+  font-weight: 900;
+  font-size: 64px;
+  font-family: 'Rokkitt', serif;
+
+}
+
+.portal-logo {
+  max-width: 100px;
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap; // item quebra a linha se o espaço não der ele
+  // position: fixed;
+  background-color: #ffffff;
+  width: 100vw;
+  align-items: center;
+  // z-index: 1;
+  justify-content: space-between;
+  // margin: 0 auto;
+}
+
+.header-fixo {
+  position: fixed;
+  z-index: 3;
+}
+
+.login-form {
+  display: flex;
+}
+
+#botao-form-login {
+  margin-top: 34px; 
+  margin-bottom: 34px;
+  margin-right: 50px;
+  margin-left: 15px;
+}
+
+#botao-form-login {
+  transition: 0.4s;
+  opacity: 1;
+}
+
+#back_linha-morta {
+  background-color: #ffffff;
+}
+
+.linha-morta {
+  // position: fixed; //alterado
+  // z-index: 0; // alterado  
+  padding-top: 7px;
+  // background-color: #295a7a;
+  // background-color: #ffffff;
+  background-image: linear-gradient(to right, #295a7a, white);
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.tudo {
+  padding-top: 210px;
+  padding-left: 70px;
+  display: flex;
+}
+
+
+#div_img_background {
+  position: relative;
+}
+
+#div_img_background::after { // isso é chamado de pseudo elemento e foi criado para ficar como imagem de fundo
+  content: "";
+  position: absolute;
+  background-image: url("foto1.jpg");
+  // background-size: cover;
+  width: 100%;
+  height: auto;
+  opacity: 0.07;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  z-index: -1;
+}
+
+
+// DROP DOWN DO HEADER
+.dropdown {
+  position: relative;
+  display: inline-block;
+  padding: 8px 18px;
+  margin: 49px 107px 52px 107px;
+  position: relative;
+  display: inline-block;
+  color: #22577A;
+  border: 1px solid #D0021B;
+  font-weight: bold;
+  font-size: 17px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 4px 1px #e8e5de;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 345px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 23px 25px;
+  margin: 15px;
+  z-index: 1;
+  font-size: 20px;
+  border-radius: 15px;
+}
+
+// span:hover {
+//   transition: 0.1s;
+//   opacity: 0.2;
+// }
+
+.dropdown:hover { // aqui eu aninhei o Span dentro do Dropdawn quando o mouse passar por cima
+  transition: 0.1s;
+  border: none;
+  span {
+    opacity: 0.2;
+  }
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+
+//CSS DA HOME
+// .abertura {
+//   display: flex;
+// }
+
+.inicio {
+  color: #22577A;
+}
+
+.inicio h1 {
+  color: #204A65;
+  font-weight: 900;
+  font-size: 35px;
+  font-family: 'Rokkitt', serif;
+  margin-bottom: 27px;
+  text-align: center;
+}
+
+.inicio p {
+  color: #204A65;
+  font-weight: 700;
+  font-size: 24px;
+  font-family: 'Rokkitt', serif;
+  margin: 30px 45px;
+  text-align: justify
+}
+
+.divulgacao {
+  height: 120px;
+  margin-bottom: 40px;
+  padding: 135px;
+  margin-right: 50px;
+  border: 1px solid grey;
+  // height: 150px;
+  background-image: linear-gradient(to bottom, #6fd4b8, white);
+  // background-color: rgb(111, 212, 184);
+  // background-image: linear-gradient(to bottom right, red, blue);
+  border-radius: 3px;
+  box-shadow: 1px 1px 10px grey;
+}
+
+
+//FORMULÁRIO
+.agrupando-campos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 15px;
+  padding-bottom: 10px;
+}
+
+.quantidade-apostas {
+  margin-right: 20px;
+}
+
+#opcoesDaAposta, #quantidade {
+  width: 66px;
+}
+
+#opcoesDaAposta2, #quantidade2 {
+  width: 66px;
+}
+
+#opcoesDaAposta21 {
+  width: 112px;
+}
+
+.button-gerador-aposta {
+  display: block;
+  text-align: center;
+}
+
+.apostadores {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 20px;
+  // padding-bottom: 10px;
+}
+
+.apostadores-quantidade {
+  width: 70%;
+  margin-right: 20px
+}
+
+fieldset {
+  margin-right: 40px;
+}
+
+
+#campos_bolao {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  // overflow: auto;
+}
+
+.cada_cota {
+  display: inline-grid;
+  padding: 20px;
+
+}
+
+
+.pago_e_quota {
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;  
+  margin-left: 6px;
+}
+
+.quantidadeQuotas {
+  width: 54px;
+  margin-left: 3px;
+  margin-top: 5px;
+}
+
+#todos_apostadores p {
+  color: #204A65;
+  font-weight: 700;
+  font-size: 21px;
+  font-family: 'Rokkitt', serif;
+  // margin: 30px 45px;
+}
+
+#totalizador_de_quotas {
+  display: flex;
+  padding-left: 60px;
+}
+
+#total_quotas {
+  // padding-left: 10px;
+  background-color: beige;
+  width: 89px;
+  height: 54px;
+  text-align: center;
+  padding: 9px;
+  // margin-top: 14px;
+  // margin-left: 12px;
+  margin: auto 12px;
+  border: solid 2px black;
+  border-radius: 5px;
+  box-shadow: 0px 0px 4px #0069d9;
+}
+
+.nome-apostador {
+  margin: auto !important;
+}
+
+#apostador {
+  width: 150px;
+}
+
+#totalizador_de_apostas {
+  display: flex;
+  justify-content: center;
+}
+
+#totalizador_de_apostas_sem_bolao {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+#total_apostas {
+  background-color: beige;
+  width: 160px;
+  height: 54px;
+  text-align: center;
+  padding: 9px;
+  // margin-top: 14px;
+  // margin-left: 12px;
+  margin: auto 12px;
+  border: solid 2px black;
+  border-radius: 5px;
+  box-shadow: 0px 0px 4px #0069d9;  
+}
+
+#totais {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+  margin-top: 25px;
+}
+
+.texto-total {
+  margin: auto;
+}
+
+#teste_valor_total {
+  color: #204A65;
+  font-weight: 700;
+  font-size: 20px;
+  font-family: 'Rokkitt', serif;
+  margin: 20px 0px;
+}
+
+// margin: 25px 0px
+
+#teste_total_apostas {
+  background-color: beige;
+  width: 140px;
+  height: 42px;
+  text-align: center;
+  padding: 9px;
+  margin-top: 14px;
+  margin-left: 12px;
+  border: solid 2px black;
+  border-radius: 5px;
+  box-shadow: 0px 0px 4px #0069d9;
+  color: #204A65;
+  font-weight: 700;
+  font-size: 18px;
+  font-family: 'Rokkitt', serif;  
+}
+
+#div_todos_pagos {
+  margin-top: 30px;
+  margin-left: 46px;
+  margin-bottom: 10px
+}
+
+
+#apostas-geradas {
+  width: 70%;
+  margin: 50px auto;
+  border: 1px solid grey;
+  padding-top: 24px;
+  box-shadow: 1px 1px 5px grey;
+  border-radius: 8px;
+  padding-bottom: 15px;
+}
+
+.classe-apostas-geradas {
+  margin: 11px auto !important;
+}
+
+#jogos-gerados-ruby {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  margin: 8px 5px;
+  background: #0369b9;
+  padding: 10px 12px;
+  border-radius: 50%;
+  font-family: 'Rokkitt', serif;
+  color: #fff;
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+#ul_jogos-gerados-ruby {
+  padding-left: 9px;
+}
+
+
+.jogos-gerados-ruby-numeros-sorte {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  margin: 8px 5px;
+  background: #92a7ab;
+  // background: #0369b9;
+  padding: 10px 12px;
+  border-radius: 50%;
+  font-family: 'Rokkitt', serif;
+  color: #fff;
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+}
+
+.selected {
+  background: #0369b9;
+}
+// #jogos-gerados-ruby-numeros-sorte a {
+//   color: #fff;
+// }
+
+// #jogos-gerados-ruby-numeros-sorte a:hover {
+//   text-decoration: none;
+// }
+// .obter-pdf {
+//   color: #204A65;
+//   font-weight: 700;
+//   font-size: 25px;
+//   font-family: 'Rokkitt', serif;
+//   // margin-left: 26px;
+//   // margin-bottom: 25px;
+//   margin-top: 30px;
+// }
+#botao-root {
+  margin-left: 160px;
+}
+
+
+.fa-file-pdf {
+  font-size: 50px;
+}
+
+.icone-pdf {
+  text-align: center;
+}
+
+
+
+
+
+.resultado-apostas-geradas {
+  color: #204A65;
+  font-weight: 700;
+  font-size: 46px;
+  font-family: 'Rokkitt', serif;
+  margin-left: 26px;
+  margin-bottom: 25px;
+}
+
+.resultado-apostas-geradas-estatisticas {
+  color: #204A65;
+  font-weight: 700;
+  font-size: 30px;
+  font-family: 'Rokkitt', serif;
+  margin-left: 26px;
+  margin-bottom: 25px;
+  margin-top: 30px;
+}
+
+
+.resultado-apostas-geradas-estatisticas-sorte {
+  color: #204A65;
+  font-weight: 700;
+  font-size: 23px;
+  font-family: 'Rokkitt', serif;
+  margin-left: 50px;
+  margin-bottom: 25px;
+  margin-top: 30px;
+}
+
+
+.divisor {
+  box-shadow: 0px 2px 0px 0px red;
+  width: 300px;
+  padding-top: 15px;
+  margin-left: 50px;
+}
+
+.table_content, tr, td {
+  border: 1px solid #eee;
+  padding: 0.8125rem 0.625rem 0.6875rem;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.opcoes {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+#legenda-quotas {
+  width: 170px;
+}
+// .modalidade {
+//   margin-left: 70px;
+// }
+
+.quantidade-numeros {
+  margin-left: 70px;
+}
+
+
+.organizar-bolao {
+  margin-left: 75px;
+}
+
+#apostadores_bolao_gerado_ruby {
+  list-style: none;
+  padding-left: 4px;
+  color: #204A65;
+  font-weight: 700;
+  font-size: 17px;
+  font-family: 'Rokkitt', serif;
+  width: 445px;
+}
+
+#relatorio_apostadores {
+  color: #204A65;
+  // text-align: center;
+  /* margin-left: 10px; */
+  font-weight: 700;
+  font-family: 'Rokkitt', serif;
+  // text-decoration: underline red;
+  margin-top: 45px;
+  margin-bottom: 20px;
+  margin-left: 50px;
+  box-shadow: 0px -2px 0px 0px red;
+  padding-top: 15px;
+  width: 300px;
+
+}
+
+#data_bolao {
+  // text-align: center;
+  margin-left: 25px;
+  color: #204A65;
+  font-family: 'Rokkitt', serif;
+}
+
+.test_drive {
+  display: flex;
+  // align-items: center;
+  // justify-content: flex-start;
+  // flex-wrap: wrap;
+}
+
+#ol_apostadores_bolao_gerado_ruby {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+ol {
+  font-size: 1em;
+}
+
+#div-do-botao-numeros-da-sorte {
+  display: flex;
+}
+#mensagem-alerta {
+  color: #D0021B;
+  margin-left: 17px;
+  max-width: 200px;
+}
+// #printar_pdf {
+//   width: 100%
+// }
+// .quantidade-apostas {
+//   margin-left: 70px;
+// }
+
+// .data {
+//   margin-left: 50px;
+// }
+
+
+// .tudo {
+//   position: relative;
+// }
+// .br-header {
+//   position: fixed;
+//   // align-items: center;
+//   // display: flex;
+//   // flex-direction: row;
+//   // position: absolute;
+
+//  }
+
+// .links a {
+//   font-size: 1rem !important;
+// }
+
+// .title {
+//   font-size: 1.8rem !important;
+// }
+
+// .subtitle {
+//   font-size: 1rem !important;
+// }
+
+// .br-header .menu {
+//   margin-top: 10px !important;
+// }
+
+// .portal-logo {
+//   background-size: 111px 40px;
+//   height: 40px;
+//   min-width: 111px;
+//   width: 111px;
+//   margin-bottom: 10px;
+// }
+
+// .br-header .title {
+//   font-size: 1.4rem;
+// }
+
+// .br-footer {
+//   position: absolute;
+//   left: 0;
+//   bottom: 0;
+//   height: 150px;
+//   width: 100%;
+//   overflow: hidden;
+// }
+
+// * {
+//   box-sizing: border-box;
+// }
+
+
+// [class*="col-"] {
+//   float: left;
+//   padding: 15px;
+// }
+// /* For desktop: */
+// .col-1 {width: 8.33%;}
+// .col-2 {width: 16.66%;}
+// .col-3 {width: 25%;}
+// .col-4 {width: 33.33%;}
+// .col-5 {width: 41.66%;}
+// .col-6 {width: 50%;}
+// .col-7 {width: 58.33%;}
+// .col-8 {width: 66.66%;}
+// .col-9 {width: 75%;}
+// .col-10 {width: 83.33%;}
+// .col-11 {width: 91.66%;}
+// .col-12 {width: 100%;}
+
+// @media only screen and (max-width: 768px) {
+//   /* For mobile phones: */
+//   [class*="col-"] {
+//     width: 100%;
+//   }
+// }
