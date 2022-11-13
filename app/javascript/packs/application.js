@@ -24,7 +24,6 @@ import { trocarSeletorNumeros } from './home';
 import { selectAll } from './home';
 import { opcoesBolao } from './home';
 import { opcoesQuotas } from './home';
-import { logKey } from './home';
 import { checaPagamentos } from './home';
 import { trocarQuantidadeCampos } from './home';
 import { quotasTotais } from './home';
@@ -128,14 +127,6 @@ if (inputBolao) {
   });
 }
 
-
-
-var input = document.getElementById("testesoma");
-if (input) {
-  input.addEventListener("click", () => {
-    logKey()
-  });
-}
 
 
 var todosPagos = document.getElementById("todos_apostadores");
