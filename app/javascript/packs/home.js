@@ -238,17 +238,7 @@ function totalApostas() {
 
 
 
-// ARRUMAR ISSO PARA TOTALIZAR AS COTAS
-function logKey() {
-  var input = document.getElementsByClassName("my-input");
-  var total = 0;
-  for (var i = 0; i < input.length; i++) { //aqui, i é o elemento do array
-    var valor = parseFloat(input[i].value);
-    total += valor; 
-  };
-  var inputTotal = document.getElementById("total")
-  inputTotal.innerHTML = total  
-};
+
 
 
 
@@ -277,7 +267,6 @@ export { trocarSeletorNumeros };
 export { selectAll };
 export { opcoesBolao };
 export { opcoesQuotas };
-export { logKey };
 export { checaPagamentos };
 export { trocarQuantidadeCampos };
 export { quotasTotais };
