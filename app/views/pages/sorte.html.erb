@@ -22,18 +22,19 @@
   <input form="numeroSorte" id="numeros-da-sorte-fim" name="meusNumeros" type="text" class="form-control" value="" style="display: none">
 
 
-    <div id="div-do-botao-numeros-da-sorte">
+    <div class="btn-group" id="div-do-botao-numeros-da-sorte">
+      <button type="button" id="limpa" onclick="limpar()" class="btn btn-warning">Limpar Marcações</button>  
       <button type="submit" id="meus-numeros-da-sorte" class=" btn btn-primary btn-lg" onclick="testeQuantidade()"disabled="true"><span class="fas fa-sack-dollar">
       </span> Checar Meus Números</button>
-      <div id="alerta">
-        <h6 id="mensagem-alerta">Escolha 6 números! Só então você poderá testar sua sorte. ☘️</h6>
-      </div>
+    </div>
+    <div id="alerta">
+      <h6 id="mensagem-alerta">Escolha 6 números! Só então você poderá testar sua sorte. ☘️</h6>
     </div>
   </div>
 </form>
 
-<button type="button" id="limpar" onclick="limpar()" class="btn btn-primary">Limpar Marcações</button>
-
+<%# <button type="button" id="limpar" onclick="limpar()" class="btn btn-warning">Limpar Marcações</button> %>
+<%# .. %>
 <%# <a href="/">Home</a>  obs.: não recarrega as funções do Javascript  
 <%= link_to 'Home', root_path  obs.: não recarrega as funções do Javascript %>
 <button id="botao-root" class="btn btn-primary">INÍCIO</button> 

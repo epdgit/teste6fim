@@ -11,19 +11,29 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
+        <%# <li class="nav-item active"> %>
+          <%# <button id="botao-root" class="btn btn-primary">INÍCIO</button> %>
+          <%# <a class="nav-link" href="http://www.loto.app.br">Início</a> %>
+        <%# </li> %>
         <li class="nav-item active">
           <%# <button id="botao-root" class="btn btn-primary">INÍCIO</button> %>
-          <a class="nav-link" href="http://www.loto.app.br">Início</a>
+          <a class="nav-link" href="javascript:;" id="botao-root" >Início</a>
           <%#= link_to "Início", "/", class: "nav-link" %> <%# isso não estava funcionando  %>
         </li>
-        <li class="nav-item">
-          <%= link_to "Conjuntos", "conjuntos", class: "nav-link" %>
+        <li class="nav-item active">
+          <a class="nav-link" href="javascript:;" id="botao-conjuntos" >Conjuntos</a>
         </li>
-        <li class="nav-item">
-          <%= link_to "Teste da Sorte", "sorte", class: "nav-link" %>
+        <li class="nav-item active">
+          <a class="nav-link" href="javascript:;" id="botao-sorte" >Teste da Sorte</a>
         </li>
+        <%# <li class="nav-item"> %>
+          <%#= link_to "Conjuntos", "http://www.loto.app.br/conjuntos", class: "nav-link" %>
+        <%# </li> %>
+        <%# <li class="nav-item">
+          <%= link_to "Teste da Sorte", "sorte", class: "nav-link" 
+        </li> %>
         <li class="nav-item">
-          <%= link_to "Estatística", "#", class: "nav-link" %>
+          <%= link_to "Estatística", "http://localhost:3000", class: "nav-link" %>
         </li>
         <%#  
         <li class="nav-item dropdown">
@@ -35,11 +45,12 @@
           </div> 
         </li> %>
         <li class="nav-item dropdown">
-          <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://kitt.lewagon.com/placeholder/users/epdgit" />
+          <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="assets/logo4.png" />
           <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-            <%= link_to "Sorteios", "sorteios", class: "dropdown-item" %>
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
+            <%#= link_to "Sorteios", "sorteios", class: "dropdown-item" %>
+            <a class="dropdown-item" href="javascript:;" id="botao-sorteios" >Sorteios</a>
+            <%# <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a> %>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
             <%# <a class="dropdown-item" data-turbo-method="delete" href="#">Log out</a> %>
           </div>

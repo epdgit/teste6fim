@@ -41,6 +41,27 @@ if(reloadRoot) {
   });
 }
 
+var reloadConjuntos = document.getElementById("botao-conjuntos");
+if(reloadConjuntos) {
+  reloadConjuntos.addEventListener("click", () => {
+    location.assign('/conjuntos'); // faz a página para a qual vai dar um relood, tornando possível a execução dos arquivos javascript
+  });
+}
+
+var reloadSorte = document.getElementById("botao-sorte");
+if(reloadSorte) {
+  reloadSorte.addEventListener("click", () => {
+    location.assign('/sorte'); // faz a página para a qual vai dar um relood, tornando possível a execução dos arquivos javascript
+  });
+}
+
+var reloadSorteios = document.getElementById("botao-sorteios");
+if(reloadSorteios) {
+  reloadSorteios.addEventListener("click", () => {
+    location.assign('/sorteios'); // faz a página para a qual vai dar um relood, tornando possível a execução dos arquivos javascript
+  });
+}
+
 
 var salvaPDF = document.getElementById("meu-pdf");
 if(salvaPDF) { // SÓ EXECUTA A FUNÇÃO SE ESTIVER NA PÁGINA APOSTAS
