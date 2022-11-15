@@ -110,51 +110,47 @@ select.form-control {
 }
 
 
-// DROP DOWN DO HEADER
-.dropdown {
-  position: relative;
-  display: inline-block;
-  padding: 8px 18px;
-  margin: 49px 107px 52px 107px;
-  position: relative;
-  display: inline-block;
-  color: #22577A;
-  border: 1px solid #D0021B;
-  font-weight: bold;
-  font-size: 17px;
-  border-radius: 5px;
-  box-shadow: 1px 1px 4px 1px #e8e5de;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 345px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  padding: 23px 25px;
-  margin: 15px;
-  z-index: 1;
-  font-size: 20px;
-  border-radius: 15px;
-}
-
-// span:hover {
-//   transition: 0.1s;
-//   opacity: 0.2;
+// DROP DOWN DO HEADER                              REFAZER PARA DOAÇÕES
+// .dropdown {
+//   position: relative;
+//   display: inline-block;
+//   padding: 8px 18px;
+//   margin: 49px 107px 52px 107px;
+//   position: relative;
+//   display: inline-block;
+//   color: #22577A;
+//   border: 1px solid #D0021B;
+//   font-weight: bold;
+//   font-size: 17px;
+//   border-radius: 5px;
+//   box-shadow: 1px 1px 4px 1px #e8e5de;
 // }
 
-.dropdown:hover { // aqui eu aninhei o Span dentro do Dropdawn quando o mouse passar por cima
-  transition: 0.1s;
-  border: none;
-  span {
-    opacity: 0.2;
-  }
-}
+// .dropdown-content {
+//   display: none;
+//   position: absolute;
+//   background-color: #f9f9f9;
+//   min-width: 345px;
+//   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+//   padding: 23px 25px;
+//   margin: 15px;
+//   z-index: 1;
+//   font-size: 20px;
+//   border-radius: 15px;
+// }
 
-.dropdown:hover .dropdown-content {
-  display: block;
-}
+
+// .dropdown:hover { // aqui eu aninhei o Span dentro do Dropdawn quando o mouse passar por cima
+//   transition: 0.1s;
+//   border: none;
+//   span {
+//     opacity: 0.2;
+//   }
+// }
+
+// .dropdown:hover .dropdown-content {
+//   display: block;
+// }
 
 
 //CSS DA HOME
