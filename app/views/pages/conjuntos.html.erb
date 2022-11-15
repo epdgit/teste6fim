@@ -1,8 +1,27 @@
+<h1 class="resultado-apostas-geradas-estatisticas" >Muitas vezes, desejamos combinar um conjunto de números para gerar nossas apostas. Se esse for o caso, escolha 7 ou mais números ou, se preferir, acione uma das opções abaixo para formatar seu conjunto numérico, excluindo ou adicionando elementos como bem entender (obs.: aplicável apenas para Mega-sena).</h1>
+
+
 <form action="/conjuntos"  class="form-inline" id="numeroSorte2" name="nsorte2" > <!-- método GET ou POST: method="POST"-->
   <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>"><%# essa linha serve para o método POST, onde é exigido que haja um token de autenticidade %>
   <%# <input type="hidden" name="authenticity_token" value="6mcCvU7ZazpIBcJTptw/8y4EucmzccFWli7tFUzX6IJEx8wq6PFC7m4rA1Jy+W4YW1hlhYhSOyhZefWtOM5ofQ=="> %>
   <div class="form-group">
 
+    <div id="botoes-agrupados"> <%# FUNÇÃO E ID NÃO PODEM TER O MESMO NOME!!! CASO CONTRÁRIO, O JS DIZ QUE A FUNÇÃO NÃO EXISTE!!! %>
+      <div class="btn-group" > <%# fazer uma query para trocar para btn-group-vertical quando em celular  %>
+        <button type="button" id="mais-saem" onclick="maisSaem()" class="btn btn-primary">Mais saem</button>
+        <button type="button" id="menos-saem" onclick="menosSaem()" class="btn btn-primary">Menos saem</button>
+        <button type="button" id="media_todos" onclick="media()" class="btn btn-primary">Média</button>
+        <button type="button" id="media_mil" onclick="mediaMil()" class="btn btn-primary">Média 1000</button>
+        <button type="button" id="ramalho-dantas" onclick="ramalhoDantas()" class="btn btn-primary">Conjunto RD</button>
+        <button type="button" id="ult17" onclick="ultD()" class="btn btn-primary">Estou com sorte</button>
+        <button type="button" id="ult13" onclick="ultT()" class="btn btn-primary">Arrojado</button>
+        <button type="button" id="ult10" onclick="ultDez()" class="btn btn-primary">Mais Arrojado</button>
+        <button type="button" id="limpa" onclick="limpar()" class="btn btn-warning">Limpar Marcações</button>
+      </div>
+      <%# <div>
+        <button type="button" id="limpa" onclick="limpar()" class="btn btn-warning">Limpar Marcações</button>
+      </div> %>
+    </div>
 
     <ul>
       <% jogo = (1..60).to_a %>
@@ -15,48 +34,34 @@
 
 
 
-  <input form="numeroSorte2" id="numeros-da-sorte-fim2" name="meusNumeros2" type="text" class="form-control" oninput="trocarSeletorNumerosConjuntos()" value=""  style="display: none" > <%# style="display: none"  %>
+    <input form="numeroSorte2" id="numeros-da-sorte-fim2" name="meusNumeros2" type="text" class="form-control" oninput="trocarSeletorNumerosConjuntos()" value=""  style="display: none" > <%# style="display: none"  %>
 
-  <div> <%# FUNÇÃO E ID NÃO PODEM TER O MESMO NOME!!! CASO CONTRÁRIO, O JS DIZ QUE A FUNÇÃO NÃO EXISTE!!! %>
-    <div>
-      <button type="button" id="mais-saem" onclick="maisSaem()" class="btn btn-primary">Mais saem</button>
-      <button type="button" id="menos-saem" onclick="menosSaem()" class="btn btn-primary">Menos saem</button>
-      <button type="button" id="media_todos" onclick="media()" class="btn btn-primary">Média</button>
-      <button type="button" id="media_mil" onclick="mediaMil()" class="btn btn-primary">Média 1000</button>
-      <button type="button" id="ramalho-dantas" onclick="ramalhoDantas()" class="btn btn-primary">Conjunto RD</button>
-      <button type="button" id="ult17" onclick="ultD()" class="btn btn-primary">Estou com sorte</button>
-      <button type="button" id="ult13" onclick="ultT()" class="btn btn-primary">Arrojado</button>
-      <button type="button" id="ult10" onclick="ultDez()" class="btn btn-primary">Mais Arrojado</button>
+
+<div id="quantidades-conjuntos">
+    <div class="quantidade-numeros">
+      <label for="numeros_na_aposta2">Números por aposta: </label>
+      <select form="numeroSorte2" name="quantidadeNumeros2" class="form-control" id="opcoesDaAposta21"  required >
+          <%# <option value=""></option>    %>
+      </select>
     </div>
-    <div>
-      <button type="button" id="limpa" onclick="limpar()" class="btn btn-warning">Limpar Marcações</button>
+
+
+    
+    <div class="quantidade-apostas" id="quantidade-apostas-conjuntos">
+      <label for="quantidade2">Quantidade de apostas: </label>
+      <select form="numeroSorte2" name="quantidadeJogos2" class="form-control" id="quantidade2"  required >
+        <%# <option value=""></option> %>
+      </select>  
     </div>
-  </div>
+</div>
 
 
-  <div class="quantidade-numeros">
-    <label for="numeros_na_aposta2">Números por aposta: </label>
-    <select form="numeroSorte2" name="quantidadeNumeros2" class="form-control" id="opcoesDaAposta21"  required >
-        <%# <option value=""></option>    %>
-    </select>
-  </div>
-
-
-  
-  <div class="quantidade-apostas">
-    <label for="quantidade2">Quantidade de apostas: </label>
-    <select form="numeroSorte2" name="quantidadeJogos2" class="form-control" id="quantidade2"  required >
-      <%# <option value=""></option> %>
-    </select>  
-  </div>
-
-
-    <div id="div-do-botao-numeros-da-sorte">
+    <div id="div-do-botao-conjuntos">
       <button type="submit" id="meus-numeros-da-sorte" class=" btn btn-primary btn-lg" disabled="true" ><span class="fas fa-sack-dollar"> <%# onclick="testeQuantidade()"  %>
       </span> Gerar Apostas</button>
-      <div id="alerta">
-        <h6 id="mensagem-alerta">Crie seu conjunto com 7 ou mais números! Só então você poderá gerar suas apostas. ☘️</h6>
-      </div>
+    </div>
+    <div id="alerta">
+      <h6 id="mensagem-alerta2">Crie seu conjunto com 7 ou mais números! Só então você poderá gerar suas apostas. ☘️</h6>
     </div>
   </div>
 </form>
@@ -194,8 +199,8 @@ window.onclick = e => {
         seletorQuantidade.removeChild(seletorQuantidade.firstChild)
       };
       botao.setAttribute("disabled", "true")
-      if (document.getElementById("mensagem-alerta") == null) {
-        document.getElementById("alerta").innerHTML =  '<h6 id="mensagem-alerta">Crie seu conjunto com 7 ou mais números! Só então você poderá gerar suas apostas. ☘️</h6>'
+      if (document.getElementById("mensagem-alerta2") == null) {
+        document.getElementById("alerta").innerHTML =  '<h6 id="mensagem-alerta2">Crie seu conjunto com 7 ou mais números! Só então você poderá gerar suas apostas. ☘️</h6>'
       }
     }
 
