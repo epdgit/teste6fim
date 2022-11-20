@@ -62,6 +62,12 @@ if(reloadSorteios) {
   });
 }
 
+var reloadEstatistica = document.getElementById("botao-estatistica");
+if(reloadEstatistica) {
+  reloadEstatistica.addEventListener("click", () => {
+    location.assign('/estatistica'); // faz a página para a qual vai dar um relood, tornando possível a execução dos arquivos javascript
+  });
+}
 
 var salvaPDF = document.getElementById("meu-pdf");
 if(salvaPDF) { // SÓ EXECUTA A FUNÇÃO SE ESTIVER NA PÁGINA APOSTAS

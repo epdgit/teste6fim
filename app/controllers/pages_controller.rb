@@ -26,6 +26,15 @@ class PagesController < ApplicationController
   };
 
   def home
+    #DIVULGAÇÃO 1
+    todos_sorteios = Sorteio.all
+    ultimo_sorteio = todos_sorteios.last
+    @ultimo_sorteio_numeracao = ultimo_sorteio[:concurso]
+    @ultimo_sorteio_data = ultimo_sorteio[:data]
+    @ultimo_sorteio_numeros = todos_sorteios.last[:numeros].split(/,/).map {|x| x.to_i}
+
+
+
     @mega = MEGA
     
     @dupla = DUPLA
@@ -100,9 +109,9 @@ class PagesController < ApplicationController
 
       @id_div_apostas = "apostas-geradas"
 
+      # condition ? if_true : if_false
       chance = modalidade[:probabilidade][numeros_cada_aposta - indice_corretor]/apostas_desejadas
       @chance_printada = "Sua chance será de 1 em #{chance.to_s.reverse.scan(/.{1,3}/).join('.').reverse}"
-
     end
   end
 
@@ -466,6 +475,131 @@ class PagesController < ApplicationController
       
     # end    
   end  
+
+  def estatistica
+    todos_sorteios = Sorteio.all
+    todos_sorteios_em_array = []
+    for x in todos_sorteios
+      todos_sorteios_em_array << x[:numeros].split(/,/).map {|x| x.to_i}
+    end
+
+    @ultimo = todos_sorteios_em_array
+    array60 = (1..60).to_a
+    todos_duplas = array60.combination(2).to_a
+    todos_ternos = array60.combination(3).to_a
+    todos_quadras = array60.combination(4).to_a
+    todos_quinas = array60.combination(5).to_a
+    
+    dicionario_duplas = {}
+    dicionario_ternos = {}
+    dicionario_quadras = {}
+    dicionario_quinas = {}
+    
+    for x in todos_duplas
+      dicionario_duplas[x] = 0
+    end
+    
+    for x in todos_ternos
+      dicionario_ternos[x] = 0
+    end
+    
+    for x in todos_quadras
+      dicionario_quadras[x] = 0
+    end
+    
+    for x in todos_quinas
+      dicionario_quinas[x] = 0
+    end
+    
+    # # LANÇAR AQUI TODOS OS SORTEIOS
+    todos_sorteios = @ultimo
+    
+    for sorteio in todos_sorteios
+      novo_sorteio_em_duplas = sorteio.combination(2).to_a
+      novo_sorteio_em_ternos = sorteio.combination(3).to_a
+      novo_sorteio_em_quadras = sorteio.combination(4).to_a
+      novo_sorteio_em_quinas = sorteio.combination(5).to_a
+    
+      for x in novo_sorteio_em_duplas
+        if dicionario_duplas.key?(x)
+          dicionario_duplas[x] += 1
+        else
+          dicionario_duplas[x] = 1 
+        end
+      end
+      
+      
+      for x in novo_sorteio_em_ternos
+        if dicionario_ternos.key?(x)
+          dicionario_ternos[x] += 1
+        else
+          dicionario_ternos[x] = 1 
+        end
+      end
+      
+      for x in novo_sorteio_em_quadras
+        if dicionario_quadras.key?(x)
+          dicionario_quadras[x] += 1
+        else
+          dicionario_quadras[x] = 1 
+        end
+      end  
+      
+      for x in novo_sorteio_em_quinas
+        if dicionario_quinas.key?(x)
+          dicionario_quinas[x] += 1
+        else
+          dicionario_quinas[x] = 1 
+        end
+      end
+    end
+    
+    @array_duplas_fim = []
+    array_repeticoes_duplas_ultimos_5 = dicionario_duplas.values.to_set.to_a.sort.last(5)
+    # DUPLAS:
+    for x in array_repeticoes_duplas_ultimos_5.reverse
+      @array_duplas_fim << "#{x} VEZES: #{dicionario_duplas.select{|k,v| v == x}.keys}"
+    end
+
+    # TERNOS:
+    @array_ternos_fim = []
+    array_repeticoes_ternos_ultimos_2 = dicionario_ternos.values.to_set.to_a.sort.last(2)
+    for x in array_repeticoes_ternos_ultimos_2.reverse
+      @array_ternos_fim << "#{x} VEZES: #{dicionario_ternos.select{|k,v| v == x}.keys}"
+    end
+
+    # QUADRAS
+    @array_quadras_fim = []
+    array_repeticoes_quadras_ultimos_2 = dicionario_quadras.values.to_set.to_a.sort.last(2)
+    for x in array_repeticoes_quadras_ultimos_2.reverse
+      @array_quadras_fim << "#{x} VEZES: #{dicionario_quadras.select{|k,v| v == x}.keys}"
+    end
+
+    # QUINAS: 
+    @array_quinas_fim = []
+    array_repeticoes_quinas_ultimos = dicionario_quinas.values.to_set.to_a.sort
+    for x in array_repeticoes_quinas_ultimos
+      if x > 1
+        @array_quinas_fim << "#{x} VEZES: #{dicionario_quinas.select{|k,v| v == x}.keys}"
+      end
+    end
+
+    # MAIS / MENOS SAEM:
+    todos_numeros = []
+    todos_sorteios_em_array.each { |sorteio|
+      for x in sorteio
+        todos_numeros << x
+      end
+    }
+
+    hashruby = todos_numeros.group_by { |v| v }.map { |k, v| [k.to_i, v.size] }.to_h
+    @hash_final_todos_numeros = hashruby.sort_by {|_key, value| value}.reverse.to_h
+    # array_ordenado_menos_saem_ate_mais_saem = hash_final_todos_numeros.keys
+    # @mais_saem = array_ordenado_menos_saem_ate_mais_saem.reverse # começa do que mais sai
+
+  end
+
+
 # // {"sorteio"=>"mega",
 #   //  "quantidadeNumeros"=>"6",
 #   //  "quantidadeJogos"=>"2",

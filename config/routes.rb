@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   post 'apostas', to: 'pages#apostas'
   get 'sorte', to: 'pages#sorte'
   get 'conjuntos', to: 'pages#conjuntos'
+  get 'estatistica', to: 'pages#estatistica'
+
   # resources :sorteios
 
   get 'sorteios', to: 'sorteios#index'
