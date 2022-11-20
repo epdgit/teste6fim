@@ -176,9 +176,30 @@
     </div>
     <div>
       <div class="divulgacao">
+        <%# <div class="div-dentro-divulgacao"> %>
+        <h5 class="ultimo-sorteio-home" id="ultimo-sorteio-home-mega-sena">MEGA-SENA (último)</h5>
+        <h5 class="ultimo-sorteio-home">Concurso<%= " #{@ultimo_sorteio_numeracao}" %></h5>
+        <h5 class="ultimo-sorteio-home">Data:<%= " #{ @ultimo_sorteio_data }" %></h5>
+        <%# <h5><%= @ultimo_sorteio_numeros </h5> %>
+
+        <ul class="ul-ultimo-home">
+          <% @ultimo_sorteio_numeros.each do |numero| %>
+          <li class="ultimo-jogo-home"> 
+            <%= numero %>
+          <% end %>
+          </li>
+        </ul>
+
+
+
+
+        <%# </div> %>
       </div>
       <div class="divulgacao">
+        <h1>CARROSSEL</h1>
       </div>
     </div>
   </div>
 </div>
+    
+

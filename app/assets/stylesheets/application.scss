@@ -181,9 +181,10 @@ select.form-control {
 }
 
 .divulgacao {
-  height: 120px;
+  height: 135px;
   margin-bottom: 40px;
-  padding: 135px;
+  min-width: 22em;
+  // padding: 135px;
   margin-right: 50px;
   border: 1px solid grey;
   // height: 150px;
@@ -192,6 +193,38 @@ select.form-control {
   // background-image: linear-gradient(to bottom right, red, blue);
   border-radius: 3px;
   box-shadow: 1px 1px 10px grey;
+}
+
+.ultimo-jogo-home {
+    display: inline-block;
+    width: 39px;
+    height: 39px;
+    margin: 7px 0px;
+    background: #209869;
+    padding: 9px 9px;
+    border-radius: 50%;
+    font-family: 'Rokkitt', serif;
+    color: #fff;
+    font-size: 1.6rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+#ultimo-sorteio-home-mega-sena {
+  padding-top: 6px;
+}
+
+.ultimo-sorteio-home {
+  color: #204A65;
+  font-weight: 700;
+  font-size: 17px;
+  font-family: 'Rokkitt', serif;
+  margin: 3px 10px;
+  text-align: justify;
+}
+
+.ul-ultimo-home {
+  margin-left: 15px;
 }
 
 
