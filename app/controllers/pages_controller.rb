@@ -102,6 +102,7 @@ class PagesController < ApplicationController
 
       chance = modalidade[:probabilidade][numeros_cada_aposta - indice_corretor]/apostas_desejadas
       @chance_printada = "Sua chance será de 1 em #{chance.to_s.reverse.scan(/.{1,3}/).join('.').reverse}"
+
     end
   end
 
@@ -395,16 +396,40 @@ class PagesController < ApplicationController
         formato_brasil.gsub!(",",".")
       end
       formato_brasil.gsub!("*",",")
-      @valor = "Valor: #{formato_brasil}"
+      @valor = "Valor: #{formato_brasil}."
 
       @id_div_apostas = "apostas-geradas"
 
-      chance = @mega[:probabilidade][numeros_cada_aposta - indice_corretor]/apostas_desejadas
-      @chance_printada = "Sua chance será de 1 em #{chance.to_s.reverse.scan(/.{1,3}/).join('.').reverse}"
-  
+      # chance = @mega[:probabilidade][numeros_cada_aposta - indice_corretor]/apostas_desejadas
+      # @chance_printada = "Sua chance será de 1 em #{chance.to_s.reverse.scan(/.{1,3}/).join('.').reverse}"
+
+      # PARA CHECAR A PROBABILIDADE DE ACERTAR, VC DEVE ENTENDER QUE CONJUNTOS PEQUENOS (EX. 8 NÚMEROS) CONTERÃO APOSTAS REPETIDAS SE ELAS FORAM FEITAS COM, POR EXEMPLO, 7 NÚMEROS, ENTÃO, OPTEI POR PEGAR TODAS AS APOSTAS GERADAS, CONVERTENDO-AS EM APOSTAS DE 6 NÚMEROS E DEPOIS, EXCLUINDO AS REPETIÇÕES. DEPOIS, É SÓ DIVIDIR A PROBABILIDADE TOTAL MEGA PELO NÚMERO DE APOSTAS DE 6 NÚMEROS 
+      conferir_apostas_convertidas_em_6numeros = []
+      if numeros_cada_aposta == 6
+        chance = @mega[:probabilidade][numeros_cada_aposta - indice_corretor]/apostas_desejadas
+      elsif numeros_cada_aposta > 6 and apostas_desejadas == 1
+        aposta_maior_que_6numeros_em_array_de_6numeros = aposta.combination(6).to_a
+        for x in aposta_maior_que_6numeros_em_array_de_6numeros
+          conferir_apostas_convertidas_em_6numeros << x
+        end
+        chance = @mega[:probabilidade][0]/conferir_apostas_convertidas_em_6numeros.to_set.size
+      else
+        @conferir.each { |aposta|  
+          aposta_maior_que_6numeros_em_array_de_6numeros = aposta.combination(6).to_a
+          for x in aposta_maior_que_6numeros_em_array_de_6numeros
+            conferir_apostas_convertidas_em_6numeros << x
+          end
+        }
+        chance = @mega[:probabilidade][0]/conferir_apostas_convertidas_em_6numeros.to_set.size
+      end
+      @chance_printada = "Sua chance será de 1 em #{chance.to_s.reverse.scan(/.{1,3}/).join('.').reverse}."
 
 
-      # CALCULANDO ESTATÍSTICA PARA O CONJUNTO. PARA A APOSTA ESPECÍFICA DO CONJUNTO TIVE PROBLEMAS COM CONJUNTOS PEQUENOS, POIS PODEM HAVER APOSTAS REPETIDAS, O QUE TRAZ ERRO PARA A ESTATÍSTICA
+
+
+
+
+      # CALCULANDO ESTATÍSTICA PARA O CONJUNTO. PARA A APOSTA ESPECÍFICA DO CONJUNTO TIVE PROBLEMAS COM CONJUNTOS PEQUENOS, POIS PODEM HAVER APOSTAS REPETIDAS, O QUE TRAZ ERRO PARA A ESTATÍSTICA. ex. 1,2,3,4,5,6,7 e 1,2,3,4,5,6,8 trazem 1,2,3,4,5,6 como jogo repetido
       def fatorial(n)
         if n == 1
           return 1
@@ -425,7 +450,7 @@ class PagesController < ApplicationController
       end
       chance_no_escopo = probabilidade(@conjunto.size, 6)
       chance_mega = probabilidade(60, 6)
-      @chance_escopo_printada = "A Mega possui #{chance_mega.to_s.reverse.scan(/.{1,3}/).join('.').reverse} de combinações, das quais #{chance_no_escopo.to_s.reverse.scan(/.{1,3}/).join('.').reverse} estão contidas no seu conjunto da sorte."
+      @chance_escopo_printada = "A Mega possui #{chance_mega.to_s.reverse.scan(/.{1,3}/).join('.').reverse} de combinações, destas, #{chance_no_escopo.to_s.reverse.scan(/.{1,3}/).join('.').reverse} podem ser formadas com o seu conjunto da sorte."
     end
 
 
