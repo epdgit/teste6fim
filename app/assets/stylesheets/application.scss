@@ -177,7 +177,8 @@ select.form-control {
   font-size: 24px;
   font-family: 'Rokkitt', serif;
   margin: 30px 45px;
-  text-align: justify
+  text-align: justify;
+  text-indent: 40px;
 }
 
 .divulgacao {
@@ -191,7 +192,7 @@ select.form-control {
   background-image: linear-gradient(to bottom, #6fd4b8, white);
   // background-color: rgb(111, 212, 184);
   // background-image: linear-gradient(to bottom right, red, blue);
-  border-radius: 3px;
+  border-radius: 10px;
   box-shadow: 1px 1px 10px grey;
 }
 
@@ -512,8 +513,37 @@ fieldset {
   font-size: 30px;
   font-family: 'Rokkitt', serif;
   margin-left: 26px;
+  // margin-right: 26px;
   margin-bottom: 25px;
   margin-top: 30px;
+  text-align: justify;
+  // text-indent: 40px;
+}
+
+.conjuntos-formatado {
+  color: #204A65;
+  font-weight: 700;
+  font-size: 30px;
+  font-family: 'Rokkitt', serif;
+  margin-left: 26px;
+  margin-right: 26px;
+  margin-bottom: 25px;
+  margin-top: 30px;
+  text-align: justify;
+  text-indent: 40px;
+}
+
+.sorte-formatado {
+  color: #204A65;
+  font-weight: 700;
+  font-size: 30px;
+  font-family: 'Rokkitt', serif;
+  margin-left: 26px;
+  margin-right: 26px;
+  margin-bottom: 25px;
+  margin-top: 30px;
+  text-align: justify;
+  text-indent: 40px;
 }
 
 
