@@ -1,12 +1,12 @@
 <h1>INDEX FUNCIONANDO (ROOT/sorteios)</h1>
 
 <h1>TOTAL DE SORTEIOS: <%= @sorteios.size %></h1> <%# outras opções .length OU .count   TESTAR %>
-<%= link_to 'Inserir NOVO SORTEIO', sorteios_new_path %>
+<%= link_to 'Inserir NOVO SORTEIO', sorteios_new_path, method: "get" %>
 
 
 <ul>
   <% @sorteios.reverse().each do |sorteio|  %>
-    <li><%= link_to "concurso: #{sorteio.concurso}; data: #{sorteio.data}; números: #{sorteio.numeros}", sorteio_path(sorteio) %></li>
+    <li><%= link_to "concurso: #{sorteio.concurso}; data: #{sorteio.data}; números: #{sorteio.numeros}", sorteio_path(sorteio), method: "get" %></li>
   <% end %>
 </ul>
 
