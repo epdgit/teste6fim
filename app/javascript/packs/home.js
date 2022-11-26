@@ -119,6 +119,9 @@ function opcoesBolao() {
     // ALTERANDO O FORM PARA CRIAR BOLÃO NO MÉTODO POST
     document.getElementById("teste").setAttribute("method", "POST");
     document.getElementById("teste").setAttribute("action", "/apostas");
+    document.getElementById("teste").setAttribute("target", "_blank");
+    document.getElementById("teste").setAttribute("rel", "noopener noreferrer");
+
     
     // RETIRANDO DADOS CRIADOS DAS APOSTAS GERADAS NA PRÓPRIA HOME
     var retirar = document.getElementById("apostas-geradas")
@@ -142,8 +145,9 @@ function opcoesBolao() {
 
     // ALTERANDO O FORM PARA TIRAR MÉTODO POST (CRIADO QUANDO DO BOLÃO)
     document.getElementById("teste").removeAttribute("method");
+    document.getElementById("teste").removeAttribute("target");
+    document.getElementById("teste").removeAttribute("rel");
     document.getElementById("teste").setAttribute("action", "/");
-    
   };
 };
 

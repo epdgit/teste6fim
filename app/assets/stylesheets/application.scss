@@ -209,6 +209,24 @@ select.form-control {
   box-shadow: 1px 1px 10px grey;
 }
 
+.divulgacao2 {
+  height: 135px;
+  margin-bottom: 40px;
+  min-width: 22em;
+  // padding: 135px;
+  margin-right: 50px;
+  border: 1px solid grey;
+  // height: 150px;
+  background-image: linear-gradient(to bottom, #6fd4b8, white);
+  // background-color: rgb(111, 212, 184);
+  // background-image: linear-gradient(to bottom right, red, blue);
+  border-radius: 10px;
+  box-shadow: 1px 1px 10px grey;
+  position: -webkit-sticky; /* Safari & IE */ // daqui para frente é para a imagem fixar durante o Scroll
+  position: sticky;
+  top: 0;
+}
+
 .ultimo-jogo-home {
     display: inline-block;
     width: 39px;
