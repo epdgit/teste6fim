@@ -144,35 +144,35 @@
           <input type="submit" class="btn btn-primary" id="botao-apostas" value="Gerar Apostas" > <%# onClick="vazio()"%>
         </div>
 
-        <div>
-          <div id=<%=@id_div_apostas %> style=""> 
-            <h1 class="resultado-apostas-geradas"><%= @nome %></h1>
-            <ol >
-              <% @conferir.each do |jogo| %>
-                <li>
-                  <ul >
-                    <% jogo.each do |numero| %>
-                    <li id="jogos-gerados-ruby">
-                      <%= numero %>
-                      <% end %>
-                    </li>
-                  </ul>
-                </li>
-              <% end %>
-            </ol>
-            <h1 class="resultado-apostas-geradas-estatisticas"><%= @valor %></h1>
-            <h1 class="resultado-apostas-geradas-estatisticas"><%= @chance_printada %></h1>
-          </div>
-        </div>
-
-
-
         </div>
 
 
 
 
       </form>
+
+      <div class="div-estatisticas-home">
+        <div id=<%=@id_div_apostas %> style=""> 
+          <h1 class="resultado-apostas-geradas"><%= @nome %></h1>
+          <ol >
+            <% @conferir.each do |jogo| %>
+              <li>
+                <ul >
+                  <% jogo.each do |numero| %>
+                  <li id="jogos-gerados-ruby">
+                    <%= numero %>
+                    <% end %>
+                  </li>
+                </ul>
+              </li>
+            <% end %>
+          </ol>
+          <h1 class="resultado-apostas-geradas-estatisticas"><%= @valor %></h1>
+          <h1 class="resultado-apostas-geradas-estatisticas"><%= @chance_printada %></h1>
+        </div>
+      </div>
+
+
     </div>
     <div>
       <div class="divulgacao">
