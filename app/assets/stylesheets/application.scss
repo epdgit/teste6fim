@@ -84,11 +84,24 @@ select.form-control {
 }
 
 .tudo {
-  padding-top: 210px;
+  padding-top: 80px;
   padding-left: 70px;
   display: flex;
+  box-shadow: -3px 0px 23px -3px #000000;
+  margin-left: 4px;
+  margin-right: 4px;
+  border-radius: 22px;
 }
 
+.tudo2 {
+  padding-top: 70px;
+  padding-left: 70px;
+  padding-right: 70px;
+  box-shadow: -3px 0px 23px -3px #000000;
+  margin-left: 4px;
+  margin-right: 4px;
+  border-radius: 22px;
+}
 
 #div_img_background {
   position: relative;
@@ -257,6 +270,7 @@ select.form-control {
 .button-gerador-aposta {
   display: block;
   text-align: center;
+  padding-bottom: 20px;
 }
 
 .apostadores {
@@ -410,6 +424,17 @@ fieldset {
   margin-bottom: 10px
 }
 
+.div-estatisticas-sorte {
+  padding-bottom: 18px;
+}
+
+.div-estatisticas-conjuntos {
+  padding-bottom: 18px;
+}
+
+.div-estatisticas-home {
+  padding-bottom: 50px;
+}
 
 #apostas-geradas {
   width: 70%;
@@ -419,6 +444,8 @@ fieldset {
   box-shadow: 1px 1px 5px grey;
   border-radius: 8px;
   padding-bottom: 15px;
+  padding-left: 20px;
+
 }
 
 .classe-apostas-geradas {
@@ -427,15 +454,18 @@ fieldset {
 
 #jogos-gerados-ruby {
   display: inline-block;
-  width: 50px;
-  height: 50px;
+  // width: 50px;
+  // height: 50px;
+  width: 45px;
+  height: 45px;
   margin: 8px 5px;
   background: #0369b9;
   padding: 10px 12px;
   border-radius: 50%;
   font-family: 'Rokkitt', serif;
   color: #fff;
-  font-size: 2rem;
+  // font-size: 2rem;
+  font-size: 1.7rem;
   font-weight: bold;
   text-align: center;
 }
@@ -446,17 +476,29 @@ fieldset {
 
 
 .jogos-gerados-ruby-numeros-sorte {
+  // display: inline-block;
+  // width: 50px;
+  // height: 50px;
+  // margin: 8px 5px;
+  // background: #92a7ab;
+  // padding: 10px 12px;
+  // border-radius: 50%;
+  // font-family: 'Rokkitt', serif;
+  // color: #fff;
+  // font-size: 2rem;
+  // font-weight: bold;
+  // text-align: center;
+  // cursor: pointer;
   display: inline-block;
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   margin: 8px 5px;
   background: #92a7ab;
-  // background: #0369b9;
-  padding: 10px 12px;
+  padding: 9px 0px;
   border-radius: 50%;
   font-family: 'Rokkitt', serif;
   color: #fff;
-  font-size: 2rem;
+  font-size: 1.6rem;
   font-weight: bold;
   text-align: center;
   cursor: pointer;
@@ -513,17 +555,29 @@ fieldset {
   font-size: 30px;
   font-family: 'Rokkitt', serif;
   margin-left: 26px;
-  // margin-right: 26px;
+  margin-right: 26px;
   margin-bottom: 25px;
   margin-top: 30px;
   text-align: justify;
   // text-indent: 40px;
 }
 
+.conjuntos-titulo {
+  color: #204A65;
+  font-weight: 900;
+  font-size: 35px;
+  font-family: 'Rokkitt', serif;
+  margin-bottom: 27px;
+  margin-top: 30px;
+  text-align: center;
+}
+
+
 .conjuntos-formatado {
   color: #204A65;
   font-weight: 700;
-  font-size: 30px;
+  font-size: 22px;
+  line-height: 130%;
   font-family: 'Rokkitt', serif;
   margin-left: 26px;
   margin-right: 26px;
@@ -533,10 +587,22 @@ fieldset {
   text-indent: 40px;
 }
 
+.sorte-titulo {
+  color: #204A65;
+  font-weight: 900;
+  font-size: 35px;
+  font-family: 'Rokkitt', serif;
+  margin-bottom: 27px;
+  margin-top: 30px;
+  text-align: center;
+}
+
 .sorte-formatado {
   color: #204A65;
   font-weight: 700;
-  font-size: 30px;
+  // font-size: 30px;
+  font-size: 22px;
+  line-height: 130%;
   font-family: 'Rokkitt', serif;
   margin-left: 26px;
   margin-right: 26px;
@@ -553,6 +619,7 @@ fieldset {
   font-size: 23px;
   font-family: 'Rokkitt', serif;
   margin-left: 50px;
+  margin-right: 26px;
   margin-bottom: 25px;
   margin-top: 30px;
 }
@@ -658,6 +725,12 @@ ol {
   // width: 40%;
   text-align: center;
   margin-top: 35px;
+}
+
+#alerta {
+  height: 38px;
+  margin-top: 15px;
+  margin-bottom: 45px;
 }
 
 #mensagem-alerta {

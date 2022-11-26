@@ -1,150 +1,158 @@
-<h1 class="conjuntos-formatado" >Muitas vezes, desejamos combinar um conjunto de números para gerar nossas apostas. Se esse for o caso, escolha 7 ou mais números ou, se preferir, acione uma das opções abaixo para formatar seu conjunto numérico, excluindo ou adicionando elementos como bem entender (obs.: aplicável apenas para Mega-sena).</h1>
+<%# <div id="div_img_background">
+  <div class="tudo"> %>
+
+<div id="div_img_background">
+  <div class="tudo2">
+    <h1 class="conjuntos-titulo">CONJUNTOS</h1>
+    <h1 class="conjuntos-formatado" >Muitas vezes, desejamos combinar um conjunto de números para gerar nossas apostas. Se esse for o caso, escolha 7 ou mais números ou, se preferir, acione uma das opções abaixo para formatar seu conjunto numérico, excluindo ou adicionando elementos como bem entender (obs.: aplicável apenas para Mega-sena).</h1>
 
 
-<form action="/conjuntos"  class="form-inline" id="numeroSorte2" name="nsorte2" > <!-- método GET ou POST: method="POST"-->
-  <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>"><%# essa linha serve para o método POST, onde é exigido que haja um token de autenticidade %>
-  <%# <input type="hidden" name="authenticity_token" value="6mcCvU7ZazpIBcJTptw/8y4EucmzccFWli7tFUzX6IJEx8wq6PFC7m4rA1Jy+W4YW1hlhYhSOyhZefWtOM5ofQ=="> %>
-  <div class="form-group">
+    <form action="/conjuntos"  class="form-inline" id="numeroSorte2" name="nsorte2" > <!-- método GET ou POST: method="POST"-->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>"><%# essa linha serve para o método POST, onde é exigido que haja um token de autenticidade %>
+      <%# <input type="hidden" name="authenticity_token" value="6mcCvU7ZazpIBcJTptw/8y4EucmzccFWli7tFUzX6IJEx8wq6PFC7m4rA1Jy+W4YW1hlhYhSOyhZefWtOM5ofQ=="> %>
+      <div class="form-group">
 
-    <div id="botoes-agrupados"> <%# FUNÇÃO E ID NÃO PODEM TER O MESMO NOME!!! CASO CONTRÁRIO, O JS DIZ QUE A FUNÇÃO NÃO EXISTE!!! %>
-      <div class="btn-group" > <%# fazer uma query para trocar para btn-group-vertical quando em celular  %>
-        <button type="button" id="mais-saem" onclick="maisSaem()" class="btn btn-primary">Mais saem</button>
-        <button type="button" id="menos-saem" onclick="menosSaem()" class="btn btn-primary">Menos saem</button>
-        <button type="button" id="media_todos" onclick="media()" class="btn btn-primary">Média</button>
-        <button type="button" id="media_mil" onclick="mediaMil()" class="btn btn-primary">Média 1000</button>
-        <button type="button" id="ramalho-dantas" onclick="ramalhoDantas()" class="btn btn-primary">Conjunto RD</button>
-        <button type="button" id="ult17" onclick="ultD()" class="btn btn-primary">Estou com sorte</button>
-        <button type="button" id="ult13" onclick="ultT()" class="btn btn-primary">Arrojado</button>
-        <button type="button" id="ult10" onclick="ultDez()" class="btn btn-primary">Mais Arrojado</button>
-        <button type="button" id="limpa" onclick="limpar()" class="btn btn-warning">Limpar Marcações</button>
+        <div id="botoes-agrupados"> <%# FUNÇÃO E ID NÃO PODEM TER O MESMO NOME!!! CASO CONTRÁRIO, O JS DIZ QUE A FUNÇÃO NÃO EXISTE!!! %>
+          <div class="btn-group" > <%# fazer uma query para trocar para btn-group-vertical quando em celular  %>
+            <button type="button" id="mais-saem" onclick="maisSaem()" class="btn btn-primary">Mais saem</button>
+            <button type="button" id="menos-saem" onclick="menosSaem()" class="btn btn-primary">Menos saem</button>
+            <button type="button" id="media_todos" onclick="media()" class="btn btn-primary">Média</button>
+            <button type="button" id="media_mil" onclick="mediaMil()" class="btn btn-primary">Média 1000</button>
+            <button type="button" id="ramalho-dantas" onclick="ramalhoDantas()" class="btn btn-primary">Conjunto RD</button>
+            <button type="button" id="ult17" onclick="ultD()" class="btn btn-primary">Estou com sorte</button>
+            <button type="button" id="ult13" onclick="ultT()" class="btn btn-primary">Arrojado</button>
+            <button type="button" id="ult10" onclick="ultDez()" class="btn btn-primary">Mais Arrojado</button>
+            <button type="button" id="limpa" onclick="limpar()" class="btn btn-warning">Limpar Marcações</button>
+          </div>
+          <%# <div>
+            <button type="button" id="limpa" onclick="limpar()" class="btn btn-warning">Limpar Marcações</button>
+          </div> %>
+        </div>
+
+        <ul>
+          <% jogo = (1..60).to_a %>
+          <% jogo.each do |numero| %>
+          <li id="n<%= numero %>" class="numero-sorte jogos-gerados-ruby-numeros-sorte" value=<%= "#{numero}" %>> 
+            <%= numero %>
+            <% end %>
+          </li>
+        </ul>
+
+
+
+        <input form="numeroSorte2" id="numeros-da-sorte-fim2" name="meusNumeros2" type="text" class="form-control" oninput="trocarSeletorNumerosConjuntos()" value=""  style="display: none" > <%# style="display: none"  %>
+
+
+    <div id="quantidades-conjuntos">
+        <div class="quantidade-numeros">
+          <label for="numeros_na_aposta2">Números por aposta: </label>
+          <select form="numeroSorte2" name="quantidadeNumeros2" class="form-control" id="opcoesDaAposta21"  required >
+              <%# <option value=""></option>    %>
+          </select>
+        </div>
+
+
+        
+        <div class="quantidade-apostas" id="quantidade-apostas-conjuntos">
+          <label for="quantidade2">Quantidade de apostas: </label>
+          <select form="numeroSorte2" name="quantidadeJogos2" class="form-control" id="quantidade2"  required >
+            <%# <option value=""></option> %>
+          </select>  
+        </div>
+    </div>
+
+
+        <div id="div-do-botao-conjuntos">
+          <button type="submit" id="meus-numeros-da-sorte" class=" btn btn-primary btn-lg" disabled="true" ><span class="fas fa-sack-dollar"> <%# onclick="testeQuantidade()"  %>
+          </span> Gerar Apostas</button>
+        </div>
+        <div id="alerta">
+          <h6 id="mensagem-alerta2">Crie seu conjunto com 7 ou mais números! Só então você poderá gerar suas apostas. ☘️</h6>
+        </div>
       </div>
-      <%# <div>
-        <button type="button" id="limpa" onclick="limpar()" class="btn btn-warning">Limpar Marcações</button>
-      </div> %>
-    </div>
-
-    <ul>
-      <% jogo = (1..60).to_a %>
-      <% jogo.each do |numero| %>
-      <li id="n<%= numero %>" class="numero-sorte jogos-gerados-ruby-numeros-sorte" value=<%= "#{numero}" %>> 
-        <%= numero %>
-        <% end %>
-      </li>
-    </ul>
-
-
-
-    <input form="numeroSorte2" id="numeros-da-sorte-fim2" name="meusNumeros2" type="text" class="form-control" oninput="trocarSeletorNumerosConjuntos()" value=""  style="display: none" > <%# style="display: none"  %>
-
-
-<div id="quantidades-conjuntos">
-    <div class="quantidade-numeros">
-      <label for="numeros_na_aposta2">Números por aposta: </label>
-      <select form="numeroSorte2" name="quantidadeNumeros2" class="form-control" id="opcoesDaAposta21"  required >
-          <%# <option value=""></option>    %>
-      </select>
-    </div>
-
-
-    
-    <div class="quantidade-apostas" id="quantidade-apostas-conjuntos">
-      <label for="quantidade2">Quantidade de apostas: </label>
-      <select form="numeroSorte2" name="quantidadeJogos2" class="form-control" id="quantidade2"  required >
-        <%# <option value=""></option> %>
-      </select>  
-    </div>
-</div>
-
-
-    <div id="div-do-botao-conjuntos">
-      <button type="submit" id="meus-numeros-da-sorte" class=" btn btn-primary btn-lg" disabled="true" ><span class="fas fa-sack-dollar"> <%# onclick="testeQuantidade()"  %>
-      </span> Gerar Apostas</button>
-    </div>
-    <div id="alerta">
-      <h6 id="mensagem-alerta2">Crie seu conjunto com 7 ou mais números! Só então você poderá gerar suas apostas. ☘️</h6>
-    </div>
-  </div>
-</form>
+    </form>
 
 
 
 
 
 
-<%#  %>
-<%# <button type="button" id="limpar" onclick="limpar()" class="btn btn-warning">Limpar Marcações</button> %>
+    <%#  %>
+    <%# <button type="button" id="limpar" onclick="limpar()" class="btn btn-warning">Limpar Marcações</button> %>
 
-<%# <a href="/">Home</a>  obs.: não recarrega as funções do Javascript  
-<%= link_to 'Home', root_path  obs.: não recarrega as funções do Javascript %>
-<button id="botao-root" class="btn btn-primary">INÍCIO</button> 
-
-
+    <%# <a href="/">Home</a>  obs.: não recarrega as funções do Javascript  
+    <%= link_to 'Home', root_path  obs.: não recarrega as funções do Javascript %>
+    <%# <button id="botao-root" class="btn btn-primary">INÍCIO</button>  ESTAVA FUNCIONANDO ANTES DOS LINKS DA NAVBAR, DEPOIS PAROU%>
 
 
 
-<p id="array-ult17" style="display: none">
- <%= @array17 %>
-</p>
-<p id="array-ult13" style="display: none">
- <%= @array13 %>
-</p>
-
-<p id="array-ult10" style="display: none">
-  <%= @array10  %>
-</p>
-<p id="array-mais-saem" style="display: none">
-  <%= @mais_saem  %>
-</p>
-<p id="array-menos-saem" style="display: none">
-  <%= @menos_saem %>
-</p>
-
-<p id="array-media" style="display: none">
-  <%= @media %>
-</p>
-
-<p id="array-media-mil" style="display: none">
-  <%= @media_mil %>
-</p>
 
 
-<%# GERANDO JOGOS:  %>
-<div>
-  <div id=<%=@id_div_apostas %> style=""> 
-    <h1 class="resultado-apostas-geradas"><%= @nome %></h1>
-    <p class="resultado-apostas-geradas-estatisticas">
-      <% if @conjunto %>
-        <%= "Conjunto da sorte (#{@conjunto.size} números): " %>
-        <%= @conjunto.join(", ") %>
-      <% end %>
+    <p id="array-ult17" style="display: none">
+    <%= @array17 %>
+    </p>
+    <p id="array-ult13" style="display: none">
+    <%= @array13 %>
     </p>
 
-    <h2 class="divisor" style="display: none"></h2>
+    <p id="array-ult10" style="display: none">
+      <%= @array10  %>
+    </p>
+    <p id="array-mais-saem" style="display: none">
+      <%= @mais_saem  %>
+    </p>
+    <p id="array-menos-saem" style="display: none">
+      <%= @menos_saem %>
+    </p>
 
-    <h1 class="resultado-apostas-geradas-estatisticas">
-    <% if @conjunto %>
-    <%= "Apostas geradas: " %>
-    <% end %>
-    </h1>
-    <ol >
-      <% @conferir.each do |jogo| %>
-        <li>
-          <ul >
-            <% jogo.each do |numero| %>
-            <li id="jogos-gerados-ruby">
-              <%= numero %>
-              <% end %>
+    <p id="array-media" style="display: none">
+      <%= @media %>
+    </p>
+
+    <p id="array-media-mil" style="display: none">
+      <%= @media_mil %>
+    </p>
+
+
+    <%# GERANDO JOGOS:  %>
+    <div class="div-estatisticas-conjuntos">
+      <div id=<%=@id_div_apostas %> style=""> 
+        <h1 class="resultado-apostas-geradas"><%= @nome %></h1>
+        <p class="resultado-apostas-geradas-estatisticas">
+          <% if @conjunto %>
+            <%= "Conjunto da sorte (#{@conjunto.size} números): " %>
+            <%= @conjunto.join(", ") %>
+          <% end %>
+        </p>
+
+        <h2 class="divisor" style="display: none"></h2>
+
+        <h1 class="resultado-apostas-geradas-estatisticas">
+        <% if @conjunto %>
+        <%= "Apostas geradas: " %>
+        <% end %>
+        </h1>
+        <ol >
+          <% @conferir.each do |jogo| %>
+            <li>
+              <ul >
+                <% jogo.each do |numero| %>
+                <li id="jogos-gerados-ruby">
+                  <%= numero %>
+                  <% end %>
+                </li>
+              </ul>
             </li>
-          </ul>
-        </li>
-      <% end %>
-    </ol>
+          <% end %>
+        </ol>
 
-    <h2 class="divisor" style="display: none"></h2>
+        <h2 class="divisor" style="display: none"></h2>
 
-    <h1 class="resultado-apostas-geradas-estatisticas"><%= @valor %></h1>
-    <h1 class="resultado-apostas-geradas-estatisticas"><%= @chance_printada %></h1>
-    <h1 class="resultado-apostas-geradas-estatisticas"><%= @chance_escopo_printada %></h1>
+        <h1 class="resultado-apostas-geradas-estatisticas"><%= @valor %></h1>
+        <h1 class="resultado-apostas-geradas-estatisticas"><%= @chance_printada %></h1>
+        <h1 class="resultado-apostas-geradas-estatisticas"><%= @chance_escopo_printada %></h1>
+      </div>
+    </div>
   </div>
 </div>
 
