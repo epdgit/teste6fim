@@ -227,6 +227,17 @@ select.form-control {
   top: 0;
 }
 
+.divulgacao3 {
+  position: -webkit-sticky; /* Safari & IE */ // daqui para frente é para a imagem fixar durante o Scroll
+  position: sticky;
+  top: 0;
+  max-width: 306px;
+}
+
+.imagem-borda-arrendondada {
+  border-radius: 10px;
+}
+
 .ultimo-jogo-home {
     display: inline-block;
     width: 39px;
