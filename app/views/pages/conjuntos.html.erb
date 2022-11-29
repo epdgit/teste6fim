@@ -88,30 +88,15 @@
 
 
 
-    <p id="array-ult17" style="display: none">
-    <%= @array17 %>
-    </p>
-    <p id="array-ult13" style="display: none">
-    <%= @array13 %>
-    </p>
+    <p id="array-ult17" style="display: none"><%=@array17%></p>
+    <p id="array-ult13" style="display: none"><%=@array13%></p>
+    <p id="array-ult10" style="display: none" ><%=@array10%></p><%# style="display: none"  %>
 
-    <p id="array-ult10" style="display: none">
-      <%= @array10  %>
-    </p>
-    <p id="array-mais-saem" style="display: none">
-      <%= @mais_saem  %>
-    </p>
-    <p id="array-menos-saem" style="display: none">
-      <%= @menos_saem %>
-    </p>
+    <p id="array-mais-saem" style="display: none"><%=@mais_saem%></p>
+    <p id="array-menos-saem" style="display: none"><%=@menos_saem%></p>
 
-    <p id="array-media" style="display: none">
-      <%= @media %>
-    </p>
-
-    <p id="array-media-mil" style="display: none">
-      <%= @media_mil %>
-    </p>
+    <p id="array-media" style="display: none"><%=@media%></p>
+    <p id="array-media-mil" style="display: none"><%=@media_mil%></p>
 
 
     <%# GERANDO JOGOS:  %>
@@ -256,7 +241,7 @@ function maisSaem() {
 
   var arrayMaisSaem = document.getElementById("array-mais-saem").textContent
   var numeroCaracteres = arrayMaisSaem.length
-  var arrayMaisSaemstring = arrayMaisSaem.substring(4, numeroCaracteres - 2).split(",")
+  var arrayMaisSaemstring = arrayMaisSaem.substring(1, numeroCaracteres - 1).split(",")
   var arrayMaisSaemlength = arrayMaisSaemstring.length
   var arrayMaisSaemFim = []
   var contador = 0
@@ -291,7 +276,7 @@ function menosSaem() {
 
   var arrayMenosSaem = document.getElementById("array-menos-saem").textContent
   var numeroCaracteres = arrayMenosSaem.length
-  var arrayMenosSaemstring = arrayMenosSaem.substring(4, numeroCaracteres - 2).split(",")
+  var arrayMenosSaemstring = arrayMenosSaem.substring(1, numeroCaracteres - 1).split(",")
   var arrayMenosSaemlength = arrayMenosSaemstring.length
   var arrayMenosSaemFim = []
   var contador = 0
@@ -324,7 +309,7 @@ function media() {
 
   var arrayMedia = document.getElementById("array-media").textContent
   var numeroCaracteres = arrayMedia.length
-  var arrayMediastring = arrayMedia.substring(4, numeroCaracteres - 2).split(",")
+  var arrayMediastring = arrayMedia.substring(1, numeroCaracteres - 1).split(",")
   var arrayMedialength = arrayMediastring.length
   var arrayMediaFim = []
   var contador = 0
@@ -357,7 +342,7 @@ function mediaMil() {
 
   var arrayMediaMil = document.getElementById("array-media-mil").textContent
   var numeroCaracteres = arrayMediaMil.length
-  var arrayMediaMilstring = arrayMediaMil.substring(4, numeroCaracteres - 2).split(",")
+  var arrayMediaMilstring = arrayMediaMil.substring(1, numeroCaracteres - 1).split(",")
   var arrayMediaMillength = arrayMediaMilstring.length
   var arrayMediaMilFim = []
   var contador = 0
@@ -417,7 +402,7 @@ function ramalhoDantas() {
 function ultD() {
   var array17 = document.getElementById("array-ult17").textContent
   var numeroCaracteres = array17.length
-  var array17string = array17.substring(3, numeroCaracteres - 2).split(",")
+  var array17string = array17.substring(1, numeroCaracteres - 1).split(",")
   var array17length = array17string.length
   var array17Fim = []
   var contador = 0
@@ -450,7 +435,7 @@ function ultD() {
 function ultT() {
   var array13 = document.getElementById("array-ult13").textContent
   var numeroCaracteres = array13.length
-  var array13string = array13.substring(3, numeroCaracteres - 2).split(",")
+  var array13string = array13.substring(1, numeroCaracteres - 1).split(",")
   var array13length = array13string.length
   var array13Fim = []
   var contador = 0
@@ -485,7 +470,7 @@ function ultT() {
 function ultDez() {
   var array10 = document.getElementById("array-ult10").textContent
   var numeroCaracteres = array10.length
-  var array10string = array10.substring(4, numeroCaracteres - 2).split(",")
+  var array10string = array10.substring(1, numeroCaracteres - 1).split(",")
   var array10length = array10string.length
   var array10Fim = []
   var contador = 0
