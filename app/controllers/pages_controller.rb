@@ -597,6 +597,169 @@ class PagesController < ApplicationController
     # array_ordenado_menos_saem_ate_mais_saem = hash_final_todos_numeros.keys
     # @mais_saem = array_ordenado_menos_saem_ate_mais_saem.reverse # começa do que mais sai
 
+    array_todos_numeros = []
+    @sorteio_6x0_pares_impares = 0
+    @sorteio_5x1_pares_impares = 0
+    @sorteio_4x2_pares_impares = 0
+    @sorteio_3x3_pares_impares = 0
+    @sorteio_2x4_pares_impares = 0
+    @sorteio_1x5_pares_impares = 0
+    @sorteio_0x6_pares_impares = 0
+    for cada_sorteio in @ultimo
+      # CRIANDO ARRAY COM TODOS OS NÚMEROS
+      for numero in cada_sorteio
+        array_todos_numeros << numero
+      end
+
+      # CHECANDO CADA SORTEIO PARES E ÍMPARES (6x0; 5x1; etc. )
+      if cada_sorteio.count { | item | item.even? } == 6
+        @sorteio_6x0_pares_impares += 1
+      elsif cada_sorteio.count { | item | item.even? } == 5
+        @sorteio_5x1_pares_impares += 1
+      elsif cada_sorteio.count { | item | item.even? } == 4
+        @sorteio_4x2_pares_impares += 1
+      elsif cada_sorteio.count { | item | item.even? } == 3
+        @sorteio_3x3_pares_impares += 1
+      elsif cada_sorteio.count { | item | item.even? } == 2
+        @sorteio_2x4_pares_impares += 1
+      elsif cada_sorteio.count { | item | item.even? } == 1
+        @sorteio_1x5_pares_impares += 1
+      elsif cada_sorteio.count { | item | item.even? } == 0
+        @sorteio_0x6_pares_impares += 1
+      end      
+    end
+
+    # PARES E ÍMPARES
+    # @contador_par = 0
+    # @contador_impar = 0
+    # for x in array_todos_numeros
+    #   if x % 2 == 0
+    #       @contador_par += 1
+    #   else
+    #       @contador_impar += 1
+    #   end
+    # end
+    # PARES E ÍMPARES TOTAL
+    @pares = array_todos_numeros.count { | item | item.even? }
+    @impares = array_todos_numeros.count { | item | item.odd? }
+
+    # QUADRANTES
+    quad1 = [1, 2, 3, 4, 5, 11, 12, 13, 14, 15, 21, 22, 23, 24, 25]
+    quad2 = [6, 7, 8, 9, 10, 16, 17, 18, 19, 20, 26, 27, 28, 29, 30]
+    quad3 = [31, 32, 33, 34, 35, 41, 42, 43, 44, 45, 51, 52, 53, 54, 55]
+    quad4 = [36, 37, 38, 39, 40, 46, 47, 48, 49, 50, 56, 57, 58, 59, 60]
+    @quadrante1 = 0
+    @quadrante2 = 0
+    @quadrante3 = 0
+    @quadrante4 = 0
+
+    # COLUNAS E LINHAS
+    col1 = [1,11,21,31,41,51]
+    col2 = [2,12,22,32,42,52]
+    col3 = [3,13,23,33,43,53]
+    col4 = [4,14,24,34,44,54]
+    col5 = [5,15,25,35,45,55]
+    col6 = [6,16,26,36,46,56]
+    col7 = [7,17,27,37,47,57]
+    col8 = [8,18,28,38,48,58]
+    col9 = [9,19,29,39,49,59]
+    col10 = [10,20,30,40,50,60]
+    @coluna1 = 0
+    @coluna2 = 0
+    @coluna3 = 0
+    @coluna4 = 0
+    @coluna5 = 0
+    @coluna6 = 0
+    @coluna7 = 0
+    @coluna8 = 0
+    @coluna9 = 0
+    @coluna10 = 0
+    
+    @linha1_do_1_ao_10 = 0
+    @linha2_do_11_ao_20 = 0
+    @linha3_do_21_ao_30 = 0
+    @linha4_do_31_ao_40 = 0
+    @linha5_do_41_ao_50 = 0
+    @linha6_do_51_ao_60 = 0
+
+    for numero in array_todos_numeros
+      #LINHAS
+      if numero < 11
+        @linha1_do_1_ao_10 += 1
+      elsif numero < 21
+        @linha2_do_11_ao_20 += 1
+      elsif numero < 31
+        @linha3_do_21_ao_30 += 1
+      elsif numero < 41
+        @linha4_do_31_ao_40 += 1
+      elsif numero < 51
+        @linha5_do_41_ao_50 += 1
+      else
+        @linha6_do_51_ao_60 += 1
+      end
+
+      # COLUNAS
+      if col1.include?(numero)
+        @coluna1 += 1
+      elsif col2.include?(numero)
+        @coluna2 += 1
+      elsif col3.include?(numero)
+        @coluna3 += 1
+      elsif col4.include?(numero)
+        @coluna4 += 1
+      elsif col5.include?(numero)
+        @coluna5 += 1
+      elsif col6.include?(numero)
+        @coluna6 += 1
+      elsif col7.include?(numero)
+        @coluna7 += 1
+      elsif col8.include?(numero)
+        @coluna8 += 1
+      elsif col9.include?(numero)
+        @coluna9 += 1
+      elsif col10.include?(numero)
+        @coluna10 += 1
+      end
+
+      # QUADRANTES TODOS OS NÚMEROS
+      if quad1.include?(numero)
+        @quadrante1 += 1
+      elsif quad2.include?(numero)
+        @quadrante2 += 1
+      elsif quad3.include?(numero)
+        @quadrante3 += 1
+      elsif quad4.include?(numero)
+        @quadrante4 += 1
+      end
+    end
+
+    
+    @seis_mesmo_quadrante = 0
+    @cinco_mesmo_quadrante = 0
+    @quatro_mesmo_quadrante = 0
+    @tres_mesmo_quadrante = 0
+    for cada_sorteio in @ultimo
+      if ((cada_sorteio & quad1).size == 6) or ((cada_sorteio & quad2).size == 6) or ((cada_sorteio & quad3).size == 6) or ((cada_sorteio & quad4).size == 6)
+        @seis_mesmo_quadrante += 1
+      elsif ((cada_sorteio & quad1).size == 5) or ((cada_sorteio & quad2).size == 5) or ((cada_sorteio & quad3).size == 5) or ((cada_sorteio & quad4).size == 5)
+        @cinco_mesmo_quadrante += 1
+      elsif ((cada_sorteio & quad1).size == 4) or ((cada_sorteio & quad2).size == 4) or ((cada_sorteio & quad3).size == 4) or ((cada_sorteio & quad4).size == 4)
+        @quatro_mesmo_quadrante += 1
+      elsif ((cada_sorteio & quad1).size == 3) or ((cada_sorteio & quad2).size == 3) or ((cada_sorteio & quad3).size == 3) or ((cada_sorteio & quad4).size == 3)
+        @tres_mesmo_quadrante += 1
+      end
+    end
+    
+    # DICIONÁRIO DE QUADRANTES (ESTÁ ATRASANDO O PROCESSAMENTO)
+    array_todos_quadrantes = []
+    for cada_sorteio in @ultimo
+      array_todos_quadrantes << [(cada_sorteio & quad1).size, (cada_sorteio & quad2).size, (cada_sorteio & quad3).size, (cada_sorteio & quad4).size].sort.reverse
+    end
+    set_com_array_todos_quadrantes = array_todos_quadrantes.to_set
+    @dicionario_quadrantes = {}
+    for x in set_com_array_todos_quadrantes
+      @dicionario_quadrantes[x] = array_todos_quadrantes.count(x) 
+    end
   end
 
 
