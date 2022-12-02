@@ -6,6 +6,59 @@ for x in @ultimo
 <% end %>
 
 <%= @ultimo.size %>
+<p><%= "Pares e ímpares 6x0: #{@sorteio_6x0_pares_impares}" %></p>
+<p><%= "Pares e ímpares 5x1: #{@sorteio_5x1_pares_impares}" %></p>
+<p><%= "Pares e ímpares 4x2: #{@sorteio_4x2_pares_impares}" %></p>
+<p><%= "Pares e ímpares 3x3: #{@sorteio_3x3_pares_impares}" %></p>
+<p><%= "Pares e ímpares 2x4: #{@sorteio_2x4_pares_impares}" %></p>
+<p><%= "Pares e ímpares 1x5: #{@sorteio_1x5_pares_impares}" %></p>
+<p><%= "Pares e ímpares 0x6: #{@sorteio_0x6_pares_impares}" %></p>
+
+<%= "Pares: #{@pares}" %>
+<%= "Ímpares: #{@impares}" %>
+
+<p><%= "LINHA1: #{@linha1_do_1_ao_10}" %></p>
+<p><%= "LINHA2: #{@linha2_do_11_ao_20}" %></p>
+<p><%= "LINHA3: #{@linha3_do_21_ao_30}" %></p>
+<p><%= "LINHA4: #{@linha4_do_31_ao_40}" %></p>
+<p><%= "LINHA5: #{@linha5_do_41_ao_50}" %></p>
+<p><%= "LINHA5: #{@linha6_do_51_ao_60}" %></p>
+
+
+<P><%= "COLUNA1: #{@coluna1}" %></P>
+<P><%= "COLUNA2: #{@coluna2}" %></P>
+<P><%= "COLUNA3: #{@coluna3}" %></P>
+<P><%= "COLUNA4: #{@coluna4}" %></P>
+<P><%= "COLUNA5: #{@coluna5}" %></P>
+<P><%= "COLUNA6: #{@coluna6}" %></P>
+<P><%= "COLUNA7: #{@coluna7}" %></P>
+<P><%= "COLUNA8: #{@coluna8}" %></P>
+<P><%= "COLUNA9: #{@coluna9}" %></P>
+<P><%= "COLUNA10: #{@coluna10}" %></P>
+
+<P><%= "QUADRANTE1: #{@quadrante1}" %></P>
+<P><%= "QUADRANTE2: #{@quadrante2}" %></P>
+<P><%= "QUADRANTE3: #{@quadrante3}" %></P>
+<P><%= "QUADRANTE4: #{@quadrante4}" %></P>
+
+
+<p><%= "SEIS MESMO QUADRANTE: #{@seis_mesmo_quadrante}; PERCENTUAL: #{(@seis_mesmo_quadrante.to_f/@ultimo.size)}" %></p>
+<p><%= "CINCO MESMO QUADRANTE: #{@cinco_mesmo_quadrante}; PERCENTUAL: #{(@cinco_mesmo_quadrante.to_f/@ultimo.size)}" %></p>
+<p><%= "QUATRO MESMO QUADRANTE: #{@quatro_mesmo_quadrante}; PERCENTUAL: #{(@quatro_mesmo_quadrante.to_f/@ultimo.size)}" %></p>
+<p><%= "TRÊS MESMO QUADRANTE: #{@tres_mesmo_quadrante}; PERCENTUAL: #{(@tres_mesmo_quadrante.to_f/@ultimo.size)}" %></p>
+
+
+<p><%= "RESTANTE DOS QUADRANTES: #{@ultimo.size - @seis_mesmo_quadrante - @cinco_mesmo_quadrante - @quatro_mesmo_quadrante - @tres_mesmo_quadrante}; PERCENTUAL: #{((@ultimo.size - @seis_mesmo_quadrante - @cinco_mesmo_quadrante - @quatro_mesmo_quadrante - @tres_mesmo_quadrante).to_f/@ultimo.size)}" %></p>
+
+<p><%= "DICIONARIO DE QUADRANTES: #{@dicionario_quadrantes}" %></p>
+
+
+
+
+
+
+
+
 <p><%= @array_duplas_fim %></p>
 <p><%= @array_ternos_fim %></p>
 <p><%= @array_quadras_fim %></p>
