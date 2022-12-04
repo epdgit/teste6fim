@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :home ]
+  skip_before_action :authenticate_user!, only: [ :home, :apostas, :sorte, :conjuntos, :estatistica ]
 
   MEGA = {
     numeros: [6,7,8,9,10,11,12,13,14,15],
@@ -254,6 +254,9 @@ class PagesController < ApplicationController
       indice_da_virgula = valor_temp_formato_brasil.index(",") # isso para pegar só 2 casas decimais
       if valor_temp_formato_brasil[(indice_da_virgula + 3)] == "0" or valor_temp_formato_brasil[(indice_da_virgula + 3)] == nil # ou seja, se eu tenho um zero depois de duas casas da vírgula: ,__0
         @valor_por_quota = "Valor da quota: #{valor_temp_formato_brasil[0..(indice_da_virgula + 2)]}" # então eu pego só duas casas decimais depois da vírgula
+      elsif valor_temp_formato_brasil[(indice_da_virgula + 3)].to_i > 5
+        valor_temp_formato_brasil[(indice_da_virgula + 2)] = (valor_temp_formato_brasil[(indice_da_virgula + 2)].to_i + 1).to_s
+        @valor_por_quota = "Valor da quota ( aproximado ): #{valor_temp_formato_brasil[0..(indice_da_virgula + 2)]}"
       else
         @valor_por_quota = "Valor da quota ( aproximado ): #{valor_temp_formato_brasil[0..(indice_da_virgula + 4)]}"
       end

@@ -120,7 +120,8 @@ function opcoesBolao() {
     document.getElementById("teste").setAttribute("method", "POST");
     document.getElementById("teste").setAttribute("action", "/apostas");
     document.getElementById("teste").setAttribute("target", "_blank");
-    document.getElementById("teste").setAttribute("rel", "noopener noreferrer");
+    // document.getElementById("teste").setAttribute("rel", "noopener noreferrer");
+    document.getElementById("teste").setAttribute("referrerpolicy", "same-origin");
 
     
     // RETIRANDO DADOS CRIADOS DAS APOSTAS GERADAS NA PRÓPRIA HOME
@@ -146,7 +147,8 @@ function opcoesBolao() {
     // ALTERANDO O FORM PARA TIRAR MÉTODO POST (CRIADO QUANDO DO BOLÃO)
     document.getElementById("teste").removeAttribute("method");
     document.getElementById("teste").removeAttribute("target");
-    document.getElementById("teste").removeAttribute("rel");
+    // document.getElementById("teste").removeAttribute("rel");
+    document.getElementById("teste").removeAttribute("referrerpolicy");
     document.getElementById("teste").setAttribute("action", "/");
   };
 };
