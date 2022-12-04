@@ -35,7 +35,7 @@
         <li class="nav-item">
           <%# <%= link_to "Estatística", "http://localhost:3000", class: "nav-link" %>
           <a class="nav-link" href="javascript:;" id="botao-estatistica" >Estatistica</a>
-        </li>
+        </li> 
         <%#  
         <li class="nav-item dropdown">
           <%= image_tag "https://kitt.lewagon.com/placeholder/users/epdgit", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false 
@@ -59,6 +59,31 @@
 
 
       <% else %>
+        <%# <li class="nav-item active"> %>
+          <%# <button id="botao-root" class="btn btn-primary">INÍCIO</button> %>
+          <%# <a class="nav-link" href="http://www.loto.app.br">Início</a> %>
+        <%# </li> %>
+        <li class="nav-item active">
+          <%# <button id="botao-root" class="btn btn-primary">INÍCIO</button> %>
+          <a class="nav-link" href="javascript:;" id="botao-root" >Início</a>
+          <%#= link_to "Início", "/", class: "nav-link" %> <%# isso não estava funcionando  %>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="javascript:;" id="botao-conjuntos" >Conjuntos</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="javascript:;" id="botao-sorte" >Teste da Sorte</a>
+        </li>
+        <%# <li class="nav-item"> %>
+          <%#= link_to "Conjuntos", "http://www.loto.app.br/conjuntos", class: "nav-link" %>
+        <%# </li> %>
+        <%# <li class="nav-item">
+          <%= link_to "Teste da Sorte", "sorte", class: "nav-link" 
+        </li> %>
+        <li class="nav-item">
+          <%# <%= link_to "Estatística", "http://localhost:3000", class: "nav-link" %>
+          <a class="nav-link" href="javascript:;" id="botao-estatistica" >Estatistica</a>
+        </li>      
         <li class="nav-item">
           <%= link_to "Login", new_user_session_path, class: "nav-link" %>
         </li>

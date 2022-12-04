@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :home ]
+  skip_before_action :authenticate_user!, only: [ :home, :apostas, :sorte, :conjuntos, :estatistica ]
 
   MEGA = {
     numeros: [6,7,8,9,10,11,12,13,14,15],
