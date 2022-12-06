@@ -870,6 +870,15 @@ ol {
   .form-group {
       display: block !important; // para tirar o inline-block que é o padrão
   }
+  .botoes-media-menor-q-768 {
+      display: none !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .botoes-media-768 {
+      display: none !important;
+  }
 }
 
 

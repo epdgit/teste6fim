@@ -13,7 +13,7 @@
       <div class="form-group">
 
         <div id="botoes-agrupados"> <%# FUNÇÃO E ID NÃO PODEM TER O MESMO NOME!!! CASO CONTRÁRIO, O JS DIZ QUE A FUNÇÃO NÃO EXISTE!!! %>
-          <div class="btn-group" > <%# fazer uma query para trocar para btn-group-vertical quando em celular  %>
+          <div class="btn-group botoes-media-768" > <%# fazer uma query para trocar para btn-group-vertical quando em celular  %>
             <button type="button" id="mais-saem" onclick="maisSaem()" class="btn btn-primary">Mais saem</button>
             <button type="button" id="menos-saem" onclick="menosSaem()" class="btn btn-primary">Menos saem</button>
             <button type="button" id="media_todos" onclick="media()" class="btn btn-primary">Média</button>
@@ -27,6 +27,17 @@
           <%# <div>
             <button type="button" id="limpa" onclick="limpar()" class="btn btn-warning">Limpar Marcações</button>
           </div> %>
+          <div class="btn-group-vertical botoes-media-menor-q-768" > <%# fazer uma query para trocar para btn-group-vertical quando em celular  %>
+            <button type="button" id="mais-saem" onclick="maisSaem()" class="btn btn-primary">Mais saem</button>
+            <button type="button" id="menos-saem" onclick="menosSaem()" class="btn btn-primary">Menos saem</button>
+            <button type="button" id="media_todos" onclick="media()" class="btn btn-primary">Média</button>
+            <button type="button" id="media_mil" onclick="mediaMil()" class="btn btn-primary">Média 1000</button>
+            <button type="button" id="ramalho-dantas" onclick="ramalhoDantas()" class="btn btn-primary">Conjunto RD</button>
+            <button type="button" id="ult17" onclick="ultD()" class="btn btn-primary">Estou com sorte</button>
+            <button type="button" id="ult13" onclick="ultT()" class="btn btn-primary">Arrojado</button>
+            <button type="button" id="ult10" onclick="ultDez()" class="btn btn-primary">Mais Arrojado</button>
+            <button type="button" id="limpa" onclick="limpar()" class="btn btn-warning">Limpar Marcações</button>
+          </div>
         </div>
 
         <ul>
