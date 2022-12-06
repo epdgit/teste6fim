@@ -816,7 +816,7 @@ ol {
 }
 
 // DROP DOWN DO HEADER
-.dropdown {
+.drop2 {
   background-color: #f9f9f9;
   position: relative;
   display: inline-block;
@@ -850,7 +850,7 @@ ol {
 //   opacity: 0.2;
 // }
 
-.dropdown:hover { // aqui eu aninhei o Span dentro do Dropdawn quando o mouse passar por cima
+.drop2:hover { // aqui eu aninhei o Span dentro do Dropdawn quando o mouse passar por cima
   transition: 0.1s;
   border: none;
   span {
@@ -858,7 +858,7 @@ ol {
   }
 }
 
-.dropdown:hover .dropdown-content {
+.drop2:hover .dropdown-content {
   display: block;
 }
 
