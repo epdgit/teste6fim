@@ -752,7 +752,7 @@ ol {
 #div-do-botao-numeros-da-sorte {
   display: flex;
   margin: auto;
-  width: 27%;
+  width: 33%; //27%
   margin-top: 35px;
 }
 
@@ -898,6 +898,10 @@ ol {
   .marketing-mobile {
     display: none;
   }
+
+  .btn-group-lg>.btn, .btn-lg {
+    font-size: 16px !important;
+  }
 }
 
 @media (max-width: 767px) {
@@ -919,16 +923,24 @@ ol {
   }
 
   .sorte-titulo {
-    font-size: 16px;
+    font-size: 18px;
   }
   
   .sorte-formatado {
-    font-size: 13px;
+    font-size: 16px;
     // line-height: 130%;
     margin-left: 12px;
     // margin-right: 26px;
     // margin-bottom: 25px;
     // margin-top: 30px;
+  }
+
+  .conjuntos-titulo {
+    font-size: 18px;
+  }
+
+  .conjuntos-formatado {
+    font-size: 16px;
   }
 
   .jogos-gerados-ruby-numeros-sorte {
@@ -1023,6 +1035,68 @@ ol {
   }
   .ol-apostas-geradas {
     padding-left: 1.4rem;
+  }
+
+  .inicio h1, .inicio .h1 {
+    font-size: 18px;
+  }
+
+  .inicio p {
+    font-size: 16px;
+    margin: 14px 14px;
+    text-indent: 7px;
+  }
+
+  .tudo {
+    padding-left: 2px;
+  }
+
+  .conteudo {
+    margin-right: 10px;
+    margin-left: 8px;
+    text-indent: 40px;
+    font-size: 16px;
+  }
+
+  .agrupando-campos {
+    display: contents;
+  }
+
+  .quantidade-apostas {
+    margin-top: 13px;
+    margin-left: 0px;
+    display: flex;
+  }
+
+  .quantidade-numeros {
+    margin-top: 20px;
+  }
+
+  .organizar-bolao {
+    margin-left: 0px;
+    text-align: center;
+  }
+
+  .modalidade .form-control {
+    width: 94%;
+    margin-left: 6px;
+  }
+
+  .apostadores {
+    display: contents;
+  }
+
+  .opcoes {
+    display: contents;
+  }
+
+  #totais {
+    display: contents;
+  }
+
+  .apostadores-quantidade {
+    display: block;
+    margin-left: 0px;
   }
 }
 
