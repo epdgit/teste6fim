@@ -40,7 +40,7 @@
           </div>
         </div>
 
-        <ul>
+        <ul class="todos-numeros-conjuntos">
           <% jogo = (1..60).to_a %>
           <% jogo.each do |numero| %>
           <li id="n<%= numero %>" class="numero-sorte jogos-gerados-ruby-numeros-sorte" value=<%= "#{numero}" %>> 
@@ -128,7 +128,7 @@
         <%= "Apostas geradas: " %>
         <% end %>
         </h1>
-        <ol >
+        <ol class="ol-apostas-geradas">
           <% @conferir.each do |jogo| %>
             <li>
               <ul >

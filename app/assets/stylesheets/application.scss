@@ -178,16 +178,18 @@ select.form-control {
 .inicio h1 {
   color: #204A65;
   font-weight: 900;
-  font-size: 35px;
+  font-size: 30px;
   font-family: 'Rokkitt', serif;
   margin-bottom: 27px;
   text-align: center;
 }
 
 .inicio p {
+  font-family: 'Rokkitt', serif;
   color: #204A65;
   font-weight: 700;
-  font-size: 24px;
+  font-size: 20px;
+  line-height: 130%;
   font-family: 'Rokkitt', serif;
   margin: 30px 45px;
   text-align: justify;
@@ -238,6 +240,11 @@ select.form-control {
 .imagem-borda-arrendondada {
   border-radius: 10px;
 }
+
+.imagem-borda-arrendondada2 {
+  border-radius: 10px 10px 0px 0px;
+}
+
 
 .ultimo-jogo-home {
     display: inline-block;
@@ -582,7 +589,7 @@ fieldset {
 .resultado-apostas-geradas-estatisticas {
   color: #204A65;
   font-weight: 700;
-  font-size: 30px;
+  font-size: 20px;
   font-family: 'Rokkitt', serif;
   margin-left: 26px;
   margin-right: 26px;
@@ -595,7 +602,7 @@ fieldset {
 .conjuntos-titulo {
   color: #204A65;
   font-weight: 900;
-  font-size: 35px;
+  font-size: 30px;
   font-family: 'Rokkitt', serif;
   margin-bottom: 27px;
   margin-top: 30px;
@@ -606,7 +613,7 @@ fieldset {
 .conjuntos-formatado {
   color: #204A65;
   font-weight: 700;
-  font-size: 22px;
+  font-size: 20px;
   line-height: 130%;
   font-family: 'Rokkitt', serif;
   margin-left: 26px;
@@ -620,7 +627,7 @@ fieldset {
 .sorte-titulo {
   color: #204A65;
   font-weight: 900;
-  font-size: 35px;
+  font-size: 30px;
   font-family: 'Rokkitt', serif;
   margin-bottom: 27px;
   margin-top: 30px;
@@ -631,7 +638,7 @@ fieldset {
   color: #204A65;
   font-weight: 700;
   // font-size: 30px;
-  font-size: 22px;
+  font-size: 20px;
   line-height: 130%;
   font-family: 'Rokkitt', serif;
   margin-left: 26px;
@@ -646,7 +653,7 @@ fieldset {
 .resultado-apostas-geradas-estatisticas-sorte {
   color: #204A65;
   font-weight: 700;
-  font-size: 23px;
+  font-size: 16px;
   font-family: 'Rokkitt', serif;
   margin-left: 50px;
   margin-right: 26px;
@@ -862,22 +869,160 @@ ol {
   display: block;
 }
 
-
+.marketing-mobile {
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: space-evenly;
+    // left: 0px;
+    /* line-height: 1.6; */
+    // padding: 16px;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    z-index: 1050;
+}
 
 
 
 @media (min-width: 768px) {
-  .form-group {
-      display: block !important; // para tirar o inline-block que é o padrão
-  }
   .botoes-media-menor-q-768 {
-      display: none !important;
+    display: none !important;
+  }
+
+  
+
+  .form-group {
+      display: block  !important; // para tirar o inline-block que é o padrão
+  }
+
+  .marketing-mobile {
+    display: none;
   }
 }
 
 @media (max-width: 767px) {
   .botoes-media-768 {
-      display: none !important;
+    display: none !important;
+  }
+
+  
+  .marketing-large {
+    display: none;
+  }
+
+  .tudo2 {
+    padding-top: 70px;
+    padding-left: 2px;
+    padding-right: 2px;
+    margin-left: 2px;
+    margin-right: 2px;
+  }
+
+  .sorte-titulo {
+    font-size: 16px;
+  }
+  
+  .sorte-formatado {
+    font-size: 13px;
+    // line-height: 130%;
+    margin-left: 12px;
+    // margin-right: 26px;
+    // margin-bottom: 25px;
+    // margin-top: 30px;
+  }
+
+  .jogos-gerados-ruby-numeros-sorte {
+    width: 25px;
+    height: 25px;
+    margin: 8px 2px;
+    padding: 3px 0px;
+    font-size: 1.4rem;
+  }
+
+  #div-do-botao-numeros-da-sorte {
+    width: 213px;
+  }
+
+  .botao-checa-sorte-pequeno {
+    padding: 8px 0px;
+  }
+
+  .resultado-apostas-geradas-estatisticas {
+    font-size: 13px;
+    margin-left: 2px;
+    margin-right: 13px;
+  }
+
+  #apostas-geradas {
+    margin: auto;
+    padding-left: 10px;
+    width: 100%;
+  }
+  .resultado-apostas-geradas-estatisticas-sorte {
+    font-size: 13px;
+    margin-left: 0px;
+    margin-right: 5px;
+  }
+
+  .resultado-apostas-geradas {
+    font-size: 24px;
+    margin-left: 0px;
+  }
+
+  #jogos-gerados-ruby {
+    width: 25px;
+    height: 25px;
+    margin: 3px 0.7px;
+    padding: 3px 0px;
+    font-size: 1.4rem;
+  }
+
+  .divisor {
+    width: 120px;
+    margin-left: 0px;
+  }
+
+  .btn-group-lg>.btn, .btn-lg {
+    font-size: 13px !important;
+  }
+  .todos-numeros-sorte {
+    padding-left: 1rem;
+  }
+  .todos-numeros-conjuntos {
+    padding-left: 1rem;
+  }
+
+  label {
+    font-size: 15px !important;
+    margin-left: 5px !important;
+    margin-right: 5px !important;
+    max-width: 92px !important;
+  }
+  #quantidades-conjuntos {
+    display: contents;
+    // text-align: center;
+  }
+
+  .quantidade-numeros {
+    display: inline-flex;
+    margin-left: 0px;
+  }
+
+  #quantidade-apostas-conjuntos {
+    margin-top: 13px;
+    margin-left: 0px;
+    display: flex;
+  }
+  li span {
+    position: relative;
+    left: -10px;
+  }
+
+  .ol-apostas-geradas ul {
+    padding-left: 0rem;
+  }
+  .ol-apostas-geradas {
+    padding-left: 1.4rem;
   }
 }
 
