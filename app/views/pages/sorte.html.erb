@@ -11,7 +11,7 @@
       <div class="form-group">
       
 
-        <ul>
+        <ul class="todos-numeros-sorte">
           <% jogo = (1..60).to_a %>
           <% jogo.each do |numero| %>
           <li id="n<%= numero %>" class="numero-sorte jogos-gerados-ruby-numeros-sorte" value=<%= "#{numero}" %>> 
@@ -24,8 +24,8 @@
 
       <input form="numeroSorte" id="numeros-da-sorte-fim" name="meusNumeros" type="text" class="form-control" value="" style="display: none">
 
-
-        <div class="btn-group" id="div-do-botao-numeros-da-sorte">
+  
+        <div class="btn-group-vertical" id="div-do-botao-numeros-da-sorte">
           <button type="button" id="limpa" onclick="limpar()" class="btn btn-warning">Limpar Marcações</button>  
           <button type="submit" id="meus-numeros-da-sorte" class=" btn btn-primary btn-lg" onclick="testeQuantidade()"disabled="true"><span class="fas fa-sack-dollar">
           </span> Checar Meus Números</button>
@@ -164,6 +164,19 @@
 
 
 <script>
+// if (window.matchMedia('(min-width: 768px)').matches){
+//   var botaoChecar = document.getElementsByClassName('botoes-media-768');
+//   botaoChecar.className += "btn-group";
+  // botaoChecar.classList.remove("btn-group-vertical");
+// };
+
+// if (window.matchMedia('(max-width: 767px)').matches){
+//   var botaoChecar = document.getElementsByClassName('botoes-media-768');
+//   botaoChecar.className += "btn-group-vertical";
+//   if botaoChecar.classList.contains("btn-group") {
+//     botaoChecar.classList.remove("btn-group");
+//   }
+// };
 
 var arrayDaSorte = []
 window.onclick = e => {
