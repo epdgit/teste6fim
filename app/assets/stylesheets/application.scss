@@ -350,6 +350,10 @@ fieldset {
   margin-left: 6px;
 }
 
+.pagamento {
+  margin-right: 3px !important;
+}
+
 .quantidadeQuotas {
   width: 54px;
   margin-left: 3px;
@@ -458,7 +462,10 @@ fieldset {
 #div_todos_pagos {
   margin-top: 30px;
   margin-left: 46px;
-  margin-bottom: 10px
+  margin-bottom: 10px;
+  color: #204A65;
+  font-size: 20px;
+  font-family: 'Rokkitt', serif;
 }
 
 .div-estatisticas-sorte {
@@ -663,7 +670,7 @@ fieldset {
 
 
 .divisor {
-  box-shadow: 0px 2px 0px 0px red;
+  box-shadow: 0 3px 2px -2px red;
   width: 300px;
   padding-top: 15px;
   margin-left: 50px;
@@ -716,11 +723,11 @@ fieldset {
   font-weight: 700;
   font-family: 'Rokkitt', serif;
   // text-decoration: underline red;
-  margin-top: 45px;
+  margin-top: 30px;
   margin-bottom: 20px;
   margin-left: 50px;
-  box-shadow: 0px -2px 0px 0px red;
-  padding-top: 15px;
+  // box-shadow: 0px -2px 0px 0px red;
+  padding-top: 8px;
   width: 300px;
 
 }
@@ -752,7 +759,7 @@ ol {
 #div-do-botao-numeros-da-sorte {
   display: flex;
   margin: auto;
-  width: 27%;
+  width: 33%; //27%
   margin-top: 35px;
 }
 
@@ -884,6 +891,7 @@ ol {
 
 
 
+
 @media (min-width: 768px) {
   .botoes-media-menor-q-768 {
     display: none !important;
@@ -897,6 +905,10 @@ ol {
 
   .marketing-mobile {
     display: none;
+  }
+
+  .btn-group-lg>.btn, .btn-lg {
+    font-size: 16px !important;
   }
 }
 
@@ -919,11 +931,11 @@ ol {
   }
 
   .sorte-titulo {
-    font-size: 16px;
+    font-size: 3rem;
   }
   
   .sorte-formatado {
-    font-size: 13px;
+    font-size: 2.5rem;
     // line-height: 130%;
     margin-left: 12px;
     // margin-right: 26px;
@@ -931,16 +943,24 @@ ol {
     // margin-top: 30px;
   }
 
+  .conjuntos-titulo {
+    font-size: 3rem;
+  }
+
+  .conjuntos-formatado {
+    font-size: 2.5rem;
+  }
+
   .jogos-gerados-ruby-numeros-sorte {
-    width: 25px;
-    height: 25px;
-    margin: 8px 2px;
-    padding: 3px 0px;
-    font-size: 1.4rem;
+    width: 45px;
+    height: 45px;
+    margin: 8px 9px;
+    padding: 5px 0px;
+    font-size: 2.4rem;
   }
 
   #div-do-botao-numeros-da-sorte {
-    width: 213px;
+    width: 267px;
   }
 
   .botao-checa-sorte-pequeno {
@@ -948,9 +968,10 @@ ol {
   }
 
   .resultado-apostas-geradas-estatisticas {
-    font-size: 13px;
+    font-size: 27px;
     margin-left: 2px;
     margin-right: 13px;
+    word-spacing: -3px;
   }
 
   #apostas-geradas {
@@ -959,22 +980,30 @@ ol {
     width: 100%;
   }
   .resultado-apostas-geradas-estatisticas-sorte {
-    font-size: 13px;
-    margin-left: 0px;
-    margin-right: 5px;
+    font-size: 2.5rem;
+    margin-left: 39px;
+    margin-right: 21px;
+    word-spacing: -2px;
+    text-indent: -20px;
+    text-align: justify;
   }
 
   .resultado-apostas-geradas {
-    font-size: 24px;
+    font-size: 33px;
     margin-left: 0px;
   }
 
   #jogos-gerados-ruby {
-    width: 25px;
-    height: 25px;
-    margin: 3px 0.7px;
-    padding: 3px 0px;
-    font-size: 1.4rem;
+    // width: 25px;
+    // height: 25px;
+    // margin: 3px 0.7px;
+    // padding: 3px 0px;
+    // font-size: 1.4rem;
+    width: 45px;
+    height: 45px;
+    margin: 8px 1px;
+    padding: 5px 0px;
+    font-size: 2.4rem;
   }
 
   .divisor {
@@ -983,8 +1012,21 @@ ol {
   }
 
   .btn-group-lg>.btn, .btn-lg {
-    font-size: 13px !important;
+    font-size: 22px !important;
   }
+
+  .btn-group-lg>.btn, .btn-warning {
+    font-size: 20px !important;
+  }
+
+  .botoes-media-menor-q-768 .btn-primary {
+    font-size: 22px !important;
+  }
+
+  .button-gerador-aposta .btn-primary {
+    font-size: 22px !important;
+  }
+  
   .todos-numeros-sorte {
     padding-left: 1rem;
   }
@@ -993,10 +1035,10 @@ ol {
   }
 
   label {
-    font-size: 15px !important;
-    margin-left: 5px !important;
-    margin-right: 5px !important;
-    max-width: 92px !important;
+    font-size: 2.4rem !important;
+    margin-left: 11px !important;
+    margin-right: 25px !important;
+    max-width: 260px !important;
   }
   #quantidades-conjuntos {
     display: contents;
@@ -1024,6 +1066,225 @@ ol {
   .ol-apostas-geradas {
     padding-left: 1.4rem;
   }
+
+  .inicio h1, .inicio .h1 {
+    font-size: 3rem;
+  }
+
+  .inicio p {
+    font-size: 2.4rem;
+    margin: 14px 14px;
+    text-indent: 7px;
+  }
+
+  .tudo {
+    padding-left: 2px;
+  }
+
+  .conteudo {
+    margin-right: 10px;
+    margin-left: 8px;
+    text-indent: 40px;
+    font-size: 16px;
+  }
+
+  .agrupando-campos {
+    display: contents;
+  }
+
+  .quantidade-apostas {
+    margin-top: 13px;
+    margin-left: 0px;
+    display: flex;
+    margin-bottom: 35px;
+  }
+
+  .quantidade-numeros {
+    margin-top: 35px;
+  }
+
+  .organizar-bolao {
+    margin-left: 0px;
+    text-align: center;
+  }
+
+  .modalidade .form-control {
+    width: 80%;
+    height: 43px;
+    margin-left: 6px;
+    font-size: 17px;
+  }
+
+  #opcoesDaAposta {
+    width: 73px;
+    font-size: 17px;
+    height: 43px;
+    width: 73px;
+  }
+
+  #quantidade {
+    width: 73px;
+    font-size: 17px;
+    height: 43px;
+    width: 73px;  
+  }
+
+  .apostadores {
+    display: contents;
+  }
+
+  .opcoes {
+    display: contents;
+  }
+
+  #totais {
+    display: contents;
+  }
+
+  .apostadores-quantidade {
+    display: block;
+    margin-left: 0px;
+  }
+
+  #mensagem-alerta {
+    max-width: 255px;
+    font-size: 17px;
+  }
+
+  #mensagem-alerta2 {
+    max-width: 350px;
+    font-size: 17px;
+  }
+
+  #opcoesDaAposta21 {
+    width: 129px;
+    font-size: 17px;
+  }
+
+  #quantidade2 {
+    font-size: 17px;
+  }
+
+  #totalizador_de_apostas_sem_bolao {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #totalizador_de_apostas {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 22px;
+    margin-bottom: 22px;
+  }
+
+  #totalizador_de_quotas {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 22px;
+    padding-left: 0px;
+  }
+
+  
+
+  #teste_valor_total {
+    margin-top: 22px;
+    margin-bottom: 0px;
+  }
+  
+  #teste_total_apostas {
+    margin-left: 0px;
+    margin-top: 10px;
+    width: 184px;
+    height: 50px;
+    font-size: 23px;
+  }
+
+  legend {
+    font-size: 24px !important;
+  }
+
+  .conteudo {
+    font-size: 29px;
+  }
+  // #texto-total {
+  //   margin-top: 22px;
+  // }
+
+  #total_apostas {
+    margin-top: 10px;
+    width: 184px;
+    height: 50px;
+    font-size: 23px;
+  }
+
+  #total_quotas {
+    margin-top: 10px;
+  }
+
+  .seletor-quotas-distintas-sim {
+    margin-left: 0px !important;
+  }
+
+  #legenda-quotas {
+    width: 275px;
+    margin-left: 10px;
+  }
+
+  #todos_apostadores {
+    margin-top: 40px;
+  }
+
+  #div_todos_pagos {
+    font-size: 25px;
+  }
+
+  .apostadores .apostadores-quantidade {
+    width: 98%;
+  }
+
+  .apostadores-quantidade label {
+    max-width: none !important;
+    margin-left: 7px !important;
+    margin-right: 5px !important;
+    margin-top: 30px !important;
+  }
+
+  .data label {
+    margin-top: 30px !important;
+    max-width: none !important;
+  }
+  .div-quotas-distintas-para-alinhar {
+    text-align: center;
+  }
+
+  #divDoBolao .form-control {
+    width: 50% !important;
+    font-size: 17px;
+    height: 43px;
+    margin-left: 10px;
+  }
+
+  .quantidadeQuotas {
+    font-size: 20px;
+  }
+
+  .cada_cota {
+    padding: 10px;
+  }
+
+  #apostador {
+    width: 250px;
+    font-size: 20px;
+  }
+
+  .navbar-nav>li>a {
+    font-size: 22px;
+    margin-left: 10px;
+  }
+
 }
 
 
