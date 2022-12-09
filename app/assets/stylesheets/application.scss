@@ -199,9 +199,9 @@ select.form-control {
 .divulgacao {
   height: 135px;
   margin-bottom: 40px;
-  min-width: 22em;
+  min-width: 18em;
   // padding: 135px;
-  margin-right: 50px;
+  margin-right: 0px;
   border: 1px solid grey;
   // height: 150px;
   background-image: linear-gradient(to bottom, #6fd4b8, white);
@@ -248,11 +248,11 @@ select.form-control {
 
 .ultimo-jogo-home {
     display: inline-block;
-    width: 39px;
-    height: 39px;
+    width: 36px;
+    height: 36px;
     margin: 7px 0px;
     background: #209869;
-    padding: 9px 9px;
+    padding: 8px 9px;
     border-radius: 50%;
     font-family: 'Rokkitt', serif;
     color: #fff;
@@ -275,7 +275,7 @@ select.form-control {
 }
 
 .ul-ultimo-home {
-  margin-left: 15px;
+  margin-left: -3px;
 }
 
 
@@ -889,7 +889,15 @@ ol {
     z-index: 1050;
 }
 
+.marketing-large {
+  margin-right: 10px;
+  margin-left: 10px;
+}
 
+.apostas-redimensionada {
+  width: 100vw;
+  height: 100vh;
+}
 
 
 @media (min-width: 768px) {
@@ -1283,6 +1291,25 @@ ol {
   .navbar-nav>li>a {
     font-size: 22px;
     margin-left: 10px;
+  }
+
+  .dropdown-content {
+    // display: none;
+    // position: absolute;
+    // background-color: #f9f9f9;
+    // min-width: 
+    // top: -150px;
+    top: -320%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 85vw;
+    // box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 13px 30px;
+ 
+    margin: 0px;
+    // z-index: 1;
+    // font-size: 20px;
+    // border-radius: 15px;
   }
 
 }
