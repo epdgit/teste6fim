@@ -297,7 +297,12 @@ function limpar() {
 <%# MARKETING:  %>
 <script>
 let slideIndex = 0;
-showSlides();
+// showSlides();
+var divulgaDiv = document.getElementsByClassName("divulgacao3")
+if (divulgaDiv) {
+  showSlides();
+}
+
 
 function plusSlides(n) {
   let i;	
