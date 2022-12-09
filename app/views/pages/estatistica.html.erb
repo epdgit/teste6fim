@@ -5,67 +5,99 @@ for x in @ultimo
 <%= p x
 <% end %>
 
+<div id="div_img_background">
+  <div class="tudo2">
+    <div>
+      <%= @ultimo.size %>
+      <p><%= "Pares e ímpares 6x0: #{@sorteio_6x0_pares_impares}" %></p>
+      <p><%= "Pares e ímpares 5x1: #{@sorteio_5x1_pares_impares}" %></p>
+      <p><%= "Pares e ímpares 4x2: #{@sorteio_4x2_pares_impares}" %></p>
+      <p><%= "Pares e ímpares 3x3: #{@sorteio_3x3_pares_impares}" %></p>
+      <p><%= "Pares e ímpares 2x4: #{@sorteio_2x4_pares_impares}" %></p>
+      <p><%= "Pares e ímpares 1x5: #{@sorteio_1x5_pares_impares}" %></p>
+      <p><%= "Pares e ímpares 0x6: #{@sorteio_0x6_pares_impares}" %></p>
+
+      <%= "Pares: #{@pares}" %>
+      <%= "Ímpares: #{@impares}" %>
+
+      <p><%= "LINHA1: #{@linha1_do_1_ao_10}" %></p>
+      <p><%= "LINHA2: #{@linha2_do_11_ao_20}" %></p>
+      <p><%= "LINHA3: #{@linha3_do_21_ao_30}" %></p>
+      <p><%= "LINHA4: #{@linha4_do_31_ao_40}" %></p>
+      <p><%= "LINHA5: #{@linha5_do_41_ao_50}" %></p>
+      <p><%= "LINHA5: #{@linha6_do_51_ao_60}" %></p>
 
 
-<%= @ultimo.size %>
-<p><%= "Pares e ímpares 6x0: #{@sorteio_6x0_pares_impares}" %></p>
-<p><%= "Pares e ímpares 5x1: #{@sorteio_5x1_pares_impares}" %></p>
-<p><%= "Pares e ímpares 4x2: #{@sorteio_4x2_pares_impares}" %></p>
-<p><%= "Pares e ímpares 3x3: #{@sorteio_3x3_pares_impares}" %></p>
-<p><%= "Pares e ímpares 2x4: #{@sorteio_2x4_pares_impares}" %></p>
-<p><%= "Pares e ímpares 1x5: #{@sorteio_1x5_pares_impares}" %></p>
-<p><%= "Pares e ímpares 0x6: #{@sorteio_0x6_pares_impares}" %></p>
+      <P><%= "COLUNA1: #{@coluna1}" %></P>
+      <P><%= "COLUNA2: #{@coluna2}" %></P>
+      <P><%= "COLUNA3: #{@coluna3}" %></P>
+      <P><%= "COLUNA4: #{@coluna4}" %></P>
+      <P><%= "COLUNA5: #{@coluna5}" %></P>
+      <P><%= "COLUNA6: #{@coluna6}" %></P>
+      <P><%= "COLUNA7: #{@coluna7}" %></P>
+      <P><%= "COLUNA8: #{@coluna8}" %></P>
+      <P><%= "COLUNA9: #{@coluna9}" %></P>
+      <P><%= "COLUNA10: #{@coluna10}" %></P>
 
-<%= "Pares: #{@pares}" %>
-<%= "Ímpares: #{@impares}" %>
-
-<p><%= "LINHA1: #{@linha1_do_1_ao_10}" %></p>
-<p><%= "LINHA2: #{@linha2_do_11_ao_20}" %></p>
-<p><%= "LINHA3: #{@linha3_do_21_ao_30}" %></p>
-<p><%= "LINHA4: #{@linha4_do_31_ao_40}" %></p>
-<p><%= "LINHA5: #{@linha5_do_41_ao_50}" %></p>
-<p><%= "LINHA5: #{@linha6_do_51_ao_60}" %></p>
+      <P><%= "QUADRANTE1: #{@quadrante1}" %></P>
+      <P><%= "QUADRANTE2: #{@quadrante2}" %></P>
+      <P><%= "QUADRANTE3: #{@quadrante3}" %></P>
+      <P><%= "QUADRANTE4: #{@quadrante4}" %></P>
 
 
-<P><%= "COLUNA1: #{@coluna1}" %></P>
-<P><%= "COLUNA2: #{@coluna2}" %></P>
-<P><%= "COLUNA3: #{@coluna3}" %></P>
-<P><%= "COLUNA4: #{@coluna4}" %></P>
-<P><%= "COLUNA5: #{@coluna5}" %></P>
-<P><%= "COLUNA6: #{@coluna6}" %></P>
-<P><%= "COLUNA7: #{@coluna7}" %></P>
-<P><%= "COLUNA8: #{@coluna8}" %></P>
-<P><%= "COLUNA9: #{@coluna9}" %></P>
-<P><%= "COLUNA10: #{@coluna10}" %></P>
-
-<P><%= "QUADRANTE1: #{@quadrante1}" %></P>
-<P><%= "QUADRANTE2: #{@quadrante2}" %></P>
-<P><%= "QUADRANTE3: #{@quadrante3}" %></P>
-<P><%= "QUADRANTE4: #{@quadrante4}" %></P>
+      <p><%= "SEIS MESMO QUADRANTE: #{@seis_mesmo_quadrante}; PERCENTUAL: #{(@seis_mesmo_quadrante.to_f/@ultimo.size)}" %></p>
+      <p><%= "CINCO MESMO QUADRANTE: #{@cinco_mesmo_quadrante}; PERCENTUAL: #{(@cinco_mesmo_quadrante.to_f/@ultimo.size)}" %></p>
+      <p><%= "QUATRO MESMO QUADRANTE: #{@quatro_mesmo_quadrante}; PERCENTUAL: #{(@quatro_mesmo_quadrante.to_f/@ultimo.size)}" %></p>
+      <p><%= "TRÊS MESMO QUADRANTE: #{@tres_mesmo_quadrante}; PERCENTUAL: #{(@tres_mesmo_quadrante.to_f/@ultimo.size)}" %></p>
 
 
-<p><%= "SEIS MESMO QUADRANTE: #{@seis_mesmo_quadrante}; PERCENTUAL: #{(@seis_mesmo_quadrante.to_f/@ultimo.size)}" %></p>
-<p><%= "CINCO MESMO QUADRANTE: #{@cinco_mesmo_quadrante}; PERCENTUAL: #{(@cinco_mesmo_quadrante.to_f/@ultimo.size)}" %></p>
-<p><%= "QUATRO MESMO QUADRANTE: #{@quatro_mesmo_quadrante}; PERCENTUAL: #{(@quatro_mesmo_quadrante.to_f/@ultimo.size)}" %></p>
-<p><%= "TRÊS MESMO QUADRANTE: #{@tres_mesmo_quadrante}; PERCENTUAL: #{(@tres_mesmo_quadrante.to_f/@ultimo.size)}" %></p>
+      <p><%= "RESTANTE DOS QUADRANTES: #{@ultimo.size - @seis_mesmo_quadrante - @cinco_mesmo_quadrante - @quatro_mesmo_quadrante - @tres_mesmo_quadrante}; PERCENTUAL: #{((@ultimo.size - @seis_mesmo_quadrante - @cinco_mesmo_quadrante - @quatro_mesmo_quadrante - @tres_mesmo_quadrante).to_f/@ultimo.size)}" %></p>
 
-
-<p><%= "RESTANTE DOS QUADRANTES: #{@ultimo.size - @seis_mesmo_quadrante - @cinco_mesmo_quadrante - @quatro_mesmo_quadrante - @tres_mesmo_quadrante}; PERCENTUAL: #{((@ultimo.size - @seis_mesmo_quadrante - @cinco_mesmo_quadrante - @quatro_mesmo_quadrante - @tres_mesmo_quadrante).to_f/@ultimo.size)}" %></p>
-
-<p><%= "DICIONARIO DE QUADRANTES: #{@dicionario_quadrantes}" %></p>
-
-
-
-
+      <p><%= "DICIONARIO DE QUADRANTES: #{@dicionario_quadrantes}" %></p>
 
 
 
 
-<p><%= @array_duplas_fim %></p>
-<p><%= @array_ternos_fim %></p>
-<p><%= @array_quadras_fim %></p>
-<p><%= @array_quinas_fim %></p>
-<p><%= @hash_final_todos_numeros  %></p>
+
+
+
+
+      <p><%= @array_duplas_fim %></p>
+      <p><%= @array_ternos_fim %></p>
+      <p><%= @array_quadras_fim %></p>
+      <p><%= @array_quinas_fim %></p>
+      <p><%= @hash_final_todos_numeros  %></p>
+    
+    </div>
+    
+    <div class="marketing-large">
+      <div class="divulgacao3">
+        <div class="slideshow-container">
+          <div class="mySlides fade">
+            <a href="https://go.hotmart.com/G73964193K?dp=1" target="_blank">
+              <img class="imagem-borda-arrendondada" src="/assets/divulgacao_portugues_completo306x475px.jpg" style="width:100%">
+            </a>
+          </div>
+
+          <div class="mySlides fade">
+            <a href="https://www.parceiromagalu.com.br/magazinefortitudine/smartphone-samsung-galaxy-s20-fe-5g-128gb-azul-marinho-6gb-ram-65-cam-tripla-selfie-32mp/p/234880200/TE/GS2F/?utm_source=fortitudine&utm_medium=smartphone-samsung-galaxy-s20-fe-5g-128gb-azul-mar&utm_campaign=copy-paste&utm_content=copy-paste-share?utm_source=fortitudine&utm_medium=smartphone-samsung-galaxy-s20-fe-5g-128gb-azul-mar&utm_campaign=copy-paste&utm_content=copy-paste-share" target="_blank">
+              <img class="imagem-borda-arrendondada" src="/assets/samsung_s20_divulgacao.jpg" style="width:100%">
+            </a>
+          </div>
+
+          <div class="mySlides fade">
+            <a href="https://www.parceiromagalu.com.br/magazinefortitudine/notebook-vaio-fe15-intel-core-i3-4gb-256gb-ssd-156-full-hd-windows-11/p/233239600/IN/NOTE/?utm_source=fortitudine&utm_medium=notebook-vaio-fe15-intel-core-i3-4gb-256gb-ssd-156&utm_campaign=copy-paste&utm_content=copy-paste-share" target="_blank">
+              <img class="imagem-borda-arrendondada" src="/assets/vaio_fe15_divulgacao.jpg" style="width:100%">
+            </a>
+          </div>
+          <a class="prev" onclick="plusSlides(-1)">❮</a>
+          <a class="next" onclick="plusSlides(1)">❯</a>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
@@ -91,3 +123,105 @@ for x in @ultimo
       </div> %>
   <%# </div> %>
 </div>
+
+
+
+
+
+<%# MARKETING:  %>
+<script>
+let slideIndex = 0;
+showSlides();
+
+function plusSlides(n) {
+  let i;	
+  slideIndex += n
+  let slides = document.getElementsByClassName("mySlides");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  if (slideIndex > slides.length) {slideIndex = 1}
+  if (slideIndex < 1) {slideIndex = slides.length}
+  slides[slideIndex-1].style.display = "block";
+}
+
+
+function showSlides() {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}    
+  slides[slideIndex-1].style.display = "block";  
+  
+  setTimeout(showSlides, 10000); // Change image every 2 seconds
+}
+
+
+</script>
+
+
+
+
+
+
+<style>
+* {box-sizing: border-box;}
+body {font-family: Verdana, sans-serif;}
+.mySlides {display: none;}
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 9.9s;
+}
+
+@keyframes fade {
+  from {opacity: .9} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+}
+</style>
