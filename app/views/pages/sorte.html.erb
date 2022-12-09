@@ -1,161 +1,189 @@
 <div id="div_img_background">
   <div class="tudo2">
-    <h1 class="sorte-titulo">TESTE DA SORTE</h1>
-    <h1 class="sorte-formatado" >Você é daquele tipo de pessoa que possui números da sorte? Chegou a hora de testar seus números! Escolha 6 números da sorte e compare-os com <%= @quantidade_sorteios %> sorteios da Mega-sena.</h1>
+    <div>
+      <h1 class="sorte-titulo">TESTE DA SORTE</h1>
+      <h1 class="sorte-formatado" >Você é daquele tipo de pessoa que possui números da sorte? Chegou a hora de testar seus números! Escolha 6 números da sorte e compare-os com <%= @quantidade_sorteios %> sorteios da Mega-sena.</h1>
 
 
-    <%# <ul id="ul_jogos-gerados-ruby"> %>
-    <form action="/sorte"  class="form-inline" id="numeroSorte" name="nsorte"> <!-- método GET ou POST: method="POST"-->
-    <%#  <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %> <%# essa linha serve para o método POST, onde é exigido que haja um token de autenticidade %>
-      <%# <input type="hidden" name="authenticity_token" value="6mcCvU7ZazpIBcJTptw/8y4EucmzccFWli7tFUzX6IJEx8wq6PFC7m4rA1Jy+W4YW1hlhYhSOyhZefWtOM5ofQ=="> %>
-      <div class="form-group">
-      
+      <%# <ul id="ul_jogos-gerados-ruby"> %>
+      <form action="/sorte"  class="form-inline" id="numeroSorte" name="nsorte"> <!-- método GET ou POST: method="POST"-->
+      <%#  <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %> <%# essa linha serve para o método POST, onde é exigido que haja um token de autenticidade %>
+        <%# <input type="hidden" name="authenticity_token" value="6mcCvU7ZazpIBcJTptw/8y4EucmzccFWli7tFUzX6IJEx8wq6PFC7m4rA1Jy+W4YW1hlhYhSOyhZefWtOM5ofQ=="> %>
+        <div class="form-group">
+        
 
-        <ul class="todos-numeros-sorte">
-          <% jogo = (1..60).to_a %>
-          <% jogo.each do |numero| %>
-          <li id="n<%= numero %>" class="numero-sorte jogos-gerados-ruby-numeros-sorte" value=<%= "#{numero}" %>> 
-            <%= numero %>
-            <% end %>
-          </li>
-        </ul>
+          <ul class="todos-numeros-sorte">
+            <% jogo = (1..60).to_a %>
+            <% jogo.each do |numero| %>
+            <li id="n<%= numero %>" class="numero-sorte jogos-gerados-ruby-numeros-sorte" value=<%= "#{numero}" %>> 
+              <%= numero %>
+              <% end %>
+            </li>
+          </ul>
 
 
 
-      <input form="numeroSorte" id="numeros-da-sorte-fim" name="meusNumeros" type="text" class="form-control" value="" style="display: none">
+        <input form="numeroSorte" id="numeros-da-sorte-fim" name="meusNumeros" type="text" class="form-control" value="" style="display: none">
 
-  
-        <div class="btn-group-vertical" id="div-do-botao-numeros-da-sorte">
-          <button type="button" id="limpa" onclick="limpar()" class="btn btn-warning">Limpar Marcações</button>  
-          <button type="submit" id="meus-numeros-da-sorte" class=" btn btn-primary btn-lg" onclick="testeQuantidade()"disabled="true"><span class="fas fa-sack-dollar">
-          </span> Checar Meus Números</button>
+    
+          <div class="btn-group-vertical" id="div-do-botao-numeros-da-sorte">
+            <button type="button" id="limpa" onclick="limpar()" class="btn btn-warning">Limpar Marcações</button>  
+            <button type="submit" id="meus-numeros-da-sorte" class=" btn btn-primary btn-lg" onclick="testeQuantidade()"disabled="true"><span class="fas fa-sack-dollar">
+            </span> Checar Meus Números</button>
+          </div>
+          <div id="alerta">
+            <h6 id="mensagem-alerta">Escolha 6 números! Só então você poderá testar sua sorte. ☘️</h6>
+          </div>
         </div>
-        <div id="alerta">
-          <h6 id="mensagem-alerta">Escolha 6 números! Só então você poderá testar sua sorte. ☘️</h6>
+      </form>
+
+      <%# <button type="button" id="limpar" onclick="limpar()" class="btn btn-warning">Limpar Marcações</button> %>
+      <%# .. %>
+      <%# <a href="/">Home</a>  obs.: não recarrega as funções do Javascript  
+      <%= link_to 'Home', root_path  obs.: não recarrega as funções do Javascript %>
+      <%# <button id="botao-root" class="btn btn-primary">INÍCIO</button>  ESTAVA FUNCIONANDO ANTES DOS LINKS DA NAVBAR%>
+    
+
+
+      <%# GERANDO JOGOS:  %>
+      <div class="div-estatisticas-sorte">
+        <div id=<%=@id_div_apostas %> style=""> 
+          <p class="resultado-apostas-geradas-estatisticas">
+            <% if @numeros_da_sorte %>
+              <%= "Seus números da sorte: #{@numeros_da_sorte[0]}, #{@numeros_da_sorte[1]}, #{@numeros_da_sorte[2]}, #{@numeros_da_sorte[3]}, #{@numeros_da_sorte[4]}, #{@numeros_da_sorte[5]}" %>
+            <% end %>
+          </p>
+
+
+
+          <p >
+            <% contador_terno = 0 %>
+            <% contador_quadra = 0 %>
+            <% contador_quina = 0 %>
+            <% contador_sena = 0 %>
+            <% quadras = [] %>
+            <% quinas = [] %>
+            <% senas = [] %>
+            <% if @sorteios %>
+              <h4 class="resultado-apostas-geradas-estatisticas"><%= "Checados #{@sorteios.size} sorteios realizados pela Caixa Econômica Federal (Mega-sena), seus números da 
+                  sorte obtiveram os seguintes resultados:" %></h4>
+              <% @sorteios.each do |sorteio|  %>
+              <% numeros_sorteados =  sorteio.numeros.split(/,/).map {|x| x.to_i} %>
+                <% if (numeros_sorteados & @numeros_da_sorte).size == 3 %>
+                  <% contador_terno += 1 %>
+                <% elsif (numeros_sorteados & @numeros_da_sorte).size == 4 %>
+                  <% contador_quadra += 1 %>
+                  <% quadras << sorteio %>
+                <% elsif (numeros_sorteados & @numeros_da_sorte).size == 5 %>
+                  <% contador_quina += 1 %>
+                  <% quinas << sorteio %>
+                <% elsif (numeros_sorteados & @numeros_da_sorte).size == 6 %>
+                  <% contador_sena += 1 %>
+                  <% senas << sorteio %>  
+                <% end %>
+              <% end %>
+              <%# <p class="resultado-apostas-geradas-estatisticas"><%= "Ternos: #{contador_terno} (sem premiação)." %>
+              <p class="resultado-apostas-geradas-estatisticas">
+                <% if (contador_terno > 0) %>
+                  <i class="fas fa-search-dollar"  style="margin-right: 10px"></i><%= "Ternos: #{contador_terno} (sem premiação)." %>
+                <% else %>
+                  <i class="fas fa-search-dollar"  style="margin-right: 10px"></i><%= "Ternos: Nenhum terno para esses números!" %>
+                <% end %>
+              </p>
+
+
+
+              <%# <p class="resultado-apostas-geradas-estatisticas"><%= "#{contador_quadra} quadras: #{quadras}" %>
+
+              <p class="resultado-apostas-geradas-estatisticas">
+                <% if (contador_quadra > 0) %>
+                  <i class="fas fa-search-dollar"  style="margin-right: 10px"></i><%= "#{contador_quadra} quadra(s):" %>  <%# {quadras} %>
+                  <% if contador_quadra == 1 %>
+                    <p class="resultado-apostas-geradas-estatisticas-sorte"><%= "Concurso #{quadras[0].concurso}, realizado em #{quadras[0].data}, números: #{quadras[0].numeros}." %></p>
+                  <% elsif contador_quadra > 1 %>
+                    <% contando = 1 %>
+                    <% for x in quadras %>
+                      <p class="resultado-apostas-geradas-estatisticas-sorte"><%= "#{contando}. Concurso #{x.concurso}, realizado em #{x.data}, números: #{x.numeros}." %></p>
+                      <% contando += 1 %>
+                    <% end %>
+                  <% end %>
+                <% else %>
+                  <i class="fas fa-search-dollar"  style="margin-right: 10px"></i><%= "Quadras: Nenhuma quadra para esses números!" %>
+                <% end %>
+              </p>
+
+      <%# <Sorteio id: 1228, concurso: 1223, data: "16/10/2010", numeros: "15, 17, 35, 42, 47, 48", created_at: "2022-09-17 22:52:46", updated_at: "2022-09-17 22:52:46">  %>
+
+              <p class="resultado-apostas-geradas-estatisticas">
+                <% if (contador_quina > 0) %>
+                  <i class="fas fa-search-dollar"  style="margin-right: 10px"></i><%= "#{contador_quina} quina(s):" %>  <%# {quinas} %>
+                  <% if contador_quina == 1 %>
+                    <p class="resultado-apostas-geradas-estatisticas-sorte"><%= "Concurso #{quinas[0].concurso}, realizado em #{quinas[0].data}, números: #{quinas[0].numeros}." %></p>
+                  <% elsif contador_quina > 1 %>
+                    <% contando = 1 %>
+                    <% for x in quinas %>
+                      <p class="resultado-apostas-geradas-estatisticas-sorte"><%= "#{contando}. Concurso #{x.concurso}, realizado em #{x.data}, números: #{x.numeros}." %></p>
+                      <% contando += 1 %>
+                    <% end %>
+                  <% end %>
+                <% else %>
+                  <i class="fas fa-search-dollar"  style="margin-right: 10px"></i><%= "Quinas: Nenhuma quina para esses números!" %>
+                <% end %>
+              </p>
+
+
+              <p class="resultado-apostas-geradas-estatisticas" >
+                <% if (contador_sena > 0) %>
+                  <i class="fas fa-search-dollar" style="margin-right: 10px"></i><%= "#{contador_sena} sena(s):" %>  <%# {senas} %>
+                  <% if contador_sena == 1 %>
+                    <p class="resultado-apostas-geradas-estatisticas-sorte"><%= "Concurso #{senas[0].concurso}, realizado em #{senas[0].data}, números: #{senas[0].numeros}." %></p>
+                  <% elsif contador_sena > 1 %>
+                    <% contando = 1 %>
+                    <% for x in senas %>
+                      <p class="resultado-apostas-geradas-estatisticas-sorte"><%= "#{contando}. Concurso #{x.concurso}, realizado em #{x.data}, números: #{x.numeros}." %></p>
+                      <% contando += 1 %>
+                    <% end %>
+                  <% end %>            
+                <% else %>
+                  <i class="fas fa-search-dollar"  style="margin-right: 10px"></i><%= "Senas: Nenhuma sena para esses números!" %>
+                <% end %>
+              </p>
+            <% end %>
+          </p>
+
+
+
+
+          <%# <h2 class="divisor" style="display: none"></h2> %>
+
+
         </div>
       </div>
-    </form>
+    </div>
+    <div class="marketing-large">
+      <div class="divulgacao3">
+        <div class="slideshow-container">
+          <div class="mySlides fade">
+            <a href="https://go.hotmart.com/G73964193K?dp=1" target="_blank">
+              <img class="imagem-borda-arrendondada" src="/assets/divulgacao_portugues_completo306x475px.jpg" style="width:100%">
+            </a>
+          </div>
 
-    <%# <button type="button" id="limpar" onclick="limpar()" class="btn btn-warning">Limpar Marcações</button> %>
-    <%# .. %>
-    <%# <a href="/">Home</a>  obs.: não recarrega as funções do Javascript  
-    <%= link_to 'Home', root_path  obs.: não recarrega as funções do Javascript %>
-    <%# <button id="botao-root" class="btn btn-primary">INÍCIO</button>  ESTAVA FUNCIONANDO ANTES DOS LINKS DA NAVBAR%>
-   
+          <div class="mySlides fade">
+            <a href="https://www.parceiromagalu.com.br/magazinefortitudine/smartphone-samsung-galaxy-s20-fe-5g-128gb-azul-marinho-6gb-ram-65-cam-tripla-selfie-32mp/p/234880200/TE/GS2F/?utm_source=fortitudine&utm_medium=smartphone-samsung-galaxy-s20-fe-5g-128gb-azul-mar&utm_campaign=copy-paste&utm_content=copy-paste-share?utm_source=fortitudine&utm_medium=smartphone-samsung-galaxy-s20-fe-5g-128gb-azul-mar&utm_campaign=copy-paste&utm_content=copy-paste-share" target="_blank">
+              <img class="imagem-borda-arrendondada" src="/assets/samsung_s20_divulgacao.jpg" style="width:100%">
+            </a>
+          </div>
 
+          <div class="mySlides fade">
+            <a href="https://www.parceiromagalu.com.br/magazinefortitudine/notebook-vaio-fe15-intel-core-i3-4gb-256gb-ssd-156-full-hd-windows-11/p/233239600/IN/NOTE/?utm_source=fortitudine&utm_medium=notebook-vaio-fe15-intel-core-i3-4gb-256gb-ssd-156&utm_campaign=copy-paste&utm_content=copy-paste-share" target="_blank">
+              <img class="imagem-borda-arrendondada" src="/assets/vaio_fe15_divulgacao.jpg" style="width:100%">
+            </a>
+          </div>
+          <a class="prev" onclick="plusSlides(-1)">❮</a>
+          <a class="next" onclick="plusSlides(1)">❯</a>
 
-    <%# GERANDO JOGOS:  %>
-    <div class="div-estatisticas-sorte">
-      <div id=<%=@id_div_apostas %> style=""> 
-        <p class="resultado-apostas-geradas-estatisticas">
-          <% if @numeros_da_sorte %>
-            <%= "Seus números da sorte: #{@numeros_da_sorte[0]}, #{@numeros_da_sorte[1]}, #{@numeros_da_sorte[2]}, #{@numeros_da_sorte[3]}, #{@numeros_da_sorte[4]}, #{@numeros_da_sorte[5]}" %>
-          <% end %>
-        </p>
-
-
-
-        <p >
-          <% contador_terno = 0 %>
-          <% contador_quadra = 0 %>
-          <% contador_quina = 0 %>
-          <% contador_sena = 0 %>
-          <% quadras = [] %>
-          <% quinas = [] %>
-          <% senas = [] %>
-          <% if @sorteios %>
-            <h4 class="resultado-apostas-geradas-estatisticas"><%= "Checados #{@sorteios.size} sorteios realizados pela Caixa Econômica Federal (Mega-sena), seus números da 
-                sorte obtiveram os seguintes resultados:" %></h4>
-            <% @sorteios.each do |sorteio|  %>
-            <% numeros_sorteados =  sorteio.numeros.split(/,/).map {|x| x.to_i} %>
-              <% if (numeros_sorteados & @numeros_da_sorte).size == 3 %>
-                <% contador_terno += 1 %>
-              <% elsif (numeros_sorteados & @numeros_da_sorte).size == 4 %>
-                <% contador_quadra += 1 %>
-                <% quadras << sorteio %>
-              <% elsif (numeros_sorteados & @numeros_da_sorte).size == 5 %>
-                <% contador_quina += 1 %>
-                <% quinas << sorteio %>
-              <% elsif (numeros_sorteados & @numeros_da_sorte).size == 6 %>
-                <% contador_sena += 1 %>
-                <% senas << sorteio %>  
-              <% end %>
-            <% end %>
-            <%# <p class="resultado-apostas-geradas-estatisticas"><%= "Ternos: #{contador_terno} (sem premiação)." %>
-            <p class="resultado-apostas-geradas-estatisticas">
-              <% if (contador_terno > 0) %>
-                <i class="fas fa-search-dollar"  style="margin-right: 10px"></i><%= "Ternos: #{contador_terno} (sem premiação)." %>
-              <% else %>
-                <i class="fas fa-search-dollar"  style="margin-right: 10px"></i><%= "Ternos: Nenhum terno para esses números!" %>
-              <% end %>
-            </p>
-
-
-
-            <%# <p class="resultado-apostas-geradas-estatisticas"><%= "#{contador_quadra} quadras: #{quadras}" %>
-
-            <p class="resultado-apostas-geradas-estatisticas">
-              <% if (contador_quadra > 0) %>
-                <i class="fas fa-search-dollar"  style="margin-right: 10px"></i><%= "#{contador_quadra} quadra(s):" %>  <%# {quadras} %>
-                <% if contador_quadra == 1 %>
-                  <p class="resultado-apostas-geradas-estatisticas-sorte"><%= "Concurso #{quadras[0].concurso}, realizado em #{quadras[0].data}, números: #{quadras[0].numeros}." %></p>
-                <% elsif contador_quadra > 1 %>
-                  <% contando = 1 %>
-                  <% for x in quadras %>
-                    <p class="resultado-apostas-geradas-estatisticas-sorte"><%= "#{contando}. Concurso #{x.concurso}, realizado em #{x.data}, números: #{x.numeros}." %></p>
-                    <% contando += 1 %>
-                  <% end %>
-                <% end %>
-              <% else %>
-                <i class="fas fa-search-dollar"  style="margin-right: 10px"></i><%= "Quadras: Nenhuma quadra para esses números!" %>
-              <% end %>
-            </p>
-
-    <%# <Sorteio id: 1228, concurso: 1223, data: "16/10/2010", numeros: "15, 17, 35, 42, 47, 48", created_at: "2022-09-17 22:52:46", updated_at: "2022-09-17 22:52:46">  %>
-
-            <p class="resultado-apostas-geradas-estatisticas">
-              <% if (contador_quina > 0) %>
-                <i class="fas fa-search-dollar"  style="margin-right: 10px"></i><%= "#{contador_quina} quina(s):" %>  <%# {quinas} %>
-                <% if contador_quina == 1 %>
-                  <p class="resultado-apostas-geradas-estatisticas-sorte"><%= "Concurso #{quinas[0].concurso}, realizado em #{quinas[0].data}, números: #{quinas[0].numeros}." %></p>
-                <% elsif contador_quina > 1 %>
-                  <% contando = 1 %>
-                  <% for x in quinas %>
-                    <p class="resultado-apostas-geradas-estatisticas-sorte"><%= "#{contando}. Concurso #{x.concurso}, realizado em #{x.data}, números: #{x.numeros}." %></p>
-                    <% contando += 1 %>
-                  <% end %>
-                <% end %>
-              <% else %>
-                <i class="fas fa-search-dollar"  style="margin-right: 10px"></i><%= "Quinas: Nenhuma quina para esses números!" %>
-              <% end %>
-            </p>
-
-
-            <p class="resultado-apostas-geradas-estatisticas" >
-              <% if (contador_sena > 0) %>
-                <i class="fas fa-search-dollar" style="margin-right: 10px"></i><%= "#{contador_sena} sena(s):" %>  <%# {senas} %>
-                <% if contador_sena == 1 %>
-                  <p class="resultado-apostas-geradas-estatisticas-sorte"><%= "Concurso #{senas[0].concurso}, realizado em #{senas[0].data}, números: #{senas[0].numeros}." %></p>
-                <% elsif contador_sena > 1 %>
-                  <% contando = 1 %>
-                  <% for x in senas %>
-                    <p class="resultado-apostas-geradas-estatisticas-sorte"><%= "#{contando}. Concurso #{x.concurso}, realizado em #{x.data}, números: #{x.numeros}." %></p>
-                    <% contando += 1 %>
-                  <% end %>
-                <% end %>            
-              <% else %>
-                <i class="fas fa-search-dollar"  style="margin-right: 10px"></i><%= "Senas: Nenhuma sena para esses números!" %>
-              <% end %>
-            </p>
-          <% end %>
-        </p>
-
-
-
-
-        <%# <h2 class="divisor" style="display: none"></h2> %>
-
-
+        </div>
       </div>
     </div>
   </div>
@@ -264,3 +292,104 @@ function limpar() {
 
 
 </script>
+
+
+<%# MARKETING:  %>
+<script>
+let slideIndex = 0;
+showSlides();
+
+function plusSlides(n) {
+  let i;	
+  slideIndex += n
+  let slides = document.getElementsByClassName("mySlides");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  if (slideIndex > slides.length) {slideIndex = 1}
+  if (slideIndex < 1) {slideIndex = slides.length}
+  slides[slideIndex-1].style.display = "block";
+}
+
+
+function showSlides() {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}    
+  slides[slideIndex-1].style.display = "block";  
+  
+  setTimeout(showSlides, 10000); // Change image every 2 seconds
+}
+
+
+
+
+
+
+
+
+</script>
+
+<%# <meta name="viewport" content="width=device-width, initial-scale=1"> %>
+<style>
+* {box-sizing: border-box;}
+body {font-family: Verdana, sans-serif;}
+.mySlides {display: none;}
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 9.9s;
+}
+
+@keyframes fade {
+  from {opacity: .9} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+}
+</style>

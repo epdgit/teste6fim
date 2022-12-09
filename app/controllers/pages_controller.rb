@@ -105,13 +105,13 @@ class PagesController < ApplicationController
         formato_brasil.gsub!(",",".")
       end
       formato_brasil.gsub!("*",",")
-      @valor = "Valor: #{formato_brasil}"
+      @valor = "Valor: #{formato_brasil}."
 
       @id_div_apostas = "apostas-geradas"
 
       # condition ? if_true : if_false
       chance = modalidade[:probabilidade][numeros_cada_aposta - indice_corretor]/apostas_desejadas
-      @chance_printada = "Sua chance será de 1 em #{chance.to_s.reverse.scan(/.{1,3}/).join('.').reverse}"
+      @chance_printada = "Sua chance será de 1 em #{chance.to_s.reverse.scan(/.{1,3}/).join('.').reverse}."
     end
   end
 
@@ -221,12 +221,12 @@ class PagesController < ApplicationController
         formato_brasil.gsub!(",",".")
       end
       formato_brasil.gsub!("*",",")
-      @valor = "Valor: #{formato_brasil}"
+      @valor = "Valor: #{formato_brasil}."
 
       @id_div_apostas = "apostas-geradas"
 
       chance = modalidade[:probabilidade][numeros_cada_aposta - indice_corretor]/apostas_desejadas
-      @chance_printada = "Sua chance será de 1 em #{chance.to_s.reverse.scan(/.{1,3}/).join('.').reverse}"
+      @chance_printada = "Sua chance será de 1 em #{chance.to_s.reverse.scan(/.{1,3}/).join('.').reverse}."
 
 
 
@@ -241,7 +241,7 @@ class PagesController < ApplicationController
       else
         formato_brasil_quotas = quotas.to_s.gsub(".",",")
       end
-      @total_quotas = "Total de quotas: #{formato_brasil_quotas}"
+      @total_quotas = "Total de quotas: #{formato_brasil_quotas}."
       
       #VALOR POR QUOTA:
       Money.default_infinite_precision = true # isso é para pegar todos os centavos e não arredondar, que estava acontecendo
@@ -253,12 +253,12 @@ class PagesController < ApplicationController
       valor_temp_formato_brasil.gsub!("*",",")
       indice_da_virgula = valor_temp_formato_brasil.index(",") # isso para pegar só 2 casas decimais
       if valor_temp_formato_brasil[(indice_da_virgula + 3)] == "0" or valor_temp_formato_brasil[(indice_da_virgula + 3)] == nil # ou seja, se eu tenho um zero depois de duas casas da vírgula: ,__0
-        @valor_por_quota = "Valor da quota: #{valor_temp_formato_brasil[0..(indice_da_virgula + 2)]}" # então eu pego só duas casas decimais depois da vírgula
+        @valor_por_quota = "Valor da quota: #{valor_temp_formato_brasil[0..(indice_da_virgula + 2)]}." # então eu pego só duas casas decimais depois da vírgula
       elsif valor_temp_formato_brasil[(indice_da_virgula + 3)].to_i > 5
         valor_temp_formato_brasil[(indice_da_virgula + 2)] = (valor_temp_formato_brasil[(indice_da_virgula + 2)].to_i + 1).to_s
-        @valor_por_quota = "Valor da quota ( aproximado ): #{valor_temp_formato_brasil[0..(indice_da_virgula + 2)]}"
+        @valor_por_quota = "Valor da quota ( aproximado ): #{valor_temp_formato_brasil[0..(indice_da_virgula + 2)]}."
       else
-        @valor_por_quota = "Valor da quota ( aproximado ): #{valor_temp_formato_brasil[0..(indice_da_virgula + 4)]}"
+        @valor_por_quota = "Valor da quota ( aproximado ): #{valor_temp_formato_brasil[0..(indice_da_virgula + 4)]}."
       end
     end
   end

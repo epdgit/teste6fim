@@ -3,152 +3,183 @@
 
 <div id="div_img_background">
   <div class="tudo2">
-    <h1 class="conjuntos-titulo">CONJUNTOS</h1>
-    <h1 class="conjuntos-formatado" >Muitas vezes, desejamos combinar um conjunto de números para gerar nossas apostas. Se esse for o caso, escolha 7 ou mais números ou, se preferir, acione uma das opções abaixo para formatar seu conjunto numérico, excluindo ou adicionando elementos como bem entender (obs.: aplicável apenas para Mega-sena).</h1>
+    <div>
+      <h1 class="conjuntos-titulo">CONJUNTOS</h1>
+      <h1 class="conjuntos-formatado" >Muitas vezes, desejamos combinar um conjunto de números para gerar nossas apostas. Se esse for o caso, escolha 7 ou mais números ou, se preferir, acione uma das opções abaixo para formatar seu conjunto numérico, excluindo ou adicionando elementos como bem entender (obs.: aplicável apenas para Mega-sena).</h1>
 
 
-    <form action="/conjuntos"  class="form-inline" id="numeroSorte2" name="nsorte2" > <!-- método GET ou POST: method="POST"-->
-      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>"><%# essa linha serve para o método POST, onde é exigido que haja um token de autenticidade %>
-      <%# <input type="hidden" name="authenticity_token" value="6mcCvU7ZazpIBcJTptw/8y4EucmzccFWli7tFUzX6IJEx8wq6PFC7m4rA1Jy+W4YW1hlhYhSOyhZefWtOM5ofQ=="> %>
-      <div class="form-group">
+      <form action="/conjuntos"  class="form-inline" id="numeroSorte2" name="nsorte2" > <!-- método GET ou POST: method="POST"-->
+        <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>"><%# essa linha serve para o método POST, onde é exigido que haja um token de autenticidade %>
+        <%# <input type="hidden" name="authenticity_token" value="6mcCvU7ZazpIBcJTptw/8y4EucmzccFWli7tFUzX6IJEx8wq6PFC7m4rA1Jy+W4YW1hlhYhSOyhZefWtOM5ofQ=="> %>
+        <div class="form-group">
 
-        <div id="botoes-agrupados"> <%# FUNÇÃO E ID NÃO PODEM TER O MESMO NOME!!! CASO CONTRÁRIO, O JS DIZ QUE A FUNÇÃO NÃO EXISTE!!! %>
-          <div class="btn-group botoes-media-768" > <%# fazer uma query para trocar para btn-group-vertical quando em celular  %>
-            <button type="button" id="mais-saem" onclick="maisSaem()" class="btn btn-primary">Mais saem</button>
-            <button type="button" id="menos-saem" onclick="menosSaem()" class="btn btn-primary">Menos saem</button>
-            <button type="button" id="media_todos" onclick="media()" class="btn btn-primary">Média</button>
-            <button type="button" id="media_mil" onclick="mediaMil()" class="btn btn-primary">Média 1000</button>
-            <button type="button" id="ramalho-dantas" onclick="ramalhoDantas()" class="btn btn-primary">Conjunto RD</button>
-            <button type="button" id="ult17" onclick="ultD()" class="btn btn-primary">Estou com sorte</button>
-            <button type="button" id="ult13" onclick="ultT()" class="btn btn-primary">Arrojado</button>
-            <button type="button" id="ult10" onclick="ultDez()" class="btn btn-primary">Mais Arrojado</button>
-            <button type="button" id="limpa" onclick="limpar()" class="btn btn-warning">Limpar Marcações</button>
+          <div id="botoes-agrupados"> <%# FUNÇÃO E ID NÃO PODEM TER O MESMO NOME!!! CASO CONTRÁRIO, O JS DIZ QUE A FUNÇÃO NÃO EXISTE!!! %>
+            <div class="btn-group botoes-media-768" > <%# fazer uma query para trocar para btn-group-vertical quando em celular  %>
+              <button type="button" id="mais-saem" onclick="maisSaem()" class="btn btn-primary">Mais saem</button>
+              <button type="button" id="menos-saem" onclick="menosSaem()" class="btn btn-primary">Menos saem</button>
+              <button type="button" id="media_todos" onclick="media()" class="btn btn-primary">Média</button>
+              <button type="button" id="media_mil" onclick="mediaMil()" class="btn btn-primary">Média 1000</button>
+              <button type="button" id="ramalho-dantas" onclick="ramalhoDantas()" class="btn btn-primary">Conjunto RD</button>
+              <button type="button" id="ult17" onclick="ultD()" class="btn btn-primary">Estou com sorte</button>
+              <button type="button" id="ult13" onclick="ultT()" class="btn btn-primary">Arrojado</button>
+              <button type="button" id="ult10" onclick="ultDez()" class="btn btn-primary">Mais Arrojado</button>
+              <button type="button" id="limpa" onclick="limpar()" class="btn btn-warning">Limpar Marcações</button>
+            </div>
+            <%# <div>
+              <button type="button" id="limpa" onclick="limpar()" class="btn btn-warning">Limpar Marcações</button>
+            </div> %>
+            <div class="btn-group-vertical botoes-media-menor-q-768" > <%# fazer uma query para trocar para btn-group-vertical quando em celular  %>
+              <button type="button" id="mais-saem" onclick="maisSaem()" class="btn btn-primary">Mais saem</button>
+              <button type="button" id="menos-saem" onclick="menosSaem()" class="btn btn-primary">Menos saem</button>
+              <button type="button" id="media_todos" onclick="media()" class="btn btn-primary">Média</button>
+              <button type="button" id="media_mil" onclick="mediaMil()" class="btn btn-primary">Média 1000</button>
+              <button type="button" id="ramalho-dantas" onclick="ramalhoDantas()" class="btn btn-primary">Conjunto RD</button>
+              <button type="button" id="ult17" onclick="ultD()" class="btn btn-primary">Estou com sorte</button>
+              <button type="button" id="ult13" onclick="ultT()" class="btn btn-primary">Arrojado</button>
+              <button type="button" id="ult10" onclick="ultDez()" class="btn btn-primary">Mais Arrojado</button>
+              <button type="button" id="limpa" onclick="limpar()" class="btn btn-warning">Limpar Marcações</button>
+            </div>
           </div>
-          <%# <div>
-            <button type="button" id="limpa" onclick="limpar()" class="btn btn-warning">Limpar Marcações</button>
-          </div> %>
-          <div class="btn-group-vertical botoes-media-menor-q-768" > <%# fazer uma query para trocar para btn-group-vertical quando em celular  %>
-            <button type="button" id="mais-saem" onclick="maisSaem()" class="btn btn-primary">Mais saem</button>
-            <button type="button" id="menos-saem" onclick="menosSaem()" class="btn btn-primary">Menos saem</button>
-            <button type="button" id="media_todos" onclick="media()" class="btn btn-primary">Média</button>
-            <button type="button" id="media_mil" onclick="mediaMil()" class="btn btn-primary">Média 1000</button>
-            <button type="button" id="ramalho-dantas" onclick="ramalhoDantas()" class="btn btn-primary">Conjunto RD</button>
-            <button type="button" id="ult17" onclick="ultD()" class="btn btn-primary">Estou com sorte</button>
-            <button type="button" id="ult13" onclick="ultT()" class="btn btn-primary">Arrojado</button>
-            <button type="button" id="ult10" onclick="ultDez()" class="btn btn-primary">Mais Arrojado</button>
-            <button type="button" id="limpa" onclick="limpar()" class="btn btn-warning">Limpar Marcações</button>
-          </div>
-        </div>
 
-        <ul class="todos-numeros-conjuntos">
-          <% jogo = (1..60).to_a %>
-          <% jogo.each do |numero| %>
-          <li id="n<%= numero %>" class="numero-sorte jogos-gerados-ruby-numeros-sorte" value=<%= "#{numero}" %>> 
-            <%= numero %>
-            <% end %>
-          </li>
-        </ul>
-
-
-
-        <input form="numeroSorte2" id="numeros-da-sorte-fim2" name="meusNumeros2" type="text" class="form-control" oninput="trocarSeletorNumerosConjuntos()" value=""  style="display: none" > <%# style="display: none"  %>
-
-
-    <div id="quantidades-conjuntos">
-        <div class="quantidade-numeros">
-          <label for="numeros_na_aposta2">Números por aposta: </label>
-          <select form="numeroSorte2" name="quantidadeNumeros2" class="form-control" id="opcoesDaAposta21"  required >
-              <%# <option value=""></option>    %>
-          </select>
-        </div>
-
-
-        
-        <div class="quantidade-apostas" id="quantidade-apostas-conjuntos">
-          <label for="quantidade2">Quantidade de apostas: </label>
-          <select form="numeroSorte2" name="quantidadeJogos2" class="form-control" id="quantidade2"  required >
-            <%# <option value=""></option> %>
-          </select>  
-        </div>
-    </div>
-
-
-        <div id="div-do-botao-conjuntos">
-          <button type="submit" id="meus-numeros-da-sorte" class=" btn btn-primary btn-lg" disabled="true" ><span class="fas fa-sack-dollar"> <%# onclick="testeQuantidade()"  %>
-          </span> Gerar Apostas</button>
-        </div>
-        <div id="alerta">
-          <h6 id="mensagem-alerta2">Crie seu conjunto com 7 ou mais números! Só então você poderá gerar suas apostas. ☘️</h6>
-        </div>
-      </div>
-    </form>
-
-
-
-
-
-
-    <%#  %>
-    <%# <button type="button" id="limpar" onclick="limpar()" class="btn btn-warning">Limpar Marcações</button> %>
-
-    <%# <a href="/">Home</a>  obs.: não recarrega as funções do Javascript  
-    <%= link_to 'Home', root_path  obs.: não recarrega as funções do Javascript %>
-    <%# <button id="botao-root" class="btn btn-primary">INÍCIO</button>  ESTAVA FUNCIONANDO ANTES DOS LINKS DA NAVBAR, DEPOIS PAROU%>
-
-
-
-
-
-    <p id="array-ult17" style="display: none"><%=@array17%></p>
-    <p id="array-ult13" style="display: none"><%=@array13%></p>
-    <p id="array-ult10" style="display: none" ><%=@array10%></p><%# style="display: none"  %>
-
-    <p id="array-mais-saem" style="display: none"><%=@mais_saem%></p>
-    <p id="array-menos-saem" style="display: none"><%=@menos_saem%></p>
-
-    <p id="array-media" style="display: none"><%=@media%></p>
-    <p id="array-media-mil" style="display: none"><%=@media_mil%></p>
-
-
-    <%# GERANDO JOGOS:  %>
-    <div class="div-estatisticas-conjuntos">
-      <div id=<%=@id_div_apostas %> style=""> 
-        <h1 class="resultado-apostas-geradas"><%= @nome %></h1>
-        <p class="resultado-apostas-geradas-estatisticas">
-          <% if @conjunto %>
-            <%= "Conjunto da sorte (#{@conjunto.size} números): " %>
-            <%= @conjunto.join(", ") %>
-          <% end %>
-        </p>
-
-        <h2 class="divisor" style="display: none"></h2>
-
-        <h1 class="resultado-apostas-geradas-estatisticas">
-        <% if @conjunto %>
-        <%= "Apostas geradas: " %>
-        <% end %>
-        </h1>
-        <ol class="ol-apostas-geradas">
-          <% @conferir.each do |jogo| %>
-            <li>
-              <ul >
-                <% jogo.each do |numero| %>
-                <li id="jogos-gerados-ruby">
-                  <%= numero %>
-                  <% end %>
-                </li>
-              </ul>
+          <ul class="todos-numeros-conjuntos">
+            <% jogo = (1..60).to_a %>
+            <% jogo.each do |numero| %>
+            <li id="n<%= numero %>" class="numero-sorte jogos-gerados-ruby-numeros-sorte" value=<%= "#{numero}" %>> 
+              <%= numero %>
+              <% end %>
             </li>
+          </ul>
+
+
+
+          <input form="numeroSorte2" id="numeros-da-sorte-fim2" name="meusNumeros2" type="text" class="form-control" oninput="trocarSeletorNumerosConjuntos()" value=""  style="display: none" > <%# style="display: none"  %>
+
+
+      <div id="quantidades-conjuntos">
+          <div class="quantidade-numeros">
+            <label for="numeros_na_aposta2">Números por aposta: </label>
+            <select form="numeroSorte2" name="quantidadeNumeros2" class="form-control" id="opcoesDaAposta21"  required >
+                <%# <option value=""></option>    %>
+            </select>
+          </div>
+
+
+          
+          <div class="quantidade-apostas" id="quantidade-apostas-conjuntos">
+            <label for="quantidade2">Quantidade de apostas: </label>
+            <select form="numeroSorte2" name="quantidadeJogos2" class="form-control" id="quantidade2"  required >
+              <%# <option value=""></option> %>
+            </select>  
+          </div>
+      </div>
+
+
+          <div id="div-do-botao-conjuntos">
+            <button type="submit" id="meus-numeros-da-sorte" class=" btn btn-primary btn-lg" disabled="true" ><span class="fas fa-sack-dollar"> <%# onclick="testeQuantidade()"  %>
+            </span> Gerar Apostas</button>
+          </div>
+          <div id="alerta">
+            <h6 id="mensagem-alerta2">Crie seu conjunto com 7 ou mais números! Só então você poderá gerar suas apostas. ☘️</h6>
+          </div>
+        </div>
+      </form>
+
+
+
+
+
+
+      <%#  %>
+      <%# <button type="button" id="limpar" onclick="limpar()" class="btn btn-warning">Limpar Marcações</button> %>
+
+      <%# <a href="/">Home</a>  obs.: não recarrega as funções do Javascript  
+      <%= link_to 'Home', root_path  obs.: não recarrega as funções do Javascript %>
+      <%# <button id="botao-root" class="btn btn-primary">INÍCIO</button>  ESTAVA FUNCIONANDO ANTES DOS LINKS DA NAVBAR, DEPOIS PAROU%>
+
+
+
+
+
+      <p id="array-ult17" style="display: none"><%=@array17%></p>
+      <p id="array-ult13" style="display: none"><%=@array13%></p>
+      <p id="array-ult10" style="display: none" ><%=@array10%></p><%# style="display: none"  %>
+
+      <p id="array-mais-saem" style="display: none"><%=@mais_saem%></p>
+      <p id="array-menos-saem" style="display: none"><%=@menos_saem%></p>
+
+      <p id="array-media" style="display: none"><%=@media%></p>
+      <p id="array-media-mil" style="display: none"><%=@media_mil%></p>
+
+
+      <%# GERANDO JOGOS:  %>
+      <div class="div-estatisticas-conjuntos">
+        <div id=<%=@id_div_apostas %> style=""> 
+          <h1 class="resultado-apostas-geradas"><%= @nome %></h1>
+          <p class="resultado-apostas-geradas-estatisticas">
+            <% if @conjunto %>
+              <%= "Conjunto da sorte (#{@conjunto.size} números): " %>
+              <%= @conjunto.join(", ") %>
+            <% end %>
+          </p>
+
+          <h2 class="divisor" style="display: none"></h2>
+
+          <h1 class="resultado-apostas-geradas-estatisticas">
+          <% if @conjunto %>
+          <%= "Apostas geradas: " %>
           <% end %>
-        </ol>
+          </h1>
+          <ol class="ol-apostas-geradas">
+            <% @conferir.each do |jogo| %>
+              <li>
+                <ul >
+                  <% jogo.each do |numero| %>
+                  <li id="jogos-gerados-ruby">
+                    <%= numero %>
+                    <% end %>
+                  </li>
+                </ul>
+              </li>
+            <% end %>
+          </ol>
 
-        <h2 class="divisor" style="display: none"></h2>
+          <h2 class="divisor" style="display: none"></h2>
 
-        <h1 class="resultado-apostas-geradas-estatisticas"><%= @valor %></h1>
-        <h1 class="resultado-apostas-geradas-estatisticas"><%= @chance_printada %></h1>
-        <h1 class="resultado-apostas-geradas-estatisticas"><%= @chance_escopo_printada %></h1>
+          <h1 class="resultado-apostas-geradas-estatisticas"><%= @valor %></h1>
+          <h1 class="resultado-apostas-geradas-estatisticas"><%= @chance_printada %></h1>
+          <h1 class="resultado-apostas-geradas-estatisticas"><%= @chance_escopo_printada %></h1>
+        </div>
       </div>
     </div>
+
+
+    <div class="marketing-large">
+      <div class="divulgacao3">
+        <div class="slideshow-container">
+          <div class="mySlides fade">
+            <a href="https://go.hotmart.com/G73964193K?dp=1" target="_blank">
+              <img class="imagem-borda-arrendondada" src="/assets/divulgacao_portugues_completo306x475px.jpg" style="width:100%">
+            </a>
+          </div>
+
+          <div class="mySlides fade">
+            <a href="https://www.parceiromagalu.com.br/magazinefortitudine/smartphone-samsung-galaxy-s20-fe-5g-128gb-azul-marinho-6gb-ram-65-cam-tripla-selfie-32mp/p/234880200/TE/GS2F/?utm_source=fortitudine&utm_medium=smartphone-samsung-galaxy-s20-fe-5g-128gb-azul-mar&utm_campaign=copy-paste&utm_content=copy-paste-share?utm_source=fortitudine&utm_medium=smartphone-samsung-galaxy-s20-fe-5g-128gb-azul-mar&utm_campaign=copy-paste&utm_content=copy-paste-share" target="_blank">
+              <img class="imagem-borda-arrendondada" src="/assets/samsung_s20_divulgacao.jpg" style="width:100%">
+            </a>
+          </div>
+
+          <div class="mySlides fade">
+            <a href="https://www.parceiromagalu.com.br/magazinefortitudine/notebook-vaio-fe15-intel-core-i3-4gb-256gb-ssd-156-full-hd-windows-11/p/233239600/IN/NOTE/?utm_source=fortitudine&utm_medium=notebook-vaio-fe15-intel-core-i3-4gb-256gb-ssd-156&utm_campaign=copy-paste&utm_content=copy-paste-share" target="_blank">
+              <img class="imagem-borda-arrendondada" src="/assets/vaio_fe15_divulgacao.jpg" style="width:100%">
+            </a>
+          </div>
+          <a class="prev" onclick="plusSlides(-1)">❮</a>
+          <a class="next" onclick="plusSlides(1)">❯</a>
+
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
 
@@ -183,12 +214,12 @@
 var arrayDaSorte = []
 window.onclick = e => {
     var tag_sorte = e.target.tagName
-    if ((tag_sorte == "LI") && (e.target.classList.contains("selected") == false)) {
+    if ((tag_sorte == "LI") && (e.target.classList.contains("selected") == false)  && (e.target.classList.contains("numero-sorte") == true)) {
       // var idSelecionado = e.target.id
       var numeroSorte2 = e.target.value
       arrayDaSorte.push(numeroSorte2)
       e.target.classList.add("selected");
-    } else if (tag_sorte == "LI" && e.target.classList.contains("selected") == true) {
+    } else if ((tag_sorte == "LI") && (e.target.classList.contains("selected") == true)  && (e.target.classList.contains("numero-sorte") == true)) {
       var retirarNumeroSorte2 = e.target.value
       for( var i = 0; i < arrayDaSorte.length; i++){                              
         if ( arrayDaSorte[i] === retirarNumeroSorte2) { 
@@ -566,3 +597,105 @@ window.onload =  h2Vermelho()
 
 
 </script>
+
+
+
+<%# MARKETING:  %>
+<script>
+let slideIndex = 0;
+showSlides();
+
+function plusSlides(n) {
+  let i;	
+  slideIndex += n
+  let slides = document.getElementsByClassName("mySlides");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  if (slideIndex > slides.length) {slideIndex = 1}
+  if (slideIndex < 1) {slideIndex = slides.length}
+  slides[slideIndex-1].style.display = "block";
+}
+
+
+function showSlides() {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}    
+  slides[slideIndex-1].style.display = "block";  
+  
+  setTimeout(showSlides, 10000); // Change image every 2 seconds
+}
+
+
+
+
+
+
+
+
+</script>
+
+<%# <meta name="viewport" content="width=device-width, initial-scale=1"> %>
+<style>
+* {box-sizing: border-box;}
+body {font-family: Verdana, sans-serif;}
+.mySlides {display: none;}
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 9.9s;
+}
+
+@keyframes fade {
+  from {opacity: .9} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+}
+</style>

@@ -95,12 +95,13 @@ select.form-control {
 
 .tudo2 {
   padding-top: 70px;
-  padding-left: 70px;
-  padding-right: 70px;
+  padding-left: 30px;
+  padding-right: 10px;
   box-shadow: -3px 0px 23px -3px #000000;
   margin-left: 4px;
   margin-right: 4px;
   border-radius: 22px;
+  display: flex;
 }
 
 #div_img_background {
@@ -234,6 +235,7 @@ select.form-control {
   position: sticky;
   top: 0;
   max-width: 306px;
+  min-width: 18em;
   margin-bottom: 20px;
 }
 
@@ -301,7 +303,7 @@ select.form-control {
 }
 
 #opcoesDaAposta21 {
-  width: 112px;
+  width: 115px;
 }
 
 .button-gerador-aposta {
@@ -783,6 +785,7 @@ ol {
   max-width: 200px;
   margin: auto;
   margin-top: 15px;
+  text-align: justify;
 }
 
 #mensagem-alerta2 {
@@ -791,6 +794,7 @@ ol {
   max-width: 247px;
   margin: auto;
   margin-top: 15px;
+  text-align: justify;
 }
 
 
