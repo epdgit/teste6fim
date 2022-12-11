@@ -946,6 +946,7 @@ ol {
   }
 }
 
+
 @media (max-width: 767px) {
   .botoes-media-768 {
     display: none !important;
@@ -1374,8 +1375,22 @@ ol {
 
 
 
+@media (min-width:576px) and (max-width:767px) {
+  .navbar {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+  .navbar-collapse {
+    margin-left: -120px;
+  }
+}
 
-
+@media (min-width: 430px) and (max-width:767px) {
+  .br-footer {
+    margin-bottom: 60px;
+  }
+}
 
 
 // #printar_pdf {
