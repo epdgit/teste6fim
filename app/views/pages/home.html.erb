@@ -181,14 +181,121 @@
         <p>LOTO app tem o propósito de gerar sugestões de apostas para cada uma das espécies de sorteios citadas, estruturando jogos de forma ágil, permitindo a organização de bolões e o salvamento de arquivo PDF para controle pelos apostadores.</p>
         <p>Além disso, sendo a Mega-sena a espécie de sorteio de maior apelo e interesse, foram criados ambientes exclusivos para ela, podendo ser encontrados, no início desta página, atalhos para Conjuntos, Teste da Sorte e Estatística. </p>
         <p>Na seção Conjuntos, podem ser selecionados conjuntos diversos que estão pré-definidos nas teclas de atalho ou selecionados números no formato que o apostador desejar. O objetivo aqui é o de gerar sugestões de apostas da Mega-sena a partir de subconjuntos numéricos predefinidos pelo apostador ou por um grupo de apostadores.</p>
-        <p>Já no Teste da Sorte, qualquer pessoa pode registrar um palpite de 6 números e confrontá-lo com os sorteios da Mega-sena já realizados pela Caixa. Um pequeno relatório é então gerado, informando a quantidade de números coincidentes com os números de sorteios passados.</p>
-        <p>Finalmente, na seção Estatística, podem ser encontrados os números que mais saíram, aqueles que menos saíram, as duplas numéricas que mais vezes foram sorteados conjuntamente, os trios que mais se repetiram, as quadras e as quinas com maior repetição. Também são apontadas as linhas e as colunas com maior frequência nos sorteios, os quadrantes mais sorteados, além da quantidade de números ímpares e pares sorteados.</p>
+        <p>Já no Teste da Sorte, qualquer pessoa pode registrar um palpite de 6 números e confrontá-lo com os sorteios da Mega-sena que foram realizados pela Caixa. Um pequeno relatório é então gerado, informando a quantidade de números coincidentes com os números de sorteios passados.</p>
+        <p>Finalmente, na seção Estatística, podem ser encontrados os números que mais saíram, aqueles que menos saíram, as duplas numéricas que mais vezes foram sorteadas conjuntamente, os trios que mais se repetiram, as quadras e as quinas com maior repetição. Também são apontadas as linhas e as colunas com maior frequência nos sorteios, os quadrantes mais sorteados, além da quantidade de números ímpares e pares nos sorteios.</p>
         <p>Mas como jogar e quais as chances de ganhar em cada um desses sorteios?</p>
         <p>Mega-sena:</p>
         <p>Para a Mega-sena, são apresentados 60 números, cabendo ao apostador a escolha de 6 deles. Acaso os 6 números escolhidos coincidam com os 6 números sorteados pela Caixa, você ganhará o prêmio principal. Não esqueça, porém, que também são pagos prêmios quando 5 ou 4 dos 6 números escolhidos por você coincidam com os números sorteados pela Caixa. </p>
         <p>Opcionalmente, para cada aposta, podem ser escolhidos números adicionais, ou seja, o apostador tem a opção de efetuar apostas com mais números. Por isso, além de apostas de 6 números, podem ser registradas apostas de 7 a 20 números.</p>
         <p></p>
         <p></p>
+
+
+        <table class="table_conteudo_home_mega" >
+          <tbody>
+            <tr>
+              <td>Números escolhidos (única aposta)</td>
+              <td>Valor da aposta (R$)</td>
+              <td>1 chance em</td>
+            </tr>
+            <% contando = 0 %>
+            <% @mega[:numeros].each do |numeros_por_aposta_array_mega| %>
+            <tr>
+              <td><%= numeros_por_aposta_array_mega %></td>
+              <td>
+                <% valor = ("%.2f" % @mega[:valor][contando]).to_s.gsub!(".",",") %>
+                <% indice_da_virgula = valor.to_s.index(",") %>
+                <% substring_virgula_mais_dois_espacos = valor.slice(indice_da_virgula, (indice_da_virgula + 2)) %>
+                <%= (valor.split(substring_virgula_mais_dois_espacos)[0].reverse.scan(/.{1,3}/).join('.').reverse + substring_virgula_mais_dois_espacos)  %>
+              </td>
+              <td><%= @mega[:probabilidade][contando].to_s.reverse.scan(/.{1,3}/).join('.').reverse %></td>
+                  <% contando += 1 %>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+        <p>Dupla</p>
+
+        <table class="table_conteudo_home_dupla" >
+          <tbody>
+            <tr>
+              <td>Números escolhidos (única aposta)</td>
+              <td>Valor da aposta (R$)</td>
+              <td>1 chance em</td>
+            </tr>
+            <% contando = 0 %>
+            <% @dupla[:numeros].each do |numeros_por_aposta_array_dupla| %>
+            <tr>
+              <td><%= numeros_por_aposta_array_dupla %></td>
+              <td>
+                <% valor = ("%.2f" % @dupla[:valor][contando]).to_s.gsub!(".",",") %>
+                <% indice_da_virgula = valor.to_s.index(",") %>
+                <% substring_virgula_mais_dois_espacos = valor.slice(indice_da_virgula, (indice_da_virgula + 2)) %>
+                <%= (valor.split(substring_virgula_mais_dois_espacos)[0].reverse.scan(/.{1,3}/).join('.').reverse + substring_virgula_mais_dois_espacos)  %>
+              </td>
+              <td><%= @dupla[:probabilidade][contando].to_s.reverse.scan(/.{1,3}/).join('.').reverse %></td>
+                  <% contando += 1 %>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+        <p>Quina</p>
+
+        <table class="table_conteudo_home_quina" >
+          <tbody>
+            <tr>
+              <td>Números escolhidos (única aposta)</td>
+              <td>Valor da aposta (R$)</td>
+              <td>1 chance em</td>
+            </tr>
+            <% contando = 0 %>
+            <% @quina[:numeros].each do |numeros_por_aposta_array_quina| %>
+            <tr>
+              <td><%= numeros_por_aposta_array_quina %></td>
+              <td>
+                <% valor = ("%.2f" % @quina[:valor][contando]).to_s.gsub!(".",",") %>
+                <% indice_da_virgula = valor.to_s.index(",") %>
+                <% substring_virgula_mais_dois_espacos = valor.slice(indice_da_virgula, (indice_da_virgula + 2)) %>
+                <%= (valor.split(substring_virgula_mais_dois_espacos)[0].reverse.scan(/.{1,3}/).join('.').reverse + substring_virgula_mais_dois_espacos)  %>
+              </td>
+              <td><%= @quina[:probabilidade][contando].to_s.reverse.scan(/.{1,3}/).join('.').reverse %></td>
+                  <% contando += 1 %>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+
+
+       <p>Lotofácil</p>
+
+        <table class="table_conteudo_home_lotofacil" >
+          <tbody>
+            <tr>
+              <td>Números escolhidos (única aposta)</td>
+              <td>Valor da aposta (R$)</td>
+              <td>1 chance em</td>
+            </tr>
+            <% contando = 0 %>
+            <% @lotof[:numeros].each do |numeros_por_aposta_array_lotof| %>
+            <tr>
+              <td><%= numeros_por_aposta_array_lotof %></td>
+              <td>
+                <% valor = ("%.2f" % @lotof[:valor][contando]).to_s.gsub!(".",",") %>
+                <% indice_da_virgula = valor.to_s.index(",") %>
+                <% substring_virgula_mais_dois_espacos = valor.slice(indice_da_virgula, (indice_da_virgula + 2)) %>
+                <%= (valor.split(substring_virgula_mais_dois_espacos)[0].reverse.scan(/.{1,3}/).join('.').reverse + substring_virgula_mais_dois_espacos)  %>
+              </td>
+              <td><%= @lotof[:probabilidade][contando].to_s.reverse.scan(/.{1,3}/).join('.').reverse %></td>
+                  <% contando += 1 %>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+
 
       </div>
 

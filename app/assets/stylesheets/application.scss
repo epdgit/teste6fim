@@ -926,6 +926,22 @@ ol {
   font-size: 28px;
 }
 
+
+.table_content, tr, td {
+  border: 1px solid #57cc99;
+  font-size: 19px;
+}
+
+.table_conteudo_home_mega, .table_conteudo_home_dupla, .table_conteudo_home_quina, .table_conteudo_home_lotofacil {
+  margin: auto;
+}
+
+td {
+  padding-left: 2px !important;
+  padding-right: 2px !important;
+}
+
+
 @media (min-width: 768px) {
   .botoes-media-menor-q-768 {
     display: none !important;
@@ -945,6 +961,14 @@ ol {
     font-size: 16px !important;
   }
 }
+
+@media (min-width: 960px) {
+  td {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+}
+
 
 
 @media (max-width: 767px) {
@@ -1120,7 +1144,7 @@ ol {
     margin-right: 10px;
     margin-left: 8px;
     text-indent: 40px;
-    font-size: 16px;
+    font-size: 27px;
   }
 
   .agrupando-campos {
@@ -1242,9 +1266,9 @@ ol {
     font-size: 24px !important;
   }
 
-  .conteudo {
-    font-size: 29px;
-  }
+  // .conteudo {
+  //   font-size: 29px;
+  // }
   // #texto-total {
   //   margin-top: 22px;
   // }
