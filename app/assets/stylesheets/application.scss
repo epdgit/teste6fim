@@ -480,6 +480,7 @@ fieldset {
 
 .div-estatisticas-home {
   padding-bottom: 50px;
+  margin-top: -51px;
 }
 
 #apostas-geradas {
@@ -614,10 +615,13 @@ fieldset {
   font-size: 30px;
   font-family: 'Rokkitt', serif;
   margin-bottom: 27px;
-  margin-top: 30px;
+  margin-top: 5px;
   text-align: center;
 }
 
+#div-cojuntos-todos {
+  margin-bottom: 45px;
+}
 
 .conjuntos-formatado {
   color: #204A65;
@@ -639,7 +643,7 @@ fieldset {
   font-size: 30px;
   font-family: 'Rokkitt', serif;
   margin-bottom: 27px;
-  margin-top: 30px;
+  margin-top: 5px;
   text-align: center;
 }
 
@@ -903,6 +907,24 @@ ol {
   height: 100vh;
 }
 
+
+.ambiente-construcao {
+  color: #204A65;
+  font-weight: 900;
+  font-size: 30px;
+  font-family: 'Rokkitt', serif;
+}
+
+.div-ambiente-construcao {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+#restart-root {
+  margin-left: 60px;
+  font-size: 28px;
+}
 
 @media (min-width: 768px) {
   .botoes-media-menor-q-768 {
@@ -1318,9 +1340,36 @@ ol {
     // border-radius: 15px;
   }
 
+  .div-estatisticas-home {
+    margin-top: -40px;
+  }
+
+  .conjuntos-titulo {
+    margin-top: 25px;
+  }
+
+
+  .div-estatisticas-sorte {
+    margin-bottom: 30px;
+  }
+
+  .sorte-titulo {
+    // color: #204A65;
+    // font-weight: 900;
+    // font-size: 30px;
+    // font-family: 'Rokkitt', serif;
+    // margin-bottom: 27px;
+    margin-top: 35px;
+  }
+
 }
 
-
+.ambiente-construcao {
+  color: #204A65;
+  font-weight: 900;
+  font-size: 30px;
+  font-family: 'Rokkitt', serif;
+}
 
 
 
