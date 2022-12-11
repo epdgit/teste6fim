@@ -4,10 +4,15 @@ for x in @ultimo
 
 <%= p x
 <% end %>
-
+<div class="div-ambiente-construcao">
+  <p style="color: red"><i class="fas fa-snowplow"></i></p>
+  <h1 class="ambiente-construcao">Ambiente em construção</h1>
+  <h3 style="margin-bottom: 40px; color: #204A65;">Apenas dados brutos por enquanto...</h3>
+</div>
 <div id="div_img_background">
   <div class="tudo2">
     <div>
+      <p><%= "Números e quantas vezes saíram: #{@hash_final_todos_numeros}"  %></p>
       <%= @ultimo.size %>
       <p><%= "Pares e ímpares 6x0: #{@sorteio_6x0_pares_impares}" %></p>
       <p><%= "Pares e ímpares 5x1: #{@sorteio_5x1_pares_impares}" %></p>
@@ -51,7 +56,7 @@ for x in @ultimo
       <p><%= "TRÊS MESMO QUADRANTE: #{@tres_mesmo_quadrante}; PERCENTUAL: #{(@tres_mesmo_quadrante.to_f/@ultimo.size)}" %></p>
 
 
-      <p><%= "RESTANTE DOS QUADRANTES: #{@ultimo.size - @seis_mesmo_quadrante - @cinco_mesmo_quadrante - @quatro_mesmo_quadrante - @tres_mesmo_quadrante}; PERCENTUAL: #{((@ultimo.size - @seis_mesmo_quadrante - @cinco_mesmo_quadrante - @quatro_mesmo_quadrante - @tres_mesmo_quadrante).to_f/@ultimo.size)}" %></p>
+      <p><%= "MÁXIMO 2 POR QUADRANTE: #{@ultimo.size - @seis_mesmo_quadrante - @cinco_mesmo_quadrante - @quatro_mesmo_quadrante - @tres_mesmo_quadrante}; PERCENTUAL: #{((@ultimo.size - @seis_mesmo_quadrante - @cinco_mesmo_quadrante - @quatro_mesmo_quadrante - @tres_mesmo_quadrante).to_f/@ultimo.size)}" %></p>
 
       <p><%= "DICIONARIO DE QUADRANTES: #{@dicionario_quadrantes}" %></p>
 
@@ -66,7 +71,7 @@ for x in @ultimo
       <p><%= @array_ternos_fim %></p>
       <p><%= @array_quadras_fim %></p>
       <p><%= @array_quinas_fim %></p>
-      <p><%= @hash_final_todos_numeros  %></p>
+
     
     </div>
     

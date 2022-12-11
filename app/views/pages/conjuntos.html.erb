@@ -3,7 +3,49 @@
 
 <div id="div_img_background">
   <div class="tudo2">
-    <div>
+    <div id="div-cojuntos-todos">
+
+      <%# GERANDO JOGOS:  %>
+      <div class="div-estatisticas-conjuntos">
+        <div id=<%=@id_div_apostas %> style=""> 
+          <h1 class="resultado-apostas-geradas"><%= @nome %></h1>
+          <p class="resultado-apostas-geradas-estatisticas">
+            <% if @conjunto %>
+              <%= "Conjunto da sorte (#{@conjunto.size} números): " %>
+              <%= @conjunto.join(", ") %>
+            <% end %>
+          </p>
+
+          <h2 class="divisor" style="display: none"></h2>
+
+          <h1 class="resultado-apostas-geradas-estatisticas">
+          <% if @conjunto %>
+          <%= "Apostas geradas: " %>
+          <% end %>
+          </h1>
+          <ol class="ol-apostas-geradas">
+            <% @conferir.each do |jogo| %>
+              <li>
+                <ul >
+                  <% jogo.each do |numero| %>
+                  <li id="jogos-gerados-ruby">
+                    <%= numero %>
+                    <% end %>
+                  </li>
+                </ul>
+              </li>
+            <% end %>
+          </ol>
+
+          <h2 class="divisor" style="display: none"></h2>
+
+          <h1 class="resultado-apostas-geradas-estatisticas"><%= @valor %></h1>
+          <h1 class="resultado-apostas-geradas-estatisticas"><%= @chance_printada %></h1>
+          <h1 class="resultado-apostas-geradas-estatisticas"><%= @chance_escopo_printada %></h1>
+        </div>
+      </div>
+
+      <%# CONJUNTOS TÍTULO:  %>
       <h1 class="conjuntos-titulo">CONJUNTOS</h1>
       <h1 class="conjuntos-formatado" >Muitas vezes, desejamos combinar um conjunto de números para gerar nossas apostas. Se esse for o caso, escolha 7 ou mais números ou, se preferir, acione uma das opções abaixo para formatar seu conjunto numérico, excluindo ou adicionando elementos como bem entender (obs.: aplicável apenas para Mega-sena).</h1>
 
@@ -111,45 +153,7 @@
       <p id="array-media-mil" style="display: none"><%=@media_mil%></p>
 
 
-      <%# GERANDO JOGOS:  %>
-      <div class="div-estatisticas-conjuntos">
-        <div id=<%=@id_div_apostas %> style=""> 
-          <h1 class="resultado-apostas-geradas"><%= @nome %></h1>
-          <p class="resultado-apostas-geradas-estatisticas">
-            <% if @conjunto %>
-              <%= "Conjunto da sorte (#{@conjunto.size} números): " %>
-              <%= @conjunto.join(", ") %>
-            <% end %>
-          </p>
 
-          <h2 class="divisor" style="display: none"></h2>
-
-          <h1 class="resultado-apostas-geradas-estatisticas">
-          <% if @conjunto %>
-          <%= "Apostas geradas: " %>
-          <% end %>
-          </h1>
-          <ol class="ol-apostas-geradas">
-            <% @conferir.each do |jogo| %>
-              <li>
-                <ul >
-                  <% jogo.each do |numero| %>
-                  <li id="jogos-gerados-ruby">
-                    <%= numero %>
-                    <% end %>
-                  </li>
-                </ul>
-              </li>
-            <% end %>
-          </ol>
-
-          <h2 class="divisor" style="display: none"></h2>
-
-          <h1 class="resultado-apostas-geradas-estatisticas"><%= @valor %></h1>
-          <h1 class="resultado-apostas-geradas-estatisticas"><%= @chance_printada %></h1>
-          <h1 class="resultado-apostas-geradas-estatisticas"><%= @chance_escopo_printada %></h1>
-        </div>
-      </div>
     </div>
 
 

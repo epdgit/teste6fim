@@ -1,50 +1,8 @@
 <div id="div_img_background">
   <div class="tudo2">
-    <div>
-      <h1 class="sorte-titulo">TESTE DA SORTE</h1>
-      <h1 class="sorte-formatado" >Você é daquele tipo de pessoa que possui números da sorte? Chegou a hora de testar seus números! Escolha 6 números da sorte e compare-os com <%= @quantidade_sorteios %> sorteios da Mega-sena.</h1>
-
-
-      <%# <ul id="ul_jogos-gerados-ruby"> %>
-      <form action="/sorte"  class="form-inline" id="numeroSorte" name="nsorte"> <!-- método GET ou POST: method="POST"-->
-      <%#  <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %> <%# essa linha serve para o método POST, onde é exigido que haja um token de autenticidade %>
-        <%# <input type="hidden" name="authenticity_token" value="6mcCvU7ZazpIBcJTptw/8y4EucmzccFWli7tFUzX6IJEx8wq6PFC7m4rA1Jy+W4YW1hlhYhSOyhZefWtOM5ofQ=="> %>
-        <div class="form-group">
-        
-
-          <ul class="todos-numeros-sorte">
-            <% jogo = (1..60).to_a %>
-            <% jogo.each do |numero| %>
-            <li id="n<%= numero %>" class="numero-sorte jogos-gerados-ruby-numeros-sorte" value=<%= "#{numero}" %>> 
-              <%= numero %>
-              <% end %>
-            </li>
-          </ul>
-
-
-
-        <input form="numeroSorte" id="numeros-da-sorte-fim" name="meusNumeros" type="text" class="form-control" value="" style="display: none">
-
-    
-          <div class="btn-group-vertical" id="div-do-botao-numeros-da-sorte">
-            <button type="button" id="limpa" onclick="limpar()" class="btn btn-warning">Limpar Marcações</button>  
-            <button type="submit" id="meus-numeros-da-sorte" class=" btn btn-primary btn-lg" onclick="testeQuantidade()"disabled="true"><span class="fas fa-sack-dollar">
-            </span> Checar Meus Números</button>
-          </div>
-          <div id="alerta">
-            <h6 id="mensagem-alerta">Escolha 6 números! Só então você poderá testar sua sorte. ☘️</h6>
-          </div>
-        </div>
-      </form>
-
-      <%# <button type="button" id="limpar" onclick="limpar()" class="btn btn-warning">Limpar Marcações</button> %>
-      <%# .. %>
-      <%# <a href="/">Home</a>  obs.: não recarrega as funções do Javascript  
-      <%= link_to 'Home', root_path  obs.: não recarrega as funções do Javascript %>
-      <%# <button id="botao-root" class="btn btn-primary">INÍCIO</button>  ESTAVA FUNCIONANDO ANTES DOS LINKS DA NAVBAR%>
-    
-
-
+    <div id="div-cojuntos-todos">
+      
+      
       <%# GERANDO JOGOS:  %>
       <div class="div-estatisticas-sorte">
         <div id=<%=@id_div_apostas %> style=""> 
@@ -159,7 +117,55 @@
 
         </div>
       </div>
+
+
+      <h1 class="sorte-titulo">TESTE DA SORTE</h1>
+      <h1 class="sorte-formatado" >Você é daquele tipo de pessoa que possui números da sorte? Chegou a hora de testar seus números! Escolha 6 números da sorte e compare-os com <%= @quantidade_sorteios %> sorteios da Mega-sena.</h1>
+
+
+      <%# <ul id="ul_jogos-gerados-ruby"> %>
+      <form action="/sorte"  class="form-inline" id="numeroSorte" name="nsorte"> <!-- método GET ou POST: method="POST"-->
+      <%#  <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %> <%# essa linha serve para o método POST, onde é exigido que haja um token de autenticidade %>
+        <%# <input type="hidden" name="authenticity_token" value="6mcCvU7ZazpIBcJTptw/8y4EucmzccFWli7tFUzX6IJEx8wq6PFC7m4rA1Jy+W4YW1hlhYhSOyhZefWtOM5ofQ=="> %>
+        <div class="form-group">
+        
+
+          <ul class="todos-numeros-sorte">
+            <% jogo = (1..60).to_a %>
+            <% jogo.each do |numero| %>
+            <li id="n<%= numero %>" class="numero-sorte jogos-gerados-ruby-numeros-sorte" value=<%= "#{numero}" %>> 
+              <%= numero %>
+              <% end %>
+            </li>
+          </ul>
+
+
+
+        <input form="numeroSorte" id="numeros-da-sorte-fim" name="meusNumeros" type="text" class="form-control" value="" style="display: none">
+
+    
+          <div class="btn-group-vertical" id="div-do-botao-numeros-da-sorte">
+            <button type="button" id="limpa" onclick="limpar()" class="btn btn-warning">Limpar Marcações</button>  
+            <button type="submit" id="meus-numeros-da-sorte" class=" btn btn-primary btn-lg" onclick="testeQuantidade()"disabled="true"><span class="fas fa-sack-dollar">
+            </span> Checar Meus Números</button>
+          </div>
+          <div id="alerta">
+            <h6 id="mensagem-alerta">Escolha 6 números! Só então você poderá testar sua sorte. ☘️</h6>
+          </div>
+        </div>
+      </form>
+
+      <%# <button type="button" id="limpar" onclick="limpar()" class="btn btn-warning">Limpar Marcações</button> %>
+      <%# .. %>
+      <%# <a href="/">Home</a>  obs.: não recarrega as funções do Javascript  
+      <%= link_to 'Home', root_path  obs.: não recarrega as funções do Javascript %>
+      <%# <button id="botao-root" class="btn btn-primary">INÍCIO</button>  ESTAVA FUNCIONANDO ANTES DOS LINKS DA NAVBAR%>
+    
+
+
+
     </div>
+
     <div class="marketing-large">
       <div class="divulgacao3">
         <div class="slideshow-container">
