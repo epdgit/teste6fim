@@ -184,17 +184,19 @@
         <p>Já no Teste da Sorte, qualquer pessoa pode registrar um palpite de 6 números e confrontá-lo com os sorteios da Mega-sena que foram realizados pela Caixa. Um pequeno relatório é então gerado, informando a quantidade de números coincidentes com os números de sorteios passados.</p>
         <p>Finalmente, na seção Estatística, podem ser encontrados os números que mais saíram, aqueles que menos saíram, as duplas numéricas que mais vezes foram sorteadas conjuntamente, os trios que mais se repetiram, as quadras e as quinas com maior repetição. Também são apontadas as linhas e as colunas com maior frequência nos sorteios, os quadrantes mais sorteados, além da quantidade de números ímpares e pares nos sorteios.</p>
         <p>Mas como jogar e quais as chances de ganhar em cada um desses sorteios?</p>
-        <p>Mega-sena:</p>
-        <p>Para a Mega-sena, são apresentados 60 números, cabendo ao apostador a escolha de 6 deles. Acaso os 6 números escolhidos coincidam com os 6 números sorteados pela Caixa, você ganhará o prêmio principal. Não esqueça, porém, que também são pagos prêmios quando 5 ou 4 dos 6 números escolhidos por você coincidam com os números sorteados pela Caixa. </p>
-        <p>Opcionalmente, para cada aposta, podem ser escolhidos números adicionais, ou seja, o apostador tem a opção de efetuar apostas com mais números. Por isso, além de apostas de 6 números, podem ser registradas apostas de 7 a 20 números.</p>
-        <p></p>
-        <p></p>
+ 
+        <p class="titulo-da-aposta-home-conteudo">Mega-sena:</p>
+        <p>Para a Mega-sena, são apresentados 60 números, cabendo ao apostador a escolha de 6 deles. Acaso os 6 números escolhidos coincidam com os 6 números sorteados pela Caixa, você ganhará o prêmio principal. Não esqueça, porém, que também são pagos prêmios quando 5 ou 4 dos 6 números escolhidos por você coincidem com os números sorteados pela Caixa. </p>
+        <p>Opcionalmente, para cada aposta, podem ser escolhidos números adicionais, ou seja, o apostador tem a opção de efetuar apostas com mais números. Por isso, além de apostas de 6 números, podem ser registradas apostas de 7 a <%= @mega[:numeros].last %> números.</p>
+        <p>Mas os valores dessas apostas não são os mesmos. Uma aposta simples de 6 números custa R$ <%= @valor_aposta_simples_mega %>. Já para registrar uma aposta de <%= @mega[:numeros].last %> números, o apostador deverá desembolsar R$ <%= @valor_maior_aposta_mega %>. Como era de se esperar, as chances de sucesso em cada caso também variam. Vejamos:</p>
+ 
+ 
 
 
         <table class="table_conteudo_home_mega" >
           <tbody>
             <tr>
-              <td>Números escolhidos (única aposta)</td>
+              <td>Números escolhidos (aposta única)</td>
               <td>Valor da aposta (R$)</td>
               <td>1 chance em</td>
             </tr>
@@ -215,12 +217,15 @@
           </tbody>
         </table>
 
-        <p>Dupla</p>
+        <p class="titulo-da-aposta-home-conteudo">Dupla:</p>
+        <p>Na Dupla, são apresentados 50 números, cabendo ao apostador a escolha de 6 deles. Acaso os 6 números escolhidos coincidam com os 6 números sorteados pela Caixa, você ganhará o prêmio principal. Além disso, também são pagos prêmios quando 5, 4 ou 3 dos 6 números escolhidos por você coincidem com os números sorteados pela Caixa.</p>
+        <p>Opcionalmente, para cada aposta, podem ser escolhidos números adicionais, ou seja, o apostador tem a opção de efetuar apostas com mais números. Por isso, além de apostas de 6 números, podem ser registradas apostas de 7 a <%= @dupla[:numeros].last %> números.</p>
+        <p>Mas os valores dessas apostas não são os mesmos. Uma aposta simples de 6 números custa R$ <%= @valor_aposta_simples_dupla %>. Já para registrar uma aposta de <%= @dupla[:numeros].last %> números, o apostador deverá desembolsar R$ <%= @valor_maior_aposta_dupla %>. Novamente, as chances de sucesso em cada caso também variam. Vejamos:</p>
 
         <table class="table_conteudo_home_dupla" >
           <tbody>
             <tr>
-              <td>Números escolhidos (única aposta)</td>
+              <td>Números escolhidos (aposta única)</td>
               <td>Valor da aposta (R$)</td>
               <td>1 chance em</td>
             </tr>
@@ -241,12 +246,16 @@
           </tbody>
         </table>
 
-        <p>Quina</p>
+        <p class="titulo-da-aposta-home-conteudo">Quina:</p>
+        <p>Para a Quina, são apresentados 80 números, cabendo ao apostador a escolha de 5 deles. Acaso os 5 números escolhidos coincidam com os 5 números sorteados pela Caixa, você ganhará o prêmio principal. Além disso, também são pagos prêmios quando 4, 3 ou 2 dos 5 números escolhidos por você coincidem com os números sorteados pela Caixa.</p>
+        <p>Como nos casos anteriores, opcionalmente, para cada aposta, podem ser escolhidos números adicionais, ou seja, o apostador tem a opção de efetuar apostas com mais números. Por isso, além de apostas de 5 números, podem ser registradas apostas de 6 a <%= @quina[:numeros].last %> números.</p>
+        <p>Mas os valores dessas apostas não são os mesmos. Uma aposta simples de 5 números custa R$ <%= @valor_aposta_simples_quina %>. Já para registrar uma aposta de <%= @quina[:numeros].last %> números, o apostador deverá desembolsar R$ <%= @valor_maior_aposta_quina %>. Novamente, as chances de sucesso em cada caso também variam. Vejamos:</p>
+
 
         <table class="table_conteudo_home_quina" >
           <tbody>
             <tr>
-              <td>Números escolhidos (única aposta)</td>
+              <td>Números escolhidos (aposta única)</td>
               <td>Valor da aposta (R$)</td>
               <td>1 chance em</td>
             </tr>
@@ -269,12 +278,15 @@
 
 
 
-       <p>Lotofácil</p>
+       <p class="titulo-da-aposta-home-conteudo">Lotofácil:</p>
+        <p>Na Lotofácil, são apresentados 25 números, cabendo ao apostador a escolha de 15 deles. Acaso os 15 números escolhidos coincidam com os 15 números sorteados pela Caixa, você ganhará o prêmio principal. Porém, também são pagos prêmios quando 14, 13, 12 ou 11 dos 15 números escolhidos por você coincidem com os números sorteados pela Caixa.</p>
+        <p>Opcionalmente, para cada aposta, podem ser escolhidos números adicionais, ou seja, o apostador tem a opção de efetuar apostas com mais números. Por isso, além de apostas de 15 números, podem ser registradas apostas de 16 a <%= @lotof[:numeros].last %> números.</p>
+        <p>Mas os valores dessas apostas não são os mesmos. Uma aposta simples de 15 números custa R$ <%= @valor_aposta_simples_lotof %>. Já para registrar uma aposta de <%= @lotof[:numeros].last %> números, o apostador deverá desembolsar R$ <%= @valor_maior_aposta_lotof %>. Obviamente, as chances de sucesso em cada caso também variam. Vejamos:</p>
 
         <table class="table_conteudo_home_lotofacil" >
           <tbody>
             <tr>
-              <td>Números escolhidos (única aposta)</td>
+              <td>Números escolhidos (aposta única)</td>
               <td>Valor da aposta (R$)</td>
               <td>1 chance em</td>
             </tr>
