@@ -113,6 +113,38 @@ class PagesController < ApplicationController
       chance = modalidade[:probabilidade][numeros_cada_aposta - indice_corretor]/apostas_desejadas
       @chance_printada = "Sua chance será de 1 em #{chance.to_s.reverse.scan(/.{1,3}/).join('.').reverse}."
     end
+
+    # VALORES APOSTAS SIMPLES E MAIOR APOSTA MEGA
+    @valor_aposta_simples_mega = ("%.2f" % @mega[:valor][0]).to_s.gsub!(".",",")
+    valor_maior_aposta_mega_temp = ("%.2f" % @mega[:valor].last()).to_s.gsub!(".",",")
+    indice_da_virgula_maior_aposta_mega = valor_maior_aposta_mega_temp.to_s.index(",")
+    substring_virgula_mais_dois_espacos_mega = valor_maior_aposta_mega_temp.slice(indice_da_virgula_maior_aposta_mega, (indice_da_virgula_maior_aposta_mega + 2))
+    @valor_maior_aposta_mega = valor_maior_aposta_mega_temp.split(substring_virgula_mais_dois_espacos_mega)[0].reverse.scan(/.{1,3}/).join('.').reverse + substring_virgula_mais_dois_espacos_mega
+
+    # VALORES APOSTAS SIMPLES E MAIOR APOSTA DUPLA
+    @valor_aposta_simples_dupla = ("%.2f" % @dupla[:valor][0]).to_s.gsub!(".",",")
+    valor_maior_aposta_dupla_temp = ("%.2f" % @dupla[:valor].last()).to_s.gsub!(".",",")
+    indice_da_virgula_maior_aposta_dupla = valor_maior_aposta_dupla_temp.to_s.index(",")
+    substring_virgula_mais_dois_espacos_dupla = valor_maior_aposta_dupla_temp.slice(indice_da_virgula_maior_aposta_dupla, (indice_da_virgula_maior_aposta_dupla + 2))
+    @valor_maior_aposta_dupla = valor_maior_aposta_dupla_temp.split(substring_virgula_mais_dois_espacos_dupla)[0].reverse.scan(/.{1,3}/).join('.').reverse + substring_virgula_mais_dois_espacos_dupla
+
+    # VALORES APOSTAS SIMPLES E MAIOR APOSTA QUINA
+    @valor_aposta_simples_quina = ("%.2f" % @quina[:valor][0]).to_s.gsub!(".",",")
+    valor_maior_aposta_quina_temp = ("%.2f" % @quina[:valor].last()).to_s.gsub!(".",",")
+    indice_da_virgula_maior_aposta_quina = valor_maior_aposta_quina_temp.to_s.index(",")
+    substring_virgula_mais_dois_espacos_quina = valor_maior_aposta_quina_temp.slice(indice_da_virgula_maior_aposta_quina, (indice_da_virgula_maior_aposta_quina + 2))
+    @valor_maior_aposta_quina = valor_maior_aposta_quina_temp.split(substring_virgula_mais_dois_espacos_quina)[0].reverse.scan(/.{1,3}/).join('.').reverse + substring_virgula_mais_dois_espacos_quina
+
+    # VALORES APOSTAS SIMPLES E MAIOR APOSTA MEGA
+    @valor_aposta_simples_lotof = ("%.2f" % @lotof[:valor][0]).to_s.gsub!(".",",")
+    valor_maior_aposta_lotof_temp = ("%.2f" % @lotof[:valor].last()).to_s.gsub!(".",",")
+    indice_da_virgula_maior_aposta_lotof = valor_maior_aposta_lotof_temp.to_s.index(",")
+    substring_virgula_mais_dois_espacos_lotof = valor_maior_aposta_lotof_temp.slice(indice_da_virgula_maior_aposta_lotof, (indice_da_virgula_maior_aposta_lotof + 2))
+    @valor_maior_aposta_lotof = valor_maior_aposta_lotof_temp.split(substring_virgula_mais_dois_espacos_lotof)[0].reverse.scan(/.{1,3}/).join('.').reverse + substring_virgula_mais_dois_espacos_lotof
+
+
+
+
   end
 
   def apostas
@@ -251,7 +283,7 @@ class PagesController < ApplicationController
         valor_temp_formato_brasil.gsub!(",",".")
       end
       valor_temp_formato_brasil.gsub!("*",",")
-      indice_da_virgula = valor_temp_formato_brasil.index(",") # isso para pegar só 2 casas decimais
+      indice_da_virgula_maior_aposta_mega = valor_temp_formato_brasil.index(",") # isso para pegar só 2 casas decimais
       if valor_temp_formato_brasil[(indice_da_virgula + 3)] == "0" or valor_temp_formato_brasil[(indice_da_virgula + 3)] == nil # ou seja, se eu tenho um zero depois de duas casas da vírgula: ,__0
         @valor_por_quota = "Valor da quota: #{valor_temp_formato_brasil[0..(indice_da_virgula + 2)]}." # então eu pego só duas casas decimais depois da vírgula
       elsif valor_temp_formato_brasil[(indice_da_virgula + 3)].to_i > 5
