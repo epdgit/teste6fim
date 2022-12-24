@@ -26,6 +26,8 @@ class PagesController < ApplicationController
   };
 
   def home
+    Money.locale_backend = nil # Estava dando informação de deprecado o fato de não haver apontamento da localização, mas, se isso não fosse importante, poderia ser usada essa linha de código
+
     #DIVULGAÇÃO 1
     todos_sorteios = Sorteio.all
     ultimo_sorteio = todos_sorteios.last
@@ -148,6 +150,8 @@ class PagesController < ApplicationController
   end
 
   def apostas
+    Money.locale_backend = nil # Estava dando informação de deprecado o fato de não haver apontamento da localização, mas, se isso não fosse importante, poderia ser usada essa linha de código
+
     @aposta = params
 
     @mega = MEGA
@@ -283,7 +287,7 @@ class PagesController < ApplicationController
         valor_temp_formato_brasil.gsub!(",",".")
       end
       valor_temp_formato_brasil.gsub!("*",",")
-      indice_da_virgula_maior_aposta_mega = valor_temp_formato_brasil.index(",") # isso para pegar só 2 casas decimais
+      indice_da_virgula = valor_temp_formato_brasil.index(",") # isso para pegar só 2 casas decimais
       if valor_temp_formato_brasil[(indice_da_virgula + 3)] == "0" or valor_temp_formato_brasil[(indice_da_virgula + 3)] == nil # ou seja, se eu tenho um zero depois de duas casas da vírgula: ,__0
         @valor_por_quota = "Valor da quota: #{valor_temp_formato_brasil[0..(indice_da_virgula + 2)]}." # então eu pego só duas casas decimais depois da vírgula
       elsif valor_temp_formato_brasil[(indice_da_virgula + 3)].to_i > 5
@@ -316,6 +320,8 @@ class PagesController < ApplicationController
   end
   
   def conjuntos
+    Money.locale_backend = nil # Estava dando informação de deprecado o fato de não haver apontamento da localização, mas, se isso não fosse importante, poderia ser usada essa linha de código
+
     @sorteios = Sorteio.all
     todos_numeros = []
     @mais_saem = []

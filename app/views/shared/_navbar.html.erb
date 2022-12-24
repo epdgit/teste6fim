@@ -46,7 +46,8 @@
           </div> 
         </li> %>
         <li class="nav-item dropdown">
-          <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="assets/logo4.png" />
+          <%= image_tag("logo4.png", class: "avatar dropdown-toggle", id: "navbarDropdown", "data-bs-toggle": "dropdown", "aria-haspopup": true, "aria-expanded": false ) %>
+          <%# <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="assets/logo4.png" /> %>
           <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
             <%#= link_to "Sorteios", "sorteios", class: "dropdown-item" %>
             <a class="dropdown-item" href="javascript:;" id="botao-sorteios" >Sorteios</a>
