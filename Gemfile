@@ -38,6 +38,11 @@ gem "pundit"
 
 gem 'psych', '< 4'
 
+gem "net-smtp", "~> 0.3.1"
+gem "net-pop"
+gem "net-imap"
+
+
 gem 'autoprefixer-rails', '10.2.5'
 gem 'font-awesome-sass', '~> 5.6.1'
 gem 'simple_form', github: 'heartcombo/simple_form'
