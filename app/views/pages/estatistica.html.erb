@@ -13,8 +13,8 @@ for x in @ultimo
 <div id="div_img_background">
   <div class="tudo2">
     <div>
+      <p><%= @ultimo.size %> sorteios</p>
       <p><%= "Números e quantas vezes saíram: #{@hash_final_todos_numeros}"  %></p>
-      <%= @ultimo.size %>
       <p><%= "Pares e ímpares 6x0: #{@sorteio_6x0_pares_impares}" %></p>
       <p><%= "Pares e ímpares 5x1: #{@sorteio_5x1_pares_impares}" %></p>
       <p><%= "Pares e ímpares 4x2: #{@sorteio_4x2_pares_impares}" %></p>
@@ -23,8 +23,8 @@ for x in @ultimo
       <p><%= "Pares e ímpares 1x5: #{@sorteio_1x5_pares_impares}" %></p>
       <p><%= "Pares e ímpares 0x6: #{@sorteio_0x6_pares_impares}" %></p>
 
-      <%= "Pares: #{@pares}" %>
-      <%= "Ímpares: #{@impares}" %>
+      <p><%= "Pares (TOTAL): #{@pares}" %></p>
+      <p><%= "Ímpares (TOTAL): #{@impares}" %></p>
 
       <p><%= "LINHA1: #{@linha1_do_1_ao_10}" %></p>
       <p><%= "LINHA2: #{@linha2_do_11_ao_20}" %></p>
@@ -68,10 +68,12 @@ for x in @ultimo
 
 
 
-      <p><%= @array_duplas_fim %></p>
-      <p><%= @array_ternos_fim %></p>
-      <p><%= @array_quadras_fim %></p>
-      <p><%= @array_quinas_fim %></p>
+      <p>Duplas mais frequentes: <%= @array_duplas_fim %></p>
+      <p>Ternos mais frequentes: <%= @array_ternos_fim %></p>
+      <p>Quadras mais frequentes: <%= @array_quadras_fim %></p>
+      <p>Quinas mais frequentes: <%= @array_quinas_fim %></p>
+      <p>Senas repetidas: <%= @array_senas_fim %></p>
+
 
     
     </div>
