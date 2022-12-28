@@ -525,33 +525,41 @@ class PagesController < ApplicationController
     end
 
     @ultimo = todos_sorteios_em_array
-    array60 = (1..60).to_a
-    todos_duplas = array60.combination(2).to_a
-    todos_ternos = array60.combination(3).to_a
-    todos_quadras = array60.combination(4).to_a
-    todos_quinas = array60.combination(5).to_a
+    # array60 = (1..60).to_a
+    # todos_duplas = array60.combination(2).to_a
+    # todos_ternos = array60.combination(3).to_a
+    # todos_quadras = array60.combination(4).to_a
+    # todos_quinas = array60.combination(5).to_a
     
+
+    # dicionario_duplas = {}
+    # dicionario_ternos = {}
+    # dicionario_quadras = {}
+    # dicionario_quinas = {}
+    
+    # for x in todos_duplas
+    #   dicionario_duplas[x] = 0
+    # end
+    
+    # for x in todos_ternos
+    #   dicionario_ternos[x] = 0
+    # end
+    
+    # for x in todos_quadras
+    #   dicionario_quadras[x] = 0
+    # end
+    
+    # for x in todos_quinas
+    #   dicionario_quinas[x] = 0
+    # end
+    
+
     dicionario_duplas = {}
     dicionario_ternos = {}
     dicionario_quadras = {}
     dicionario_quinas = {}
-    
-    for x in todos_duplas
-      dicionario_duplas[x] = 0
-    end
-    
-    for x in todos_ternos
-      dicionario_ternos[x] = 0
-    end
-    
-    for x in todos_quadras
-      dicionario_quadras[x] = 0
-    end
-    
-    for x in todos_quinas
-      dicionario_quinas[x] = 0
-    end
-    
+
+
     # # LANÇAR AQUI TODOS OS SORTEIOS
     todos_sorteios = @ultimo
     
@@ -624,6 +632,32 @@ class PagesController < ApplicationController
         @array_quinas_fim << "#{x} VEZES: #{dicionario_quinas.select{|k,v| v == x}.keys}"
       end
     end
+
+    #SENAS:
+    dicionario_senas = {}
+    for sorteio in todos_sorteios
+        if dicionario_senas.key?(sorteio)
+          dicionario_senas[sorteio] += 1
+        else
+          dicionario_senas[sorteio] = 1 
+        end
+      end
+    
+    @array_senas_fim = []
+    array_repeticoes_values_senas = dicionario_senas.values.to_set.to_a.sort
+    for x in array_repeticoes_values_senas
+      if x > 1
+        @array_senas_fim << "#{x} VEZES: #{dicionario_senas.select{|k,v| v == x}.keys}"
+      end
+    end
+    
+    if @array_senas_fim == []
+      @array_senas_fim = "Nenhuma sena se repetiu"
+    end
+
+
+
+
 
     # MAIS / MENOS SAEM:
     todos_numeros = []
