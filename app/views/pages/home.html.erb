@@ -278,7 +278,7 @@
 
 
 
-       <p class="titulo-da-aposta-home-conteudo">Lotofácil:</p>
+        <p class="titulo-da-aposta-home-conteudo">Lotofácil:</p>
         <p>Na Lotofácil, são apresentados 25 números, cabendo ao apostador a escolha de 15 deles. Acaso os 15 números escolhidos coincidam com os 15 números sorteados pela Caixa, você ganhará o prêmio principal. Porém, também são pagos prêmios quando 14, 13, 12 ou 11 dos 15 números escolhidos por você coincidem com os números sorteados pela Caixa.</p>
         <p>Opcionalmente, para cada aposta, podem ser escolhidos números adicionais, ou seja, o apostador tem a opção de efetuar apostas com mais números. Por isso, além de apostas de 15 números, podem ser registradas apostas de 16 a <%= @lotof[:numeros].last %> números.</p>
         <p>Mas os valores dessas apostas não são os mesmos. Uma aposta simples de 15 números custa R$ <%= @valor_aposta_simples_lotof %>. Já para registrar uma aposta de <%= @lotof[:numeros].last %> números, o apostador deverá desembolsar R$ <%= @valor_maior_aposta_lotof %>. Obviamente, as chances de sucesso em cada caso também variam. Vejamos:</p>
@@ -306,6 +306,17 @@
             <% end %>
           </tbody>
         </table>
+
+        <%# <p style="margin-top: 20px;"></p> %>
+        <p class="titulo-da-aposta-home-conteudo">Chances e valores:</p>
+        <p>Mas como esses valores e probabilidades são definidos? Para compreender ambos os aspectos, devemos, primeiramente, calcular a quantidade de combinações que podem ser feitas com cada aposta.</p>
+        <p>Ou seja, quando registramos uma aposta da Mega-sena com 7 números, estamos, na verdade, registrando todas as combinações desses 7 números em apostas de 6 números. Em outras palavras, 
+uma aposta única de 7 números equivale a 7 apostas diferentes de 6 números, formadas com os valores que você escolheu. Isso porque, 7 é o número máximo de subconjuntos de 6 elementos distintos passíveis de serem formados a partir de um conjunto de 7 elementos.</p>
+        <p>Portanto, para chegar ao valor de aposta de 7 números, basta multiplicar o valor de uma aposta simples pela quantidade de apostas de 6 números que podem ser formadas com os números que você escolheu( 7 x <%= @valor_aposta_simples_mega %> = <%= ("%.2f" % (@mega[:valor][0]*7)).to_s.gsub!(".",",") %>).</p>
+        <p>Já para calcular a probabilidade, obtenha a quantidade total de combinações diferentes de 6 números que podem ser formadas a partir de 60 números (50.063.860) e, então, divida pela quantidade de combinações diferentes de 6 números que podem ser formadas com os 7 números escolhidos por você: 50.063.860 : 7 = <%= (50063860/7).to_s.reverse.scan(/.{1,3}/).join('.').reverse %>.</p>
+        <p>Não está convencido? Então, pense o seguinte: se você pudesse registrar uma aposta com todos os 60 números da Mega-sena, que valor teria essa aposta?</p>
+        <p>A resposta é simples. Se com 60 números podemos formar 50.063.860 de combinações diferentes de 6 números, o valor total dessa aposta equivaleria à multiplicação de 50.063.860 pelo valor da aposta simples (R$ <%= @valor_aposta_simples_mega %>). Então, o valor dessa aposta de 60 números seria de R$ <%= ("%.2f" % (@mega[:valor][0]*50063860)).to_s.gsub!(".",",").to_s.reverse.scan(/.{1,3}/).join('.').reverse.gsub!(".,", ",")%>.</p>
+        <p>Já a probabilidade dessa aposta de 60 números, pela mesma razão, seria obtida pela divisão das combinações existentes pelo número equivalente a apostas diferentes de 6 números que poderiam ser formadas com os 60 números escolhidos por você ( 50.063.860 : 50.063.860 = 1). Isso significa que sua chance, nesse caso, seria de 1 em 1, ou seja, uma chance de 100%.</p>
 
 
 
