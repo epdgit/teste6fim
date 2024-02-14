@@ -15,9 +15,5 @@
   "version": "0.1.0",
   "devDependencies": {
     "webpack-dev-server": "^4.11.1"
-  },
-  "scripts": {
-    "start": "react-scripts --openssl-legacy-provider start",
-    "build": "react-scripts --openssl-legacy-provider build"
   }
 }
