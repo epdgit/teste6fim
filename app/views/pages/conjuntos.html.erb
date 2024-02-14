@@ -62,9 +62,16 @@
               <button type="button" id="media_todos" onclick="media()" class="btn btn-primary">Média</button>
               <button type="button" id="media_mil" onclick="mediaMil()" class="btn btn-primary">Média 1000</button>
               <button type="button" id="ramalho-dantas" onclick="ramalhoDantas()" class="btn btn-primary">Conjunto RD</button>
-              <button type="button" id="ult17" onclick="ultD()" class="btn btn-primary">Estou com sorte</button>
-              <button type="button" id="ult13" onclick="ultT()" class="btn btn-primary">Arrojado</button>
-              <button type="button" id="ult10" onclick="ultDez()" class="btn btn-primary">Mais Arrojado</button>
+              <button type="button" id="ult17" onclick="ultD()" class="btn btn-primary">Ult17</button>
+              <button type="button" id="ult13" onclick="ultT()" class="btn btn-primary">Ult13</button>
+              <button type="button" id="ult11" onclick="ultOnze()" class="btn btn-primary">Ult11</button>
+              <button type="button" id="ult10" onclick="ultDez()" class="btn btn-primary">Ult10</button>
+              <button type="button" id="ult9" onclick="ultNove()" class="btn btn-primary">Ult9</button>
+              <button type="button" id="ult8" onclick="ultOito()" class="btn btn-primary">Ult8</button>
+              <button type="button" id="ult7" onclick="ultSete()" class="btn btn-primary">Ult7</button>
+              <button type="button" id="ult6" onclick="ultSeis()" class="btn btn-primary">Ult6</button>
+              <button type="button" id="ult5" onclick="ultCinco()" class="btn btn-primary">Ult5</button>
+              <button type="button" id="todos" onclick="todosN()" class="btn btn-primary">Todos</button>                                                                      
               <button type="button" id="limpa" onclick="limpar()" class="btn btn-warning">Limpar Marcações</button>
             </div>
             <%# <div>
@@ -76,9 +83,16 @@
               <button type="button" id="media_todos" onclick="media()" class="btn btn-primary">Média</button>
               <button type="button" id="media_mil" onclick="mediaMil()" class="btn btn-primary">Média 1000</button>
               <button type="button" id="ramalho-dantas" onclick="ramalhoDantas()" class="btn btn-primary">Conjunto RD</button>
-              <button type="button" id="ult17" onclick="ultD()" class="btn btn-primary">Estou com sorte</button>
-              <button type="button" id="ult13" onclick="ultT()" class="btn btn-primary">Arrojado</button>
-              <button type="button" id="ult10" onclick="ultDez()" class="btn btn-primary">Mais Arrojado</button>
+              <button type="button" id="ult17" onclick="ultD()" class="btn btn-primary">Ult17</button>
+              <button type="button" id="ult13" onclick="ultT()" class="btn btn-primary">Ult13</button>
+              <button type="button" id="ult11" onclick="ultOnze()" class="btn btn-primary">Ult11</button>
+              <button type="button" id="ult10" onclick="ultDez()" class="btn btn-primary">Ult10</button>
+              <button type="button" id="ult9" onclick="ultNove()" class="btn btn-primary">Ult9</button>
+              <button type="button" id="ult8" onclick="ultOito()" class="btn btn-primary">Ult8</button>
+              <button type="button" id="ult7" onclick="ultSete()" class="btn btn-primary">Ult7</button>
+              <button type="button" id="ult6" onclick="ultSeis()" class="btn btn-primary">Ult6</button>
+              <button type="button" id="ult5" onclick="ultCinco()" class="btn btn-primary">Ult5</button>
+              <button type="button" id="todos" onclick="todosN()" class="btn btn-primary">Todos</button>  
               <button type="button" id="limpa" onclick="limpar()" class="btn btn-warning">Limpar Marcações</button>
             </div>
           </div>
@@ -145,6 +159,12 @@
       <p id="array-ult17" style="display: none"><%=@array17%></p>
       <p id="array-ult13" style="display: none"><%=@array13%></p>
       <p id="array-ult10" style="display: none" ><%=@array10%></p><%# style="display: none"  %>
+      <p id="array-ult11" style="display: none" ><%=@array11%></p><%# style="display: none"  %>
+      <p id="array-ult9" style="display: none" ><%=@array9%></p><%# style="display: none"  %>
+      <p id="array-ult8" style="display: none" ><%=@array8%></p><%# style="display: none"  %>
+      <p id="array-ult7" style="display: none" ><%=@array7%></p><%# style="display: none"  %>
+      <p id="array-ult6" style="display: none" ><%=@array6%></p><%# style="display: none"  %>
+      <p id="array-ult5" style="display: none" ><%=@array5%></p><%# style="display: none"  %>
 
       <p id="array-mais-saem" style="display: none"><%=@mais_saem%></p>
       <p id="array-menos-saem" style="display: none"><%=@menos_saem%></p>
@@ -157,7 +177,7 @@
     </div>
 
 
-    <div class="marketing-large">
+    <div class="marketing-large" style="display: none">
       <div class="divulgacao3">
         <div class="slideshow-container">
           <div class="mySlides fade">
@@ -191,7 +211,7 @@
 </div>
 
 
-<div class="marketing-mobile">
+<div class="marketing-mobile" style="display: none">
   <%# <div class="divulgacao3"> %>
       <% array_marketing = [['https://go.hotmart.com/G73964193K?dp=1', 'divulgacao_portugues_completo409x82px_mobile.jpg'], ["https://www.parceiromagalu.com.br/magazinefortitudine/smartphone-samsung-galaxy-s20-fe-5g-128gb-azul-marinho-6gb-ram-65-cam-tripla-selfie-32mp/p/234880200/TE/GS2F/?utm_source=fortitudine&utm_medium=smartphone-samsung-galaxy-s20-fe-5g-128gb-azul-mar&utm_campaign=copy-paste&utm_content=copy-paste-share?utm_source=fortitudine&utm_medium=smartphone-samsung-galaxy-s20-fe-5g-128gb-azul-mar&utm_campaign=copy-paste&utm_content=copy-paste-share", "samsung_s20_divulgacao_mobile.jpg"], ["https://www.parceiromagalu.com.br/magazinefortitudine/notebook-vaio-fe15-intel-core-i3-4gb-256gb-ssd-156-full-hd-windows-11/p/233239600/IN/NOTE/?utm_source=fortitudine&utm_medium=notebook-vaio-fe15-intel-core-i3-4gb-256gb-ssd-156&utm_campaign=copy-paste&utm_content=copy-paste-share", "vaio_fe15_divulgacao_mobile.jpg"] ] %>
       <% x = array_marketing.sample %>
@@ -446,9 +466,6 @@ function mediaMil() {
 
 
 
-
-
-
 function ramalhoDantas() {
   rd = [2, 3, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 21, 22, 34, 35, 36, 37, 41, 42, 43, 48, 49, 53, 56]
   var numerosTodos = document.getElementsByClassName("numero-sorte");
@@ -570,6 +587,229 @@ function ultDez() {
   document.getElementById("numeros-da-sorte-fim2").dispatchEvent(new Event('change')) // a troca dinâmica do Value não faz por padrão um evento 'change', o que impede um addEventListener, então, tem que fazer isso na marra!
   limpaQuantidade()
 }
+
+
+
+
+function ultOnze() {
+  var array11 = document.getElementById("array-ult11").textContent
+  var numeroCaracteres = array11.length
+  var array11string = array11.substring(1, numeroCaracteres - 1).split(",")
+  var array11length = array11string.length
+  var array11Fim = []
+  var contador = 0
+  for(var i = 0; i < array11length; i++) {
+    array11Fim.push(parseInt(array11string[i]))
+  }
+
+  var numerosTodos = document.getElementsByClassName("numero-sorte");
+  var intLength = numerosTodos.length;
+  var total = 0;
+  
+  for(var i = 0; i < intLength; i++) {
+        var check_numero = numerosTodos[i];
+        if (array11Fim.includes(check_numero.value) == true) {
+          check_numero.classList.add("selected");
+        } else {
+          check_numero.classList.remove("selected");
+        };
+  };
+  if (arrayDaSorte) {
+    arrayDaSorte = array11Fim
+  }
+  document.getElementById("numeros-da-sorte-fim2").setAttribute("value", `${arrayDaSorte}`);
+  document.getElementById("numeros-da-sorte-fim2").dispatchEvent(new Event('change')) // a troca dinâmica do Value não faz por padrão um evento 'change', o que impede um addEventListener, então, tem que fazer isso na marra!
+  limpaQuantidade()
+}
+
+
+function ultNove() {
+  var array9 = document.getElementById("array-ult9").textContent
+  var numeroCaracteres = array9.length
+  var array9string = array9.substring(1, numeroCaracteres - 1).split(",")
+  var array9length = array9string.length
+  var array9Fim = []
+  var contador = 0
+  for(var i = 0; i < array9length; i++) {
+    array9Fim.push(parseInt(array9string[i]))
+  }
+
+  var numerosTodos = document.getElementsByClassName("numero-sorte");
+  var intLength = numerosTodos.length;
+  var total = 0;
+  
+  for(var i = 0; i < intLength; i++) {
+        var check_numero = numerosTodos[i];
+        if (array9Fim.includes(check_numero.value) == true) {
+          check_numero.classList.add("selected");
+        } else {
+          check_numero.classList.remove("selected");
+        };
+  };
+  if (arrayDaSorte) {
+    arrayDaSorte = array9Fim
+  }
+  document.getElementById("numeros-da-sorte-fim2").setAttribute("value", `${arrayDaSorte}`);
+  document.getElementById("numeros-da-sorte-fim2").dispatchEvent(new Event('change')) // a troca dinâmica do Value não faz por padrão um evento 'change', o que impede um addEventListener, então, tem que fazer isso na marra!
+  limpaQuantidade()
+}
+
+
+function ultOito() {
+  var array8 = document.getElementById("array-ult8").textContent
+  var numeroCaracteres = array8.length
+  var array8string = array8.substring(1, numeroCaracteres - 1).split(",")
+  var array8length = array8string.length
+  var array8Fim = []
+  var contador = 0
+  for(var i = 0; i < array8length; i++) {
+    array8Fim.push(parseInt(array8string[i]))
+  }
+
+  var numerosTodos = document.getElementsByClassName("numero-sorte");
+  var intLength = numerosTodos.length;
+  var total = 0;
+  
+  for(var i = 0; i < intLength; i++) {
+        var check_numero = numerosTodos[i];
+        if (array8Fim.includes(check_numero.value) == true) {
+          check_numero.classList.add("selected");
+        } else {
+          check_numero.classList.remove("selected");
+        };
+  };
+  if (arrayDaSorte) {
+    arrayDaSorte = array8Fim
+  }
+  document.getElementById("numeros-da-sorte-fim2").setAttribute("value", `${arrayDaSorte}`);
+  document.getElementById("numeros-da-sorte-fim2").dispatchEvent(new Event('change')) // a troca dinâmica do Value não faz por padrão um evento 'change', o que impede um addEventListener, então, tem que fazer isso na marra!
+  limpaQuantidade()
+}
+
+
+
+function ultSete() {
+  var array7 = document.getElementById("array-ult7").textContent
+  var numeroCaracteres = array7.length
+  var array7string = array7.substring(1, numeroCaracteres - 1).split(",")
+  var array7length = array7string.length
+  var array7Fim = []
+  var contador = 0
+  for(var i = 0; i < array7length; i++) {
+    array7Fim.push(parseInt(array7string[i]))
+  }
+
+  var numerosTodos = document.getElementsByClassName("numero-sorte");
+  var intLength = numerosTodos.length;
+  var total = 0;
+  
+  for(var i = 0; i < intLength; i++) {
+        var check_numero = numerosTodos[i];
+        if (array7Fim.includes(check_numero.value) == true) {
+          check_numero.classList.add("selected");
+        } else {
+          check_numero.classList.remove("selected");
+        };
+  };
+  if (arrayDaSorte) {
+    arrayDaSorte = array7Fim
+  }
+  document.getElementById("numeros-da-sorte-fim2").setAttribute("value", `${arrayDaSorte}`);
+  document.getElementById("numeros-da-sorte-fim2").dispatchEvent(new Event('change')) // a troca dinâmica do Value não faz por padrão um evento 'change', o que impede um addEventListener, então, tem que fazer isso na marra!
+  limpaQuantidade()
+}
+
+
+
+function ultSeis() {
+  var array6 = document.getElementById("array-ult6").textContent
+  var numeroCaracteres = array6.length
+  var array6string = array6.substring(1, numeroCaracteres - 1).split(",")
+  var array6length = array6string.length
+  var array6Fim = []
+  var contador = 0
+  for(var i = 0; i < array6length; i++) {
+    array6Fim.push(parseInt(array6string[i]))
+  }
+
+  var numerosTodos = document.getElementsByClassName("numero-sorte");
+  var intLength = numerosTodos.length;
+  var total = 0;
+  
+  for(var i = 0; i < intLength; i++) {
+        var check_numero = numerosTodos[i];
+        if (array6Fim.includes(check_numero.value) == true) {
+          check_numero.classList.add("selected");
+        } else {
+          check_numero.classList.remove("selected");
+        };
+  };
+  if (arrayDaSorte) {
+    arrayDaSorte = array6Fim
+  }
+  document.getElementById("numeros-da-sorte-fim2").setAttribute("value", `${arrayDaSorte}`);
+  document.getElementById("numeros-da-sorte-fim2").dispatchEvent(new Event('change')) // a troca dinâmica do Value não faz por padrão um evento 'change', o que impede um addEventListener, então, tem que fazer isso na marra!
+  limpaQuantidade()
+}
+
+
+
+function ultCinco() {
+  var array5 = document.getElementById("array-ult5").textContent
+  var numeroCaracteres = array5.length
+  var array5string = array5.substring(1, numeroCaracteres - 1).split(",")
+  var array5length = array5string.length
+  var array5Fim = []
+  var contador = 0
+  for(var i = 0; i < array5length; i++) {
+    array5Fim.push(parseInt(array5string[i]))
+  }
+
+  var numerosTodos = document.getElementsByClassName("numero-sorte");
+  var intLength = numerosTodos.length;
+  var total = 0;
+  
+  for(var i = 0; i < intLength; i++) {
+        var check_numero = numerosTodos[i];
+        if (array5Fim.includes(check_numero.value) == true) {
+          check_numero.classList.add("selected");
+        } else {
+          check_numero.classList.remove("selected");
+        };
+  };
+  if (arrayDaSorte) {
+    arrayDaSorte = array5Fim
+  }
+  document.getElementById("numeros-da-sorte-fim2").setAttribute("value", `${arrayDaSorte}`);
+  document.getElementById("numeros-da-sorte-fim2").dispatchEvent(new Event('change')) // a troca dinâmica do Value não faz por padrão um evento 'change', o que impede um addEventListener, então, tem que fazer isso na marra!
+  limpaQuantidade()
+}
+
+
+
+
+
+
+function todosN() {
+  todos_n = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60]
+  var numerosTodos = document.getElementsByClassName("numero-sorte");
+  var intLength = numerosTodos.length;
+  var total = 0;
+  for(var i = 0; i < intLength; i++) {
+        var check_numero = numerosTodos[i];
+        if (check_numero.classList.contains("selected") == false) {
+          check_numero.classList.add("selected");
+        };
+  };
+  if (arrayDaSorte) {
+    arrayDaSorte = todos_n
+  }
+  document.getElementById("numeros-da-sorte-fim2").setAttribute("value", `${arrayDaSorte}`);
+  document.getElementById("numeros-da-sorte-fim2").dispatchEvent(new Event('change')) // a troca dinâmica do Value não faz por padrão um evento 'change', o que impede um addEventListener, então, tem que fazer isso na marra!
+  limpaQuantidade()  
+}
+
+
 
 
 function h2Vermelho() {
