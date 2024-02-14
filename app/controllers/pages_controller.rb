@@ -330,8 +330,13 @@ class PagesController < ApplicationController
     @media_mil = []
     @array17 = [] 
     @array13 = []
+    @array11 = []
     @array10 = []
-    
+    @array9 = []
+    @array8 = []
+    @array7 = []
+    @array6 = []
+    @array5 = []
     # ARRAY DE 13 E DE 17
     contador = 1
     while contador < 18 
@@ -340,8 +345,26 @@ class PagesController < ApplicationController
         @array17 << x 
         if contador < 14 
           @array13 << x
-          if contador < 11
-            @array10 << x
+          if contador < 12
+            @array11 << x
+            if contador < 11
+              @array10 << x
+              if contador < 10
+                @array9 << x
+                if contador < 9
+                  @array8 << x
+                  if contador < 8
+                    @array7 << x
+                    if contador < 7
+                      @array6 << x
+                      if contador < 6
+                        @array5 << x
+                      end
+                    end
+                  end
+                end
+              end
+            end
           end 
         end     
       end   
@@ -349,7 +372,13 @@ class PagesController < ApplicationController
     end
     @array17 = @array17.to_set.to_a.sort
     @array13 = @array13.to_set.to_a.sort
+    @array11 = @array11.to_set.to_a.sort
     @array10 = @array10.to_set.to_a.sort
+    @array9 = @array9.to_set.to_a.sort
+    @array8 = @array8.to_set.to_a.sort
+    @array7 = @array7.to_set.to_a.sort
+    @array6 = @array6.to_set.to_a.sort
+    @array5 = @array5.to_set.to_a.sort
 
     # OBTENDO NÚMEROS NA MÉDIA ÚLTIMOS 1000 JOGOS
     contador_mil = 1
