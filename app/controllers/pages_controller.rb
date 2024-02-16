@@ -548,12 +548,37 @@ class PagesController < ApplicationController
 
   def estatistica
     todos_sorteios = Sorteio.all
+
     todos_sorteios_em_array = []
     for x in todos_sorteios
       todos_sorteios_em_array << x[:numeros].split(/,/).map {|x| x.to_i}
     end
-
+ 
     @ultimo = todos_sorteios_em_array
+
+
+
+    # CRIANDO DICIONÁRIO DE NÚMEROS ATRASADOS:
+    array60_atrasos = (1..60).to_a
+    dicionario_de_atrasos = Hash.new
+    for x in array60_atrasos
+      atraso = 0
+      ordenador_sorteio = -1
+      if @ultimo[ordenador_sorteio].include?(x)
+        dicionario_de_atrasos[x] = atraso
+      else
+        while @ultimo[ordenador_sorteio].include?(x) == false
+          atraso += 1
+          ordenador_sorteio -= 1
+          if @ultimo[ordenador_sorteio].include?(x)
+            dicionario_de_atrasos[x] = atraso
+          end
+        end
+      end
+    end   
+    @dicionario_de_atrasos_fim =  dicionario_de_atrasos.sort_by {|_key, value| value}.reverse.to_h
+
+
     # array60 = (1..60).to_a
     # todos_duplas = array60.combination(2).to_a
     # todos_ternos = array60.combination(3).to_a

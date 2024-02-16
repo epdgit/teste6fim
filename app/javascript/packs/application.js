@@ -31,6 +31,8 @@ import { totalApostas } from './home';
 import { salvarPDF } from './apostas';
 import { trocarSeletorNumerosConjuntos }  from './conjuntos';
 import { trocarSeletorQuantidadeApostasConjuntos } from './conjuntos';
+// import { totalNumerosMarcados } from './conjuntos';
+
 // import { trocarIdDiv } from './home';
 
 // Dando relood na volta à página Home:

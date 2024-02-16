@@ -15,6 +15,9 @@ for x in @ultimo
     <div>
       <p><%= @ultimo.size %> sorteios</p>
       <p><%= "Números e quantas vezes saíram: #{@hash_final_todos_numeros}"  %></p>
+      <p><%= "Ordenando números que mais saíram: #{@hash_final_todos_numeros.keys()}"  %></p>
+      <p> <%= "Números e por quantos sorteios estão atrasados: #{@dicionario_de_atrasos_fim}" %></p>
+      <p> <%= "Ordenando números mais atrasados: #{@dicionario_de_atrasos_fim.keys()}" %></p>
       <p><%= "Pares e ímpares 6x0: #{@sorteio_6x0_pares_impares}" %></p>
       <p><%= "Pares e ímpares 5x1: #{@sorteio_5x1_pares_impares}" %></p>
       <p><%= "Pares e ímpares 4x2: #{@sorteio_4x2_pares_impares}" %></p>
