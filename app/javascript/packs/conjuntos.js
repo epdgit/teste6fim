@@ -90,5 +90,7 @@ function trocarSeletorQuantidadeApostasConjuntos() {
 
 
 
+
+// export { totalNumerosMarcados }
 export { trocarSeletorNumerosConjuntos };
 export { trocarSeletorQuantidadeApostasConjuntos };

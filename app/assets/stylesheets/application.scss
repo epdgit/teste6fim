@@ -1401,6 +1401,40 @@ td {
 }
 
 
+#totalizador_de_numeros_marcados {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1px;  
+}
+
+
+#teste_valor_total_numeros_marcados {
+  color: #204A65;
+  font-weight: 700;
+  font-size: 20px;
+  font-family: 'Rokkitt', serif;
+  margin: 20px 0px;
+}
+
+
+
+#teste_total_apostas_numeros_marcados {
+  background-color: beige;
+  width: 175px;
+  height: 42px;
+  text-align: center;
+  padding: 9px;
+  margin-top: 5px;
+  margin-left: 12px;
+  border: solid 2px black;
+  border-radius: 5px;
+  box-shadow: 0px 0px 4px #0069d9;
+  color: #204A65;
+  font-weight: 700;
+  font-size: 18px;
+  font-family: 'Rokkitt', serif;
+}
+
 
 
 @media (min-width:576px) and (max-width:767px) {

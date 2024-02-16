@@ -137,6 +137,12 @@
           <div id="alerta">
             <h6 id="mensagem-alerta2">Crie seu conjunto com 7 ou mais números! Só então você poderá gerar suas apostas. ☘️</h6>
           </div>
+          <div id="totalizador_de_numeros_marcados" style="">
+            <p id="teste_valor_total_numeros_marcados">Quantidade de números marcada:</p>
+          </div>
+          <div id="totalizador_de_numeros_marcados">
+            <p id="teste_total_apostas_numeros_marcados"> </p>
+          </div>
         </div>
       </form>
 
@@ -297,6 +303,10 @@ window.onclick = e => {
         seletorQuantidade.removeChild(seletorQuantidade.firstChild)
       };
     }
+    // TOTALIZANDO NÚMEROS MARCADOS
+    // INSERINDO TOTAL DE NÚMEROS MARCADOS
+    var inputTotalNumerosFim = document.getElementById("teste_total_apostas_numeros_marcados")
+    inputTotalNumerosFim.innerHTML = (arrayDaSorte.length + " número(s)") 
 }
 
 
