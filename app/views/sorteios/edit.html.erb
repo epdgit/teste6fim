@@ -2,7 +2,7 @@
   <%= f.label :concurso %>
   <%= f.number_field :concurso %>
   <%= f.label :data %>
-  <%= f.date_field :data %>
+  <%= f.text_field :data %> <!--retirei o date_field porque estava dando erro. Tentei resolver trocando o ":data" por "@sorteio.data.to_time", mas o update não funcionava. O problema todo é porque o form with tenta converter, por padrão, o dado que é string em strftime com Y-m-d e isso dá um erro -->
   <%= f.label :numeros %>
   <%= f.text_field :numeros %>
   <%= f.submit %>

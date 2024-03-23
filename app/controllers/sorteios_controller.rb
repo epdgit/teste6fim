@@ -1,4 +1,6 @@
 class SorteiosController < ApplicationController
+  
+
   def index
     # @sorteios = Sorteio.all
     @sorteios = policy_scope(Sorteio)
